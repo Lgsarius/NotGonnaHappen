@@ -25,6 +25,19 @@ offset_right = 1929.0
 offset_bottom = 1137.0
 scale = Vector2(1.07425, 0.944656)
 
+[node name="Score" type="Label" parent="CanvasLayer"]
+unique_name_in_owner = true
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -36.5
+offset_right = 36.5
+offset_bottom = 172.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 126
+text = "0"
+
 [node name="Player" parent="." instance=ExtResource("1_ym5bf")]
 position = Vector2(940, 524)
 
@@ -38,13 +51,13 @@ position = Vector2(-248, -246)
 rotation = 1.56253
 
 [node name="PineTree" parent="." instance=ExtResource("2_f2uyu")]
-position = Vector2(455, 716)
+position = Vector2(430, 835)
 
 [node name="PineTree2" parent="." instance=ExtResource("2_f2uyu")]
 position = Vector2(922, 670)
 
 [node name="PineTree3" parent="." instance=ExtResource("2_f2uyu")]
-position = Vector2(469, 236)
+position = Vector2(370, 257)
 
 [node name="PineTree5" parent="." instance=ExtResource("2_f2uyu")]
 position = Vector2(1384, 265)
@@ -59,15 +72,6 @@ position = Vector2(1288, 264)
 autostart = true
 
 [node name="Mob" parent="." instance=ExtResource("4_m0sop")]
-
-[node name="Score" type="Label" parent="."]
-unique_name_in_owner = true
-offset_left = 284.0
-offset_top = 420.0
-offset_right = 370.0
-offset_bottom = 499.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "0"
 
 [node name="GameOver" type="CanvasLayer" parent="."]
 unique_name_in_owner = true
