@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://c5vuxk0aa76sk"]
+[gd_scene load_steps=7 format=3 uid="uid://c5vuxk0aa76sk"]
 
 [ext_resource type="Script" path="res://game.gd" id="1_bamb0"]
 [ext_resource type="PackedScene" uid="uid://dle7ccr76jp26" path="res://player.tscn" id="1_ym5bf"]
+[ext_resource type="PackedScene" uid="uid://djvajkprc45io" path="res://orb.tscn" id="2_50716"]
 [ext_resource type="PackedScene" uid="uid://b6gxhols5xtd3" path="res://pine_tree.tscn" id="2_f2uyu"]
 [ext_resource type="PackedScene" uid="uid://u3rad5eu5c4m" path="res://mob.tscn" id="4_m0sop"]
 
@@ -100,6 +101,9 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 185
 text = "GAME OVER"
+
+[node name="Orb" parent="." instance=ExtResource("2_50716")]
+position = Vector2(550, 514)
 
 [connection signal="health_depleted" from="Player" to="." method="_on_player_health_depleted"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

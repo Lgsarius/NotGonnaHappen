@@ -21,3 +21,13 @@ func _physics_process(delta: float) -> void:
 		%ProgressBar.value = health
 		if health <= 0.0:
 			health_depleted.emit()
+
+
+func _on_grab_area_area_entered(area: Area2D) -> void:
+	if area.is_in_group("loot"):
+		area.target = self
+
+
+func _on_collect_area_area_entered(area: Area2D) -> void:
+	if area.is_in_group("loot"):
+		var orb = area.collect()

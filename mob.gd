@@ -20,9 +20,15 @@ func take_damage():
 	
 	if health == 0:
 		mob_death.emit()
+		drop_loot()
 		queue_free()
 		const SMOKE_SCENE = preload("res://smoke_explosion/smoke_explosion.tscn")
 		var smoke = SMOKE_SCENE.instantiate()
 		get_parent().add_child(smoke)
 		smoke.global_position = global_position
+		
 	
+func drop_loot():
+	var new_orb = preload("res://orb.tscn").instantiate()
+	new_orb.global_position = global_position
+	get_parent().add_child(new_orb)

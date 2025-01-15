@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dle7ccr76jp26"]
+[gd_scene load_steps=10 format=3 uid="uid://dle7ccr76jp26"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_1lkpv"]
 [ext_resource type="PackedScene" uid="uid://pbmyh1qru7p" path="res://characters/happy_boo/happy_boo.tscn" id="1_ody6f"]
@@ -23,6 +23,12 @@ corner_radius_top_left = 8
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8bmqp"]
+radius = 220.95
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yl1vv"]
+radius = 26.0768
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_1lkpv")
@@ -60,3 +66,20 @@ theme_override_styles/background = SubResource("StyleBoxFlat_s4bw0")
 theme_override_styles/fill = SubResource("StyleBoxFlat_lb4fv")
 value = 100.0
 show_percentage = false
+
+[node name="GrabArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GrabArea"]
+shape = SubResource("CircleShape2D_8bmqp")
+
+[node name="CollectArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollectArea"]
+shape = SubResource("CircleShape2D_yl1vv")
+
+[connection signal="area_entered" from="GrabArea" to="." method="_on_grab_area_area_entered"]
+[connection signal="area_entered" from="CollectArea" to="." method="_on_collect_area_area_entered"]
