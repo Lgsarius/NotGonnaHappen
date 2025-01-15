@@ -1,7 +1,7 @@
 # 🍔 NotGonnaHappen
 
 <p align="center">
-  <img src=".godot\PUBLIC\LOGO.webp" alt="NotGonnaHappen Logo" width="200"/>
+  <img src="PUBLIC\LOGO.webp" alt="NotGonnaHappen Logo" width="200"/>
 </p>
 
 ## 🎮 About The Game
