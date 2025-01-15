@@ -77,7 +77,9 @@ Settings/Show_Tooltips=true
 config/name="NotGonnaHappen"
 run/main_scene="res://game.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
-boot_splash/image="res://PUBLIC/LOGO.webp"
+boot_splash/bg_color=Color(0.0945282, 0.129913, 0.258608, 1)
+boot_splash/image="res://PUBLIC/LOGO.png"
+boot_splash/fullsize=false
 config/icon="res://icon.png"
 
 [display]
