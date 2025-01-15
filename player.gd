@@ -1,5 +1,5 @@
 extends CharacterBody2D
-
+signal loot_collected
 signal health_depleted
 var health = 100.0
 
@@ -31,3 +31,4 @@ func _on_grab_area_area_entered(area: Area2D) -> void:
 func _on_collect_area_area_entered(area: Area2D) -> void:
 	if area.is_in_group("loot"):
 		var orb = area.collect()
+		loot_collected.emit()

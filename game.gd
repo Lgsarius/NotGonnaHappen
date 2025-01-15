@@ -21,7 +21,11 @@ func _on_player_health_depleted() -> void:
 
 
 func _on_mob_mob_death() -> void:
+	pass
+	
+
+
+func _on_player_loot_collected() -> void:
 	score += 1
 	%Score.text = str(score)
 	print(score)
-	

@@ -31,4 +31,4 @@ func take_damage():
 func drop_loot():
 	var new_orb = preload("res://orb.tscn").instantiate()
 	new_orb.global_position = global_position
-	get_parent().add_child(new_orb)
+	get_parent().call_deferred("add_child",new_orb)
