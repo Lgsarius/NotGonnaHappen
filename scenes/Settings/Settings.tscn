@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://c8p4xkj6w53gv"]
+[gd_scene load_steps=10 format=3 uid="uid://c8p4xkj6w53gv"]
 
 [ext_resource type="Script" path="res://scenes/Settings/settings.gd" id="1_k3rds"]
 [ext_resource type="Texture2D" uid="uid://4fcpi7ce8d0y" path="res://PUBLIC/screenshot.png" id="2_3k4yt"]
@@ -8,37 +8,50 @@
 texture = ExtResource("2_3k4yt")
 modulate_color = Color(0.505344, 0.505344, 0.505344, 1)
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5rg17"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_border"]
+bg_color = Color(0.0784314, 0.0784314, 0.0784314, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.8, 0.8, 0.8, 1)
+anti_aliasing = false
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fac5d"]
-bg_color = Color(0.435192, 0.435192, 0.435192, 1)
-corner_radius_top_left = 16
-corner_radius_top_right = 16
-corner_radius_bottom_right = 16
-corner_radius_bottom_left = 16
-shadow_color = Color(0, 0, 0, 0.737255)
-shadow_size = 5
-shadow_offset = Vector2(0, 3.41)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hover"]
+bg_color = Color(0.2, 0.2, 0.2, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(1, 1, 1, 1)
+anti_aliasing = false
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cwpjx"]
-bg_color = Color(0.462291, 0.462291, 0.462291, 1)
-corner_radius_top_left = 16
-corner_radius_top_right = 16
-corner_radius_bottom_right = 16
-corner_radius_bottom_left = 16
-shadow_color = Color(0, 0, 0, 0.737255)
-shadow_size = 5
-shadow_offset = Vector2(0, 3.41)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pressed"]
+bg_color = Color(0.133333, 0.133333, 0.133333, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.6, 0.6, 0.6, 1)
+anti_aliasing = false
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2rnpj"]
-bg_color = Color(1, 1, 1, 1)
-corner_radius_top_left = 16
-corner_radius_top_right = 16
-corner_radius_bottom_right = 16
-corner_radius_bottom_left = 16
-shadow_color = Color(0, 0, 0, 0.737255)
-shadow_size = 5
-shadow_offset = Vector2(0, 3.41)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_normal"]
+bg_color = Color(0.12549, 0.12549, 0.12549, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.8, 0.8, 0.8, 1)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_slider"]
+bg_color = Color(0.12549, 0.12549, 0.12549, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.8, 0.8, 0.8, 1)
+anti_aliasing = false
 
 [node name="Settings Menu" type="Control"]
 layout_mode = 3
@@ -58,103 +71,143 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_w21qf")
 
-[node name="Label" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -658.0
-offset_top = 37.0
-offset_right = 658.0
-offset_bottom = 413.0
-grow_horizontal = 2
-theme_override_colors/font_color = Color(0, 0, 0, 0.658824)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("3_m5p8r")
-theme_override_font_sizes/font_size = 130
-text = "Settings"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="SettingsContainer" type="Panel" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -242.0
-offset_top = -200.0
-offset_right = 242.0
-offset_bottom = 200.0
+offset_left = -300.0
+offset_top = -250.0
+offset_right = 300.0
+offset_bottom = 250.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_border")
+
+[node name="Label" type="Label" parent="SettingsContainer"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -200.0
+offset_top = 20.0
+offset_right = 200.0
+offset_bottom = 80.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = ExtResource("3_m5p8r")
+theme_override_font_sizes/font_size = 48
+text = "Settings"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SettingsContainer"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -150.0
+offset_right = 250.0
+offset_bottom = 150.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 20
 
-[node name="MasterVolume" type="VBoxContainer" parent="VBoxContainer"]
+[node name="MasterVolume" type="VBoxContainer" parent="SettingsContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_constants/separation = 5
 
-[node name="Label" type="Label" parent="VBoxContainer/MasterVolume"]
+[node name="Label" type="Label" parent="SettingsContainer/VBoxContainer/MasterVolume"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 1)
+theme_override_fonts/font = ExtResource("3_m5p8r")
 theme_override_font_sizes/font_size = 24
 text = "Master Volume"
 horizontal_alignment = 1
 
-[node name="HSlider" type="HSlider" parent="VBoxContainer/MasterVolume"]
+[node name="HSlider" type="HSlider" parent="SettingsContainer/VBoxContainer/MasterVolume"]
+custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
+theme_override_styles/slider = SubResource("StyleBoxFlat_slider")
 value = 80.0
 
-[node name="MusicVolume" type="VBoxContainer" parent="VBoxContainer"]
+[node name="MusicVolume" type="VBoxContainer" parent="SettingsContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_constants/separation = 5
 
-[node name="Label" type="Label" parent="VBoxContainer/MusicVolume"]
+[node name="Label" type="Label" parent="SettingsContainer/VBoxContainer/MusicVolume"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 1)
+theme_override_fonts/font = ExtResource("3_m5p8r")
 theme_override_font_sizes/font_size = 24
 text = "Music Volume"
 horizontal_alignment = 1
 
-[node name="HSlider" type="HSlider" parent="VBoxContainer/MusicVolume"]
+[node name="HSlider" type="HSlider" parent="SettingsContainer/VBoxContainer/MusicVolume"]
+custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
+theme_override_styles/slider = SubResource("StyleBoxFlat_slider")
 value = 80.0
 
-[node name="SFXVolume" type="VBoxContainer" parent="VBoxContainer"]
+[node name="SFXVolume" type="VBoxContainer" parent="SettingsContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_constants/separation = 5
 
-[node name="Label" type="Label" parent="VBoxContainer/SFXVolume"]
+[node name="Label" type="Label" parent="SettingsContainer/VBoxContainer/SFXVolume"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 1)
+theme_override_fonts/font = ExtResource("3_m5p8r")
 theme_override_font_sizes/font_size = 24
 text = "SFX Volume"
 horizontal_alignment = 1
 
-[node name="HSlider" type="HSlider" parent="VBoxContainer/SFXVolume"]
+[node name="HSlider" type="HSlider" parent="SettingsContainer/VBoxContainer/SFXVolume"]
+custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
+theme_override_styles/slider = SubResource("StyleBoxFlat_slider")
 value = 80.0
 
-[node name="FullscreenToggle" type="CheckButton" parent="VBoxContainer"]
+[node name="HSeparator" type="HSeparator" parent="SettingsContainer/VBoxContainer"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+
+[node name="FullscreenToggle" type="CheckButton" parent="SettingsContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 1)
+theme_override_fonts/font = ExtResource("3_m5p8r")
 theme_override_font_sizes/font_size = 24
 text = "Fullscreen"
 alignment = 1
 
-[node name="BackButton" type="Button" parent="VBoxContainer"]
+[node name="HSeparator2" type="HSeparator" parent="SettingsContainer/VBoxContainer"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
-size_flags_vertical = 3
-theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
-theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 36
-theme_override_styles/focus = SubResource("StyleBoxEmpty_5rg17")
-theme_override_styles/hover = SubResource("StyleBoxFlat_fac5d")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_cwpjx")
-theme_override_styles/normal = SubResource("StyleBoxFlat_2rnpj")
+
+[node name="BackButton" type="Button" parent="SettingsContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 1)
+theme_override_colors/font_pressed_color = Color(0.6, 0.6, 0.6, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_m5p8r")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_pressed")
 text = "Back"
 
-[connection signal="value_changed" from="VBoxContainer/MasterVolume/HSlider" to="." method="_on_master_volume_changed"]
-[connection signal="value_changed" from="VBoxContainer/MusicVolume/HSlider" to="." method="_on_music_volume_changed"]
-[connection signal="value_changed" from="VBoxContainer/SFXVolume/HSlider" to="." method="_on_sfx_volume_changed"]
-[connection signal="toggled" from="VBoxContainer/FullscreenToggle" to="." method="_on_fullscreen_toggle"]
-[connection signal="pressed" from="VBoxContainer/BackButton" to="." method="_on_back_button_pressed"] 
+[connection signal="value_changed" from="SettingsContainer/VBoxContainer/MasterVolume/HSlider" to="." method="_on_master_volume_changed"]
+[connection signal="value_changed" from="SettingsContainer/VBoxContainer/MusicVolume/HSlider" to="." method="_on_music_volume_changed"]
+[connection signal="value_changed" from="SettingsContainer/VBoxContainer/SFXVolume/HSlider" to="." method="_on_sfx_volume_changed"]
+[connection signal="toggled" from="SettingsContainer/VBoxContainer/FullscreenToggle" to="." method="_on_fullscreen_toggle"]
+[connection signal="pressed" from="SettingsContainer/VBoxContainer/BackButton" to="." method="_on_back_button_pressed"]

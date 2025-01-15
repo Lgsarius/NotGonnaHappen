@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://c5vuxk0aa76sk"]
+[gd_scene load_steps=8 format=3 uid="uid://c5vuxk0aa76sk"]
 
 [ext_resource type="Script" path="res://game.gd" id="1_bamb0"]
 [ext_resource type="PackedScene" uid="uid://dle7ccr76jp26" path="res://player.tscn" id="1_ym5bf"]
@@ -11,6 +11,23 @@ _data = {
 "points": PackedVector2Array(0, 0, 0, 0, -248, -246, 0, 0, 0, 0, -236, 1206, 0, 0, 0, 0, 2232, 1230, 0, 0, 0, 0, 2220, -242, 0, 0, 0, 0, -252, -242)
 }
 point_count = 5
+
+[sub_resource type="GDScript" id="GDScript_hw6ru"]
+script/source = "extends VBoxContainer
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+
+
+
+"
 
 [node name="Game" type="Node2D"]
 y_sort_enabled = true
@@ -102,10 +119,36 @@ grow_vertical = 2
 theme_override_font_sizes/font_size = 185
 text = "GAME OVER"
 
+[node name="VBoxContainer" type="VBoxContainer" parent="GameOver/ColorRect"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -149.0
+offset_top = -387.0
+offset_right = 149.0
+offset_bottom = -217.0
+grow_horizontal = 2
+grow_vertical = 0
+script = SubResource("GDScript_hw6ru")
+
+[node name="RestartButton" type="Button" parent="GameOver/ColorRect/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Restart"
+
+[node name="MainMenuButton" type="Button" parent="GameOver/ColorRect/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "back To Menu"
+
 [node name="Orb" parent="." instance=ExtResource("2_50716")]
 position = Vector2(550, 514)
 
 [connection signal="health_depleted" from="Player" to="." method="_on_player_health_depleted"]
-[connection signal="loot_collected" from="Player" to="." method="_on_player_loot_collected"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="mob_death" from="Mob" to="." method="_on_mob_mob_death"]
+[connection signal="pressed" from="GameOver/ColorRect/VBoxContainer/RestartButton" to="GameOver/ColorRect/VBoxContainer" method="_on_restart_button_pressed"]
+[connection signal="pressed" from="GameOver/ColorRect/VBoxContainer/MainMenuButton" to="GameOver/ColorRect/VBoxContainer" method="_on_main_menu_button_pressed"]
