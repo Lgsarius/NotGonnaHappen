@@ -21,7 +21,8 @@ func _on_multiplayer_button_pressed() -> void:
 
 
 func _on_settings_button_pressed() -> void:
-	print ("settings Pressed") 
+	get_tree().change_scene_to_file("res://scenes/Settings/Settings.tscn")
+	print ("Settings Pressed") 
 
 
 func _on_exit_button_pressed() -> void:
