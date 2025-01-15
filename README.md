@@ -31,22 +31,20 @@ Add your specific installation/running instructions here
 - Tab to view inventory
 
 ## 🛠️ Built With
-- [List your game engine/framework]
-- [Other major technologies used]
+Godot
+c#
+
 
 ## 📝 License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## 👥 Contributors
-- [Your Name] - *Initial work*
-- [Other Contributors]
 
-## 🙏 Acknowledgments
-- Thanks to [mention any resources, inspirations, etc.]
-- Special thanks to our playtesters
+
+
 
 ## 🐛 Known Issues
-- [List any known bugs or issues]
+
 
 ---
 <p align="center">
