@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://b8j6y8q4n3xvo"]
+
+[node name="CozyDiner" type="Node2D"]
+
+[node name="Floor" type="TileMap" parent="."]
+format = 2
+layer_0/name = "Ground"
+layer_1/name = "Walls"
+
+[node name="Furniture" type="Node2D" parent="."]
+
+[node name="Tables" type="Node2D" parent="Furniture"]
+position = Vector2(200, 150)
+
+[node name="Kitchen" type="Node2D" parent="Furniture"]
+position = Vector2(450, 100)
+
+[node name="Counter" type="Node2D" parent="Furniture"]
+position = Vector2(300, 100)
+
+[node name="Entrance" type="Node2D" parent="."]
+position = Vector2(250, 500)
+
+[node name="CollisionArea" type="Area2D" parent="."]

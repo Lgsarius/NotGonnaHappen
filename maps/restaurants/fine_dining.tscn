@@ -1,0 +1,77 @@
+[gd_scene load_steps=7 format=3 uid="uid://mau4yfibspyh"]
+
+[ext_resource type="TileSet" path="res://maps/restaurants/assets/restaurant_tileset.tres" id="1_f3s4t"]
+[ext_resource type="Script" path="res://maps/restaurants/assets/food_movement.gd" id="2_food"]
+[ext_resource type="Texture2D" uid="uid://tm675832evju" path="res://assets/tilesets/FOOD/Fish.png" id="3_fish"]
+[ext_resource type="Texture2D" uid="uid://cyij7qujpm58n" path="res://assets/tilesets/FOOD/Fries.png" id="4_fries"]
+[ext_resource type="Texture2D" uid="uid://dnsarlu212cji" path="res://assets/tilesets/FOOD/Pizza.png" id="5_pizza"]
+[ext_resource type="Texture2D" uid="uid://dc31ggw6que6w" path="res://assets/tilesets/FOOD/ChiliPepper.png" id="6_chili"]
+
+[node name="FineDining" type="Node2D"]
+
+[node name="Floor" type="TileMap" parent="."]
+tile_set = ExtResource("1_f3s4t")
+format = 2
+layer_0/name = "Ground"
+layer_1/name = "Walls"
+layer_1/enabled = true
+
+[node name="DiningAreas" type="Node2D" parent="."]
+
+[node name="MainDining" type="Node2D" parent="DiningAreas"]
+position = Vector2(300, 200)
+
+[node name="VIPSection" type="Node2D" parent="DiningAreas"]
+position = Vector2(500, 150)
+
+[node name="PrivateRooms" type="Node2D" parent="DiningAreas"]
+position = Vector2(600, 300)
+
+[node name="Kitchen" type="Node2D" parent="."]
+position = Vector2(700, 100)
+
+[node name="WineStorage" type="Node2D" parent="."]
+position = Vector2(750, 200)
+
+[node name="GrandEntrance" type="Node2D" parent="."]
+position = Vector2(400, 500)
+
+[node name="CollisionArea" type="Area2D" parent="."]
+
+[node name="FloatingFood" type="Node2D" parent="."]
+
+[node name="Fish" type="Sprite2D" parent="FloatingFood"]
+position = Vector2(300, 250)
+scale = Vector2(2, 2)
+texture = ExtResource("3_fish")
+script = ExtResource("2_food")
+move_speed = 30.0
+change_direction_time = 3.0
+movement_range = 100.0
+
+[node name="Fries" type="Sprite2D" parent="FloatingFood"]
+position = Vector2(500, 200)
+scale = Vector2(2, 2)
+texture = ExtResource("4_fries")
+script = ExtResource("2_food")
+move_speed = 35.0
+change_direction_time = 2.5
+movement_range = 75.0
+
+[node name="Pizza" type="Sprite2D" parent="FloatingFood"]
+position = Vector2(600, 350)
+scale = Vector2(2, 2)
+texture = ExtResource("5_pizza")
+script = ExtResource("2_food")
+move_speed = 25.0
+change_direction_time = 4.0
+movement_range = 125.0
+
+[node name="ChiliPepper" type="Sprite2D" parent="FloatingFood"]
+position = Vector2(400, 150)
+scale = Vector2(2, 2)
+texture = ExtResource("6_chili")
+script = ExtResource("2_food")
+move_speed = 45.0
+change_direction_time = 2.0
+movement_range = 60.0

@@ -60,10 +60,15 @@ script = ExtResource("1_bamb0")
 layer = -1
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
-offset_left = -75.0
-offset_top = -30.0
-offset_right = 1929.0
-offset_bottom = 1137.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -13.0
+offset_top = -17.0
+offset_right = -150.0
+offset_bottom = 47.0
+grow_horizontal = 2
+grow_vertical = 2
 scale = Vector2(1.07425, 0.944656)
 
 [node name="Score" type="Label" parent="CanvasLayer"]
@@ -71,10 +76,10 @@ unique_name_in_owner = true
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -800.0
-offset_top = -19.0
-offset_right = -727.0
-offset_bottom = 153.0
+offset_left = 852.0
+offset_top = -8.0
+offset_right = 925.0
+offset_bottom = 164.0
 grow_horizontal = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_ygrgo")
@@ -86,11 +91,12 @@ unique_name_in_owner = true
 texture_filter = 1
 anchors_preset = -1
 anchor_right = 0.5
-offset_left = 154.0
-offset_top = -5.0
-offset_right = 2062.0
-offset_bottom = 262.0
+offset_left = 1031.0
+offset_top = 36.0
+offset_right = 1671.0
+offset_bottom = 116.0
 grow_horizontal = 2
+scale = Vector2(0.5, 0.5)
 texture_under = ExtResource("5_s5vo4")
 texture_progress = ExtResource("6_eimp3")
 
