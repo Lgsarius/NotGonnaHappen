@@ -88,7 +88,7 @@ position = Vector2(-248, -246)
 rotation = 1.56253
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-layer = -1
+layer = 2
 
 [node name="Score" type="Label" parent="CanvasLayer"]
 unique_name_in_owner = true
