@@ -1,12 +1,13 @@
-[gd_scene load_steps=15 format=4 uid="uid://brvexuddln6bj"]
+[gd_scene load_steps=16 format=4 uid="uid://brvexuddln6bj"]
 
 [ext_resource type="Script" path="res://scenes/MainMenu/menu.gd" id="1_6xrdc"]
-[ext_resource type="Texture2D" uid="uid://2w51lfq55ugp" path="res://assets/tilesets/FOOD/TX Tileset Grass.png" id="2_4udpm"]
+[ext_resource type="Texture2D" uid="uid://2w51lfq55ugp" path="res://assets/tilesets/TX Tileset Grass.png" id="2_4udpm"]
 [ext_resource type="FontFile" uid="uid://bkbhtbio65dg5" path="res://PUBLIC/GrapeSoda.ttf" id="2_ygrgo"]
 [ext_resource type="Texture2D" uid="uid://tm675832evju" path="res://assets/tilesets/FOOD/ChiliPepper.png" id="4_e8l01"]
 [ext_resource type="Texture2D" uid="uid://dc31ggw6que6w" path="res://assets/tilesets/FOOD/Fish.png" id="5_a14m4"]
 [ext_resource type="Texture2D" uid="uid://cyij7qujpm58n" path="res://assets/tilesets/FOOD/Fries.png" id="6_x6jgi"]
 [ext_resource type="Texture2D" uid="uid://dnsarlu212cji" path="res://assets/tilesets/FOOD/Pizza.png" id="7_le03c"]
+[ext_resource type="AudioStream" uid="uid://ci35ul7og8cru" path="res://assets/AUDIO/Music/Luxury_128kbps.mp3" id="8_oq54u"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_6oqss"]
 particle_flag_disable_z = true
@@ -595,6 +596,11 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_hover")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_pressed")
 theme_override_styles/normal = SubResource("StyleBoxFlat_normal")
 text = "Exit Game"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_oq54u")
+autoplay = true
+parameters/looping = true
 
 [connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/MultiplayerButton" to="." method="_on_multiplayer_button_pressed"]
