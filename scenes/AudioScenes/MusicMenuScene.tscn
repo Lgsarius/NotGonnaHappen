@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://c6s72svsllb5m"]
+
+[ext_resource type="AudioStream" uid="uid://ci35ul7og8cru" path="res://assets/AUDIO/Music/Luxury_128kbps.mp3" id="1_wj4tj"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer"]
+stream = ExtResource("1_wj4tj")
+autoplay = true
+parameters/looping = true

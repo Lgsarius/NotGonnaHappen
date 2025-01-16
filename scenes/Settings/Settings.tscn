@@ -1,8 +1,10 @@
-[gd_scene load_steps=10 format=4 uid="uid://c8p4xkj6w53gv"]
+[gd_scene load_steps=12 format=4 uid="uid://c8p4xkj6w53gv"]
 
 [ext_resource type="Script" path="res://scenes/Settings/settings.gd" id="1_k3rds"]
 [ext_resource type="Texture2D" uid="uid://dtyfjwnu0gmpe" path="res://assets/tilesets/TX Tileset Wall.png" id="2_05ndj"]
 [ext_resource type="FontFile" uid="uid://bkbhtbio65dg5" path="res://PUBLIC/GrapeSoda.ttf" id="3_m5p8r"]
+[ext_resource type="LabelSettings" uid="uid://bdpxflrr37nx6" path="res://SettingsPre/FontSettings_SettingsMenu.tres" id="4_oytkm"]
+[ext_resource type="PackedScene" uid="uid://c6s72svsllb5m" path="res://scenes/AudioScenes/MusicMenuScene.tscn" id="5_2rys8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_l58m6"]
 texture = ExtResource("2_05ndj")
@@ -489,6 +491,7 @@ theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 1)
 theme_override_fonts/font = ExtResource("3_m5p8r")
 theme_override_font_sizes/font_size = 24
 text = "Master Volume"
+label_settings = ExtResource("4_oytkm")
 horizontal_alignment = 1
 
 [node name="HSlider" type="HSlider" parent="VBoxContainer/MasterVolume"]
@@ -507,6 +510,7 @@ theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 1)
 theme_override_fonts/font = ExtResource("3_m5p8r")
 theme_override_font_sizes/font_size = 24
 text = "Music Volume"
+label_settings = ExtResource("4_oytkm")
 horizontal_alignment = 1
 
 [node name="HSlider" type="HSlider" parent="VBoxContainer/MusicVolume"]
@@ -525,6 +529,7 @@ theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 1)
 theme_override_fonts/font = ExtResource("3_m5p8r")
 theme_override_font_sizes/font_size = 24
 text = "SFX Volume"
+label_settings = ExtResource("4_oytkm")
 horizontal_alignment = 1
 
 [node name="HSlider" type="HSlider" parent="VBoxContainer/SFXVolume"]
@@ -541,8 +546,10 @@ layout_mode = 2
 [node name="FullscreenToggle" type="CheckButton" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
 theme_override_fonts/font = ExtResource("3_m5p8r")
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 30
 text = "Fullscreen"
 alignment = 1
 
@@ -563,6 +570,8 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_hover")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_pressed")
 theme_override_styles/normal = SubResource("StyleBoxFlat_normal")
 text = "Back"
+
+[node name="AudioStreamPlayer" parent="VBoxContainer/BackButton" instance=ExtResource("5_2rys8")]
 
 [connection signal="value_changed" from="VBoxContainer/MasterVolume/HSlider" to="." method="_on_master_volume_changed"]
 [connection signal="value_changed" from="VBoxContainer/MusicVolume/HSlider" to="." method="_on_music_volume_changed"]

@@ -64,8 +64,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -10.0
 offset_top = -17.0
-offset_right = -3.0
-offset_bottom = 47.0
+offset_right = -12.0
+offset_bottom = 27.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1.07425, 0.944656)
@@ -136,12 +136,15 @@ autostart = true
 [node name="GameOver" type="CanvasLayer" parent="."]
 unique_name_in_owner = true
 process_mode = 3
-visible = false
 
 [node name="ColorRect" type="ColorRect" parent="GameOver"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -56.0
+offset_top = -21.0
+offset_right = 14.0
+offset_bottom = 47.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.607843)
@@ -149,17 +152,15 @@ script = SubResource("GDScript_hw6ru")
 
 [node name="Label" type="Label" parent="GameOver/ColorRect"]
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = 5
 anchor_left = 0.5
-anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -400.0
-offset_top = -100.0
-offset_right = 400.0
-offset_bottom = 100.0
+offset_left = -228.0
+offset_top = 47.0
+offset_right = 647.0
+offset_bottom = 247.0
 grow_horizontal = 2
-grow_vertical = 2
+scale = Vector2(0.5, 0.5)
 theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 1)
 theme_override_fonts/font = ExtResource("2_ygrgo")
 theme_override_font_sizes/font_size = 185
@@ -174,10 +175,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -200.0
-offset_top = 100.0
-offset_right = 200.0
-offset_bottom = 300.0
+offset_left = -101.0
+offset_top = 10.0
+offset_right = 83.0
+offset_bottom = 130.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 20
@@ -217,33 +218,21 @@ visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -33.0
+offset_right = 14.0
+offset_bottom = 21.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.607843)
 
-[node name="PauseContainer" type="Panel" parent="PauseMenu"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -300.0
-offset_top = -250.0
-offset_right = 300.0
-offset_bottom = 250.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_normal")
-
-[node name="Label" type="Label" parent="PauseMenu/PauseContainer"]
-layout_mode = 1
+[node name="Label" type="Label" parent="PauseMenu"]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -200.0
-offset_top = 20.0
+offset_top = 47.0
 offset_right = 200.0
-offset_bottom = 80.0
+offset_bottom = 107.0
 grow_horizontal = 2
 theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
@@ -255,22 +244,22 @@ text = "Paused"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu/PauseContainer"]
-layout_mode = 1
-anchors_preset = 8
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu"]
+anchors_preset = 7
 anchor_left = 0.5
-anchor_top = 0.5
+anchor_top = 1.0
 anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -250.0
-offset_top = -150.0
-offset_right = 250.0
-offset_bottom = 150.0
+anchor_bottom = 1.0
+offset_left = -127.0
+offset_top = -159.0
+offset_right = 373.0
+offset_bottom = 141.0
 grow_horizontal = 2
-grow_vertical = 2
+grow_vertical = 0
+scale = Vector2(0.5, 0.5)
 theme_override_constants/separation = 20
 
-[node name="ResumeButton" type="Button" parent="PauseMenu/PauseContainer/VBoxContainer"]
+[node name="ResumeButton" type="Button" parent="PauseMenu/VBoxContainer"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
@@ -283,7 +272,7 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_pressed")
 theme_override_styles/normal = SubResource("StyleBoxFlat_normal")
 text = "Resume"
 
-[node name="SettingsButton" type="Button" parent="PauseMenu/PauseContainer/VBoxContainer"]
+[node name="SettingsButton" type="Button" parent="PauseMenu/VBoxContainer"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
@@ -296,7 +285,7 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_pressed")
 theme_override_styles/normal = SubResource("StyleBoxFlat_normal")
 text = "Settings"
 
-[node name="RestartButton" type="Button" parent="PauseMenu/PauseContainer/VBoxContainer"]
+[node name="RestartButton" type="Button" parent="PauseMenu/VBoxContainer"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
@@ -309,7 +298,7 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_pressed")
 theme_override_styles/normal = SubResource("StyleBoxFlat_normal")
 text = "Restart"
 
-[node name="MainMenuButton" type="Button" parent="PauseMenu/PauseContainer/VBoxContainer"]
+[node name="MainMenuButton" type="Button" parent="PauseMenu/VBoxContainer"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
@@ -327,7 +316,7 @@ text = "Back to Menu"
 [connection signal="timeout" from="Timer4Countdown" to="." method="_on_timer_timeout"]
 [connection signal="pressed" from="GameOver/ColorRect/VBoxContainer/RestartButton" to="GameOver/ColorRect" method="_on_restart_button_pressed"]
 [connection signal="pressed" from="GameOver/ColorRect/VBoxContainer/MainMenuButton" to="GameOver/ColorRect" method="_on_main_menu_button_pressed"]
-[connection signal="pressed" from="PauseMenu/PauseContainer/VBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
-[connection signal="pressed" from="PauseMenu/PauseContainer/VBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
-[connection signal="pressed" from="PauseMenu/PauseContainer/VBoxContainer/RestartButton" to="." method="_on_pause_restart_pressed"]
-[connection signal="pressed" from="PauseMenu/PauseContainer/VBoxContainer/MainMenuButton" to="." method="_on_pause_menu_pressed"]
+[connection signal="pressed" from="PauseMenu/VBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="PauseMenu/VBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="PauseMenu/VBoxContainer/RestartButton" to="." method="_on_pause_restart_pressed"]
+[connection signal="pressed" from="PauseMenu/VBoxContainer/MainMenuButton" to="." method="_on_pause_menu_pressed"]

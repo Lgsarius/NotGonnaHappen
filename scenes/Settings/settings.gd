@@ -1,30 +1,83 @@
 extends Control
 
-# Called when the node enters the scene tree for the first time.
+const SAVE_PATH = "user://settings.cfg"
+var config = ConfigFile.new()
+
 func _ready() -> void:
-	# Set initial values
+	# Set initial values for fullscreen
 	$VBoxContainer/FullscreenToggle.button_pressed = DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_FULLSCREEN
+	
+	# Load saved settings
+	load_settings()
+	
+	# Set initial slider values from current audio bus volumes
+	var master_volume = db_to_linear(AudioServer.get_bus_volume_db(AudioServer.get_bus_index("Master"))) * 100
+	$VBoxContainer/MasterVolume/HSlider.value = master_volume
+	
+	# Only set Music and SFX if the buses exist
+	if AudioServer.get_bus_index("Music") >= 0:
+		var music_volume = db_to_linear(AudioServer.get_bus_volume_db(AudioServer.get_bus_index("Music"))) * 100
+		$VBoxContainer/MusicVolume/HSlider.value = music_volume
+	
+	if AudioServer.get_bus_index("SFX") >= 0:
+		var sfx_volume = db_to_linear(AudioServer.get_bus_volume_db(AudioServer.get_bus_index("SFX"))) * 100
+		$VBoxContainer/SFXVolume/HSlider.value = sfx_volume
+
+func load_settings() -> void:
+	var err = config.load(SAVE_PATH)
+	if err != OK:
+		return
+	
+	# Load volumes
+	var master_vol = config.get_value("audio", "master", 80.0)
+	var music_vol = config.get_value("audio", "music", 80.0)
+	var sfx_vol = config.get_value("audio", "sfx", 80.0)
+	
+	# Apply loaded volumes
+	_on_master_volume_changed(master_vol)
+	_on_music_volume_changed(music_vol)
+	_on_sfx_volume_changed(sfx_vol)
+	
+	# Load fullscreen setting
+	var fullscreen = config.get_value("video", "fullscreen", false)
+	$VBoxContainer/FullscreenToggle.button_pressed = fullscreen
+	_on_fullscreen_toggle(fullscreen)
+
+func save_settings() -> void:
+	# Save volumes
+	config.set_value("audio", "master", $VBoxContainer/MasterVolume/HSlider.value)
+	config.set_value("audio", "music", $VBoxContainer/MusicVolume/HSlider.value)
+	config.set_value("audio", "sfx", $VBoxContainer/SFXVolume/HSlider.value)
+	
+	# Save fullscreen setting
+	config.set_value("video", "fullscreen", $VBoxContainer/FullscreenToggle.button_pressed)
+	
+	# Save to file
+	config.save(SAVE_PATH)
 
 func _on_master_volume_changed(value: float) -> void:
-	# Implement master volume control
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), linear_to_db(value / 100.0))
+	save_settings()
 
 func _on_music_volume_changed(value: float) -> void:
-	# Implement music volume control
 	if AudioServer.get_bus_index("Music") >= 0:
 		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"), linear_to_db(value / 100.0))
+		save_settings()
 
 func _on_sfx_volume_changed(value: float) -> void:
-	# Implement SFX volume control
 	if AudioServer.get_bus_index("SFX") >= 0:
 		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("SFX"), linear_to_db(value / 100.0))
+		save_settings()
 
 func _on_fullscreen_toggle(button_pressed: bool) -> void:
 	if button_pressed:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 	else:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+	save_settings()
 
 func _on_back_button_pressed() -> void:
+	# Save settings before going back
+	save_settings()
 	# Return to main menu
-	get_tree().change_scene_to_file("res://scenes/MainMenu/menu.tscn") 
+	get_tree().change_scene_to_file("res://scenes/MainMenu/Menu.tscn") 
