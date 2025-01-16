@@ -7,7 +7,8 @@ var speed = 150
 
 
 func _ready():
-	%Slime.play_walk()
+	pass
+	#%Slime.play_walk()
 
 func _physics_process(delta: float) -> void:
 	var direction = global_position.direction_to(player.global_position)
@@ -17,7 +18,7 @@ func _physics_process(delta: float) -> void:
 
 func take_damage():
 	health -= 1
-	%Slime.play_hurt()
+	#%Slime.play_hurt()
 	
 	if health == 0:
 		mob_death.emit()
