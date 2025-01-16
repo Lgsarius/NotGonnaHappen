@@ -7,7 +7,9 @@ var experience = 0
 var experience_level = 1
 var collected_experience = 0
 var speed = 300
+var last_direction:float = 0.0
 
+@onready var sprite = %Old_man
 @onready var expBar = %ExperienceBar
 @onready var score = %Score
 func _ready() -> void:
@@ -16,6 +18,10 @@ func _ready() -> void:
 	
 func _physics_process(delta: float) -> void:
 	var direction = Input.get_vector("move_left","move_right","move_up","move_down")
+	if direction.x != 0 and sign(direction.x) != sign(last_direction):
+		%Old_man.flip_sprite()  # Flip das Sprite
+		last_direction = direction.x
+		
 	velocity = direction * speed
 	move_and_slide()
 	

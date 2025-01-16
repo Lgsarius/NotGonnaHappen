@@ -6,3 +6,8 @@ func play_idle_animation():
 
 func play_run_animation():
 	animation.play("run")
+func flip_sprite():
+	if animation.is_flipped_h():
+		animation.set_flip_h(false)
+	else: 
+		animation.set_flip_h(true)

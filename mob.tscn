@@ -45,7 +45,6 @@ sprite_frames = SubResource("SpriteFrames_7kltc")
 animation = &"hurt"
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
-debug_enabled = true
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true
