@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://dle7ccr76jp26"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_1lkpv"]
-[ext_resource type="PackedScene" uid="uid://pbmyh1qru7p" path="res://characters/happy_boo/happy_boo.tscn" id="1_ody6f"]
+[ext_resource type="PackedScene" uid="uid://cfqo80c6r6a8r" path="res://characters/old_man/old_man.tscn" id="2_xqq8s"]
 [ext_resource type="PackedScene" uid="uid://y12v7xn84n1m" path="res://gun.tscn" id="3_odmtp"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_e8eoa"]
@@ -33,17 +33,18 @@ radius = 26.0768
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_1lkpv")
 
-[node name="HappyBoo" parent="." instance=ExtResource("1_ody6f")]
+[node name="Old_man" parent="." instance=ExtResource("2_xqq8s")]
 unique_name_in_owner = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1, -10)
+position = Vector2(1, 24)
+scale = Vector2(0.250112, 0.250112)
 shape = SubResource("CircleShape2D_e8eoa")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="Gun" parent="." instance=ExtResource("3_odmtp")]
-position = Vector2(-2, -46)
+position = Vector2(0, 5)
 
 [node name="HurtBox" type="Area2D" parent="."]
 unique_name_in_owner = true
@@ -51,17 +52,18 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
-position = Vector2(0, -10)
-scale = Vector2(0.87783, 0.87783)
+position = Vector2(1, 24)
+scale = Vector2(0.242004, 0.242004)
 shape = SubResource("CircleShape2D_70s2o")
 debug_color = Color(0.946611, 0.12344, 0.492893, 0.42)
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
 unique_name_in_owner = true
-offset_left = -68.0
-offset_top = -129.0
-offset_right = 63.0
-offset_bottom = -102.0
+offset_left = -5.0
+offset_top = -7.0
+offset_right = 126.0
+offset_bottom = 20.0
+scale = Vector2(0.106767, 0.106767)
 theme_override_styles/background = SubResource("StyleBoxFlat_s4bw0")
 theme_override_styles/fill = SubResource("StyleBoxFlat_lb4fv")
 value = 100.0
@@ -72,6 +74,7 @@ collision_layer = 0
 collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GrabArea"]
+scale = Vector2(0.293089, 0.293089)
 shape = SubResource("CircleShape2D_8bmqp")
 
 [node name="CollectArea" type="Area2D" parent="."]
@@ -79,6 +82,8 @@ collision_layer = 0
 collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollectArea"]
+position = Vector2(0, 24)
+scale = Vector2(0.331948, 0.331948)
 shape = SubResource("CircleShape2D_yl1vv")
 
 [connection signal="area_entered" from="GrabArea" to="." method="_on_grab_area_area_entered"]

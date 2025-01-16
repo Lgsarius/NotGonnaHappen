@@ -105,17 +105,17 @@ unique_name_in_owner = true
 texture_filter = 1
 anchors_preset = -1
 anchor_right = 0.5
-offset_left = -1.0
-offset_right = 1279.0
-offset_bottom = 80.0
+offset_left = -8.0
+offset_top = -7.0
+offset_right = 1272.0
+offset_bottom = 73.0
 grow_horizontal = 2
-scale = Vector2(0.5, 0.5)
 texture_under = ExtResource("5_s5vo4")
 texture_progress = ExtResource("6_eimp3")
 
 [node name="Player" parent="." instance=ExtResource("1_ym5bf")]
 position = Vector2(306, 234)
-scale = Vector2(0.5, 0.37)
+scale = Vector2(1.351, 1)
 
 [node name="Path2D" type="Path2D" parent="Player"]
 position = Vector2(-940, -524)

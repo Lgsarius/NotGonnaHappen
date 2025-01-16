@@ -20,9 +20,9 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	
 	if velocity.length() > 0.0:
-		%HappyBoo.play_walk_animation()
+		%Old_man.play_run_animation()
 	else:
-		%HappyBoo.play_idle_animation()
+		%Old_man.play_idle_animation()
 	
 	const DAMAGE_RATE = 500.0
 	var overlapping_mobs = %HurtBox.get_overlapping_bodies()
