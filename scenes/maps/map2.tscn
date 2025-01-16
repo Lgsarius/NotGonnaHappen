@@ -1,8 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://c8j2x4q3qv6y9"]
+[gd_scene load_steps=4 format=3 uid="uid://c8j2x4q3qv60a"]
 
 [ext_resource type="Script" path="res://game.gd" id="1_r3k1j"]
-[ext_resource type="PackedScene" uid="uid://b4jy2yu5w6u5q" path="res://player.tscn" id="2_8k3yt"]
-[ext_resource type="FontFile" uid="uid://b4jy2yu5w6u5q" path="res://assets/fonts/Retro Gaming.ttf" id="2_ygrgo"]
+[ext_resource type="PackedScene" uid="uid://dle7ccr76jp26" path="res://player.tscn" id="2_8k3yt"]
 
 [sub_resource type="Curve2D" id="Curve2D_ogjx2"]
 _data = {
@@ -23,7 +22,7 @@ curve = SubResource("Curve2D_ogjx2")
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
 unique_name_in_owner = true
 position = Vector2(488, -80)
-rotation = 0.785398
+rotation = 0.563577
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true
@@ -47,7 +46,6 @@ offset_bottom = 166.0
 grow_horizontal = 2
 scale = Vector2(0.565445, 0.357019)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("2_ygrgo")
 theme_override_font_sizes/font_size = 126
 text = "0"
 
@@ -62,7 +60,6 @@ offset_right = 12.0
 offset_bottom = 233.0
 grow_horizontal = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("2_ygrgo")
 theme_override_font_sizes/font_size = 126
 text = "2:00"
 
@@ -95,7 +92,6 @@ offset_bottom = 257.0
 grow_horizontal = 2
 scale = Vector2(0.5, 0.5)
 theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 1)
-theme_override_fonts/font = ExtResource("2_ygrgo")
 theme_override_font_sizes/font_size = 185
 text = "GAME OVER"
 horizontal_alignment = 1
@@ -130,7 +126,6 @@ offset_bottom = 257.0
 grow_horizontal = 2
 scale = Vector2(0.5, 0.5)
 theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 1)
-theme_override_fonts/font = ExtResource("2_ygrgo")
 theme_override_font_sizes/font_size = 185
 text = "MAP COMPLETE!"
 horizontal_alignment = 1
@@ -159,8 +154,7 @@ text = "Map 1"
 layout_mode = 2
 text = "Map 2"
 
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Timer4Countdown" to="." method="_on_timer_4_countdown_timeout"]
 [connection signal="pressed" from="MapComplete/ColorRect/VBoxContainer/Map1" to="." method="_on_map1_pressed"]
 [connection signal="pressed" from="MapComplete/ColorRect/VBoxContainer/Map2" to="." method="_on_map2_pressed"]
-
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
-[connection signal="timeout" from="Timer4Countdown" to="." method="_on_timer_4_countdown_timeout"] 
