@@ -3,7 +3,7 @@ extends Control
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	# Set initial values
-	$VBoxContainer/FullscreenToggle.button_pressed = DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_FULLSCREEN
+	$SettingsContainer/VBoxContainer/FullscreenToggle.button_pressed = DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_FULLSCREEN
 
 func _on_master_volume_changed(value: float) -> void:
 	# Implement master volume control
