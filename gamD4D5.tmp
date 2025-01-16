@@ -340,13 +340,11 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_pressed")
 theme_override_styles/normal = SubResource("StyleBoxFlat_normal")
 text = "Back to Menu"
 
-[node name="Spawnpoint" type="Node2D" parent="."]
-position = Vector2(693, 399)
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(314, 183)
 
 [connection signal="pressed" from="MapComplete/ColorRect/HBoxContainer/Map1" to="." method="_on_map1_pressed"]
-[connection signal="pressed" from="MapComplete/ColorRect/HBoxContainer/Map1" to="." method="_on_map_1_pressed"]
 [connection signal="pressed" from="MapComplete/ColorRect/HBoxContainer/Map2" to="." method="_on_map2_pressed"]
-[connection signal="pressed" from="MapComplete/ColorRect/HBoxContainer/Map2" to="." method="_on_map_2_pressed"]
 [connection signal="health_depleted" from="Player" to="." method="_on_player_health_depleted"]
 [connection signal="timeout" from="MobSpawner" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="Timer4Countdown" to="." method="_on_timer_4_countdown_timeout"]

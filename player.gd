@@ -7,6 +7,8 @@ var experience = 0
 var experience_level = 1
 var collected_experience = 0
 var speed = 300
+const DAMAGE_RATE = 100
+
 
 var dash_speed = 900
 var dashing = false
@@ -48,7 +50,7 @@ func _physics_process(delta: float) -> void:
 	else:
 		%Old_man.play_idle_animation()
 	
-	const DAMAGE_RATE = 100
+	
 	var overlapping_mobs = %HurtBox.get_overlapping_bodies()
 	if overlapping_mobs.size() > 0:
 		health -= DAMAGE_RATE * overlapping_mobs.size() * delta
@@ -60,6 +62,10 @@ func _physics_process(delta: float) -> void:
 		$Dash_bar.value = percentage_of_time
 	else:
 		$Dash_bar.value = 100
+		
+		
+	
+		
 
 func _on_grab_area_area_entered(area: Area2D) -> void:
 	if area.is_in_group("loot"):
@@ -106,6 +112,8 @@ func set_expbar(set_value = 1, set_max_value=100):
 
 func levelup():
 	score.text = str(experience_level)
+	var gun = preload("res://gun.tscn").instantiate()
+	call_deferred("add_child", gun)
 
 
 func _on_dash_timer_timeout() -> void:

@@ -20,7 +20,7 @@ source_geometry_group_name = &"navigation"
 cell_size = 4.0
 agent_radius = 7.0
 
-[node name="Desert_Map" type="Node" groups=["navigation"]]
+[node name="Desert_Map" type="Node" groups=["map", "navigation"]]
 
 [node name="Background" type="TileMapLayer" parent="."]
 z_index = -1

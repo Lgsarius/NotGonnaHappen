@@ -103,6 +103,10 @@ version_control/autoload_on_startup=true
 
 enabled=PackedStringArray("res://addons/colorpicker_presets/plugin.cfg", "res://addons/net.yarvis.pixel_pen/plugin.cfg")
 
+[global_group]
+
+map=""
+
 [input]
 
 move_left={
