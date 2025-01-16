@@ -1,7 +1,7 @@
 [gd_scene load_steps=16 format=4 uid="uid://brvexuddln6bj"]
 
 [ext_resource type="Script" path="res://scenes/MainMenu/menu.gd" id="1_6xrdc"]
-[ext_resource type="Texture2D" uid="uid://2w51lfq55ugp" path="res://assets/tilesets/TX Tileset Grass.png" id="2_4udpm"]
+[ext_resource type="Texture2D" uid="uid://2w51lfq55ugp" path="res://assets/tilesets/fantasy/TX Tileset Grass.png" id="2_4udpm"]
 [ext_resource type="FontFile" uid="uid://bkbhtbio65dg5" path="res://PUBLIC/GrapeSoda.ttf" id="2_ygrgo"]
 [ext_resource type="Texture2D" uid="uid://tm675832evju" path="res://assets/tilesets/FOOD/ChiliPepper.png" id="4_e8l01"]
 [ext_resource type="Texture2D" uid="uid://dc31ggw6que6w" path="res://assets/tilesets/FOOD/Fish.png" id="5_a14m4"]

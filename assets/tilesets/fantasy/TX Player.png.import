@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dtyfjwnu0gmpe"
-path="res://.godot/imported/TX Tileset Wall.png-e265df93f65362c64358236cfd69e74e.ctex"
+uid="uid://c80whg83ooa6s"
+path="res://.godot/imported/TX Player.png-ef3c249c673a250f7a125032a45f65ce.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/tilesets/TX Tileset Wall.png"
-dest_files=["res://.godot/imported/TX Tileset Wall.png-e265df93f65362c64358236cfd69e74e.ctex"]
+source_file="res://assets/tilesets/fantasy/TX Player.png"
+dest_files=["res://.godot/imported/TX Player.png-ef3c249c673a250f7a125032a45f65ce.ctex"]
 
 [params]
 
