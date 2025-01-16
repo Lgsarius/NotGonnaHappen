@@ -7,22 +7,40 @@ var experience = 0
 var experience_level = 1
 var collected_experience = 0
 var speed = 300
+
+var dash_speed = 900
+var dashing = false
+var can_dash  = true
 var last_direction:float = 0.0
+var percentage_of_time
 
 @onready var sprite = %Old_man
 @onready var expBar = %ExperienceBar
 @onready var score = %Score
+@onready var dash_bar = $Dash_bar
+@onready var dash_cd_timer = $dash_cooldown
+
 func _ready() -> void:
 	set_expbar(experience,calculate_experiencecap())
 	score.text = str(experience_level)
 	
 func _physics_process(delta: float) -> void:
+	
+	
 	var direction = Input.get_vector("move_left","move_right","move_up","move_down")
+	if Input.is_action_just_pressed("dash") and can_dash:
+		can_dash = false
+		dashing = true
+		$dash_timer.start()
+		dash_cd_timer.start()
 	if direction.x != 0 and sign(direction.x) != sign(last_direction):
-		%Old_man.flip_sprite()  # Flip das Sprite
+		%Old_man.flip_sprite()
 		last_direction = direction.x
 		
-	velocity = direction * speed
+	if dashing:
+		velocity = direction * dash_speed
+	else:
+		velocity = direction * speed
 	move_and_slide()
 	
 	if velocity.length() > 0.0:
@@ -37,7 +55,11 @@ func _physics_process(delta: float) -> void:
 		%ProgressBar.value = health
 		if health <= 0.0:
 			health_depleted.emit()
-
+	if dash_cd_timer.get_time_left() > 0:
+		percentage_of_time = ((1 - dash_cd_timer.get_time_left() / dash_cd_timer.get_wait_time()) *100)
+		$Dash_bar.value = percentage_of_time
+	else:
+		$Dash_bar.value = 100
 
 func _on_grab_area_area_entered(area: Area2D) -> void:
 	if area.is_in_group("loot"):
@@ -84,3 +106,12 @@ func set_expbar(set_value = 1, set_max_value=100):
 
 func levelup():
 	score.text = str(experience_level)
+
+
+func _on_dash_timer_timeout() -> void:
+	dashing = false
+
+
+func _on_dash_cooldown_timeout() -> void:
+	can_dash = true
+	$dash_cooldown.stop()

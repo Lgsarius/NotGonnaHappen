@@ -88,5 +88,22 @@ position = Vector2(0, 24)
 scale = Vector2(0.331948, 0.331948)
 shape = SubResource("CircleShape2D_yl1vv")
 
+[node name="dash_timer" type="Timer" parent="."]
+wait_time = 0.2
+
+[node name="dash_cooldown" type="Timer" parent="."]
+
+[node name="Dash_bar" type="ProgressBar" parent="."]
+offset_left = -19.0
+offset_top = 38.0
+offset_right = 10.0
+offset_bottom = 65.0
+scale = Vector2(1.45858, 0.452799)
+rounded = true
+fill_mode = 1
+show_percentage = false
+
 [connection signal="area_entered" from="GrabArea" to="." method="_on_grab_area_area_entered"]
 [connection signal="area_entered" from="CollectArea" to="." method="_on_collect_area_area_entered"]
+[connection signal="timeout" from="dash_timer" to="." method="_on_dash_timer_timeout"]
+[connection signal="timeout" from="dash_cooldown" to="." method="_on_dash_cooldown_timeout"]
