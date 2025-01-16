@@ -1,8 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://c5vuxk0aa76sk"]
+[gd_scene load_steps=11 format=3 uid="uid://c5vuxk0aa76sk"]
 
 [ext_resource type="Script" path="res://game.gd" id="1_bamb0"]
 [ext_resource type="PackedScene" uid="uid://dle7ccr76jp26" path="res://player.tscn" id="1_ym5bf"]
-[ext_resource type="PackedScene" uid="uid://b6gxhols5xtd3" path="res://pine_tree.tscn" id="2_f2uyu"]
 [ext_resource type="FontFile" uid="uid://bkbhtbio65dg5" path="res://PUBLIC/GrapeSoda.ttf" id="2_ygrgo"]
 [ext_resource type="Texture2D" uid="uid://cbox2dwtg2npj" path="res://UI_Sprites/Level_Bar.png" id="5_s5vo4"]
 [ext_resource type="Texture2D" uid="uid://2m0t2erg3ol8" path="res://UI_Sprites/Level_Bar_Progress.png" id="6_eimp3"]
@@ -63,9 +62,9 @@ layer = -1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -13.0
+offset_left = -10.0
 offset_top = -17.0
-offset_right = -150.0
+offset_right = -3.0
 offset_bottom = 47.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -76,11 +75,12 @@ unique_name_in_owner = true
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = 852.0
-offset_top = -8.0
-offset_right = 925.0
-offset_bottom = 164.0
+offset_left = 287.0
+offset_top = -6.0
+offset_right = 360.0
+offset_bottom = 166.0
 grow_horizontal = 2
+scale = Vector2(0.565445, 0.357019)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_ygrgo")
 theme_override_font_sizes/font_size = 126
@@ -105,17 +105,17 @@ unique_name_in_owner = true
 texture_filter = 1
 anchors_preset = -1
 anchor_right = 0.5
-offset_left = 1031.0
-offset_top = 36.0
-offset_right = 1671.0
-offset_bottom = 116.0
+offset_left = -1.0
+offset_right = 1279.0
+offset_bottom = 80.0
 grow_horizontal = 2
 scale = Vector2(0.5, 0.5)
 texture_under = ExtResource("5_s5vo4")
 texture_progress = ExtResource("6_eimp3")
 
 [node name="Player" parent="." instance=ExtResource("1_ym5bf")]
-position = Vector2(940, 524)
+position = Vector2(306, 234)
+scale = Vector2(0.5, 0.37)
 
 [node name="Path2D" type="Path2D" parent="Player"]
 position = Vector2(-940, -524)
@@ -125,24 +125,6 @@ curve = SubResource("Curve2D_k0e6r")
 unique_name_in_owner = true
 position = Vector2(-248, -246)
 rotation = 1.56253
-
-[node name="PineTree" parent="." instance=ExtResource("2_f2uyu")]
-position = Vector2(430, 835)
-
-[node name="PineTree2" parent="." instance=ExtResource("2_f2uyu")]
-position = Vector2(922, 670)
-
-[node name="PineTree3" parent="." instance=ExtResource("2_f2uyu")]
-position = Vector2(370, 257)
-
-[node name="PineTree5" parent="." instance=ExtResource("2_f2uyu")]
-position = Vector2(1384, 265)
-
-[node name="PineTree4" parent="." instance=ExtResource("2_f2uyu")]
-position = Vector2(1316, 298)
-
-[node name="PineTree6" parent="." instance=ExtResource("2_f2uyu")]
-position = Vector2(1288, 264)
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true

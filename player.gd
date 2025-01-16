@@ -6,7 +6,7 @@ var health = 100.0
 var experience = 0
 var experience_level = 1
 var collected_experience = 0
-
+var speed = 300
 
 @onready var expBar = %ExperienceBar
 @onready var score = %Score
@@ -16,7 +16,7 @@ func _ready() -> void:
 	
 func _physics_process(delta: float) -> void:
 	var direction = Input.get_vector("move_left","move_right","move_up","move_down")
-	velocity = direction * 600
+	velocity = direction * speed
 	move_and_slide()
 	
 	if velocity.length() > 0.0:

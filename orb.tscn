@@ -7,7 +7,7 @@
 radius = 60.0333
 
 [node name="Orb" type="Area2D" groups=["loot"]]
-scale = Vector2(0.993609, 1.05026)
+scale = Vector2(0.211222, 0.223265)
 collision_layer = 8
 collision_mask = 0
 script = ExtResource("1_ng2ir")

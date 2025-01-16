@@ -101,7 +101,7 @@ version_control/autoload_on_startup=true
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/colorpicker_presets/plugin.cfg")
+enabled=PackedStringArray("res://addons/colorpicker_presets/plugin.cfg", "res://addons/net.yarvis.pixel_pen/plugin.cfg")
 
 [input]
 
