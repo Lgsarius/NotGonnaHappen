@@ -4,11 +4,12 @@ signal mob_death
 var health = 3
 var speed = 150
 @onready var player = get_node("/root/Game/Player")
-
+@onready var animation = $AnimatedSprite2D
 
 func _ready():
+	animation.play("idle")
 	pass
-	#%Slime.play_walk()
+	
 
 func _physics_process(delta: float) -> void:
 	var direction = global_position.direction_to(player.global_position)
@@ -18,7 +19,8 @@ func _physics_process(delta: float) -> void:
 
 func take_damage():
 	health -= 1
-	#%Slime.play_hurt()
+	animation.play("hurt")
+
 	
 	if health == 0:
 		mob_death.emit()
