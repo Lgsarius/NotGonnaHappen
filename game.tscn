@@ -7,13 +7,23 @@
 [ext_resource type="FontFile" uid="uid://bkbhtbio65dg5" path="res://PUBLIC/GrapeSoda.ttf" id="2_ygrgo"]
 [ext_resource type="PackedScene" uid="uid://u3rad5eu5c4m" path="res://mob.tscn" id="4_m0sop"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_normal"]
-bg_color = Color(0.12549, 0.12549, 0.12549, 1)
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
-anti_aliasing = false
+[sub_resource type="Curve2D" id="Curve2D_k0e6r"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -248, -246, 0, 0, 0, 0, -236, 1206, 0, 0, 0, 0, 2232, 1230, 0, 0, 0, 0, 2220, -242, 0, 0, 0, 0, -252, -242)
+}
+point_count = 5
+
+[sub_resource type="GDScript" id="GDScript_hw6ru"]
+script/source = "extends ColorRect
+
+func _on_restart_button_pressed() -> void:
+	get_tree().paused = false
+	get_tree().reload_current_scene()
+
+func _on_main_menu_button_pressed() -> void:
+	get_tree().paused = false
+	get_tree().change_scene_to_file(\"res://scenes/MainMenu/Menu.tscn\")
+"
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hover"]
 bg_color = Color(0.2, 0.2, 0.2, 1)
@@ -33,23 +43,13 @@ border_width_bottom = 4
 border_color = Color(0.6, 0.6, 0.6, 1)
 anti_aliasing = false
 
-[sub_resource type="Curve2D" id="Curve2D_k0e6r"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, -248, -246, 0, 0, 0, 0, -236, 1206, 0, 0, 0, 0, 2232, 1230, 0, 0, 0, 0, 2220, -242, 0, 0, 0, 0, -252, -242)
-}
-point_count = 5
-
-[sub_resource type="GDScript" id="GDScript_hw6ru"]
-script/source = "extends ColorRect
-
-func _on_restart_button_pressed() -> void:
-	get_tree().paused = false
-	get_tree().reload_current_scene()
-
-func _on_main_menu_button_pressed() -> void:
-	get_tree().paused = false
-	get_tree().change_scene_to_file(\"res://scenes/MainMenu/Menu.tscn\")
-"
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_normal"]
+bg_color = Color(0.12549, 0.12549, 0.12549, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+anti_aliasing = false
 
 [node name="Game" type="Node2D"]
 process_mode = 1
@@ -79,144 +79,6 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_ygrgo")
 theme_override_font_sizes/font_size = 126
 text = "0"
-
-[node name="TimeLeft" type="Label" parent="CanvasLayer"]
-unique_name_in_owner = true
-offset_left = 20.0
-offset_top = 20.0
-offset_right = 220.0
-offset_bottom = 80.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("2_ygrgo")
-theme_override_font_sizes/font_size = 48
-text = "2:00"
-
-[node name="GameTimer" type="Timer" parent="."]
-unique_name_in_owner = true
-wait_time = 10.0
-one_shot = true
-autostart = true
-
-[node name="MapComplete" type="CanvasLayer" parent="."]
-unique_name_in_owner = true
-process_mode = 3
-visible = false
-
-[node name="ColorRect" type="ColorRect" parent="MapComplete"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 0.607843)
-
-[node name="CompleteContainer" type="Panel" parent="MapComplete"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -300.0
-offset_top = -250.0
-offset_right = 300.0
-offset_bottom = 250.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_normal")
-
-[node name="Label" type="Label" parent="MapComplete/CompleteContainer"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -200.0
-offset_top = 20.0
-offset_right = 200.0
-offset_bottom = 80.0
-grow_horizontal = 2
-theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_constants/shadow_offset_x = 2
-theme_override_constants/shadow_offset_y = 2
-theme_override_fonts/font = ExtResource("2_ygrgo")
-theme_override_font_sizes/font_size = 48
-text = "Map Complete!"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="ScoreLabel" type="Label" parent="MapComplete/CompleteContainer"]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -200.0
-offset_top = -100.0
-offset_right = 200.0
-offset_bottom = -40.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 1)
-theme_override_fonts/font = ExtResource("2_ygrgo")
-theme_override_font_sizes/font_size = 32
-text = "Final Score: 0"
-horizontal_alignment = 1
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MapComplete/CompleteContainer"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -250.0
-offset_top = -20.0
-offset_right = 250.0
-offset_bottom = 200.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/separation = 20
-
-[node name="Map1Button" type="Button" parent="MapComplete/CompleteContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 50)
-layout_mode = 2
-theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
-theme_override_colors/font_pressed_color = Color(0.6, 0.6, 0.6, 1)
-theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 1)
-theme_override_fonts/font = ExtResource("2_ygrgo")
-theme_override_font_sizes/font_size = 32
-theme_override_styles/hover = SubResource("StyleBoxFlat_hover")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_pressed")
-theme_override_styles/normal = SubResource("StyleBoxFlat_normal")
-text = "Forest Map"
-
-[node name="Map2Button" type="Button" parent="MapComplete/CompleteContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 50)
-layout_mode = 2
-theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
-theme_override_colors/font_pressed_color = Color(0.6, 0.6, 0.6, 1)
-theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 1)
-theme_override_fonts/font = ExtResource("2_ygrgo")
-theme_override_font_sizes/font_size = 32
-theme_override_styles/hover = SubResource("StyleBoxFlat_hover")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_pressed")
-theme_override_styles/normal = SubResource("StyleBoxFlat_normal")
-text = "Desert Map"
-
-[node name="MainMenuButton" type="Button" parent="MapComplete/CompleteContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 50)
-layout_mode = 2
-theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
-theme_override_colors/font_pressed_color = Color(0.6, 0.6, 0.6, 1)
-theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 1)
-theme_override_fonts/font = ExtResource("2_ygrgo")
-theme_override_font_sizes/font_size = 32
-theme_override_styles/hover = SubResource("StyleBoxFlat_hover")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_pressed")
-theme_override_styles/normal = SubResource("StyleBoxFlat_normal")
-text = "Back to Menu"
 
 [node name="Player" parent="." instance=ExtResource("1_ym5bf")]
 position = Vector2(940, 524)
@@ -329,7 +191,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_normal")
 text = "Back to Menu"
 
 [node name="Orb" parent="." instance=ExtResource("2_50716")]
-position = Vector2(660, 489)
+position = Vector2(550, 514)
 
 [node name="PauseMenu" type="CanvasLayer" parent="."]
 unique_name_in_owner = true
@@ -445,10 +307,6 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_pressed")
 theme_override_styles/normal = SubResource("StyleBoxFlat_normal")
 text = "Back to Menu"
 
-[connection signal="timeout" from="GameTimer" to="." method="_on_game_timer_timeout"]
-[connection signal="pressed" from="MapComplete/CompleteContainer/VBoxContainer/Map1Button" to="." method="_on_map1_button_pressed"]
-[connection signal="pressed" from="MapComplete/CompleteContainer/VBoxContainer/Map2Button" to="." method="_on_map2_button_pressed"]
-[connection signal="pressed" from="MapComplete/CompleteContainer/VBoxContainer/MainMenuButton" to="." method="_on_map_menu_pressed"]
 [connection signal="health_depleted" from="Player" to="." method="_on_player_health_depleted"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="mob_death" from="Mob" to="." method="_on_mob_mob_death"]
