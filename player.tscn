@@ -1,48 +1,42 @@
-[gd_scene load_steps=10 format=3 uid="uid://dle7ccr76jp26"]
+[gd_scene load_steps=8 format=3 uid="uid://dle7ccr76jp26"]
 
-[ext_resource type="Script" path="res://player.gd" id="1_1lkpv"]
-[ext_resource type="PackedScene" uid="uid://pbmyh1qru7p" path="res://characters/happy_boo/happy_boo.tscn" id="1_ody6f"]
-[ext_resource type="PackedScene" uid="uid://y12v7xn84n1m" path="res://gun.tscn" id="3_odmtp"]
+[ext_resource type="Script" path="res://player.gd" id="1_eqxvq"]
+[ext_resource type="PackedScene" uid="uid://pbmyh1qru7p" path="res://characters/happy_boo/happy_boo.tscn" id="1_ndj8p"]
+[ext_resource type="PackedScene" uid="uid://bxh7ov5l8vn6n" path="res://gun.tscn" id="3_0csm1"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_e8eoa"]
-radius = 35.9026
+[sub_resource type="CircleShape2D" id="CircleShape2D_nxj0r"]
+radius = 35.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_70s2o"]
-radius = 45.3982
+[sub_resource type="CircleShape2D" id="CircleShape2D_0yvh4"]
+radius = 35.0
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s4bw0"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oy0t5"]
 bg_color = Color(0.152941, 0.168627, 0.188235, 1)
 corner_radius_top_left = 8
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lb4fv"]
-bg_color = Color(0.388235, 0.8, 0.372549, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_msueg"]
+bg_color = Color(0.682353, 0.12549, 0.12549, 1)
 corner_radius_top_left = 8
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_8bmqp"]
-radius = 220.95
+[node name="Player" type="CharacterBody2D" groups=["player"]]
+script = ExtResource("1_eqxvq")
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_yl1vv"]
-radius = 26.0768
-
-[node name="Player" type="CharacterBody2D"]
-script = ExtResource("1_1lkpv")
-
-[node name="HappyBoo" parent="." instance=ExtResource("1_ody6f")]
+[node name="HappyBoo" parent="." instance=ExtResource("1_ndj8p")]
 unique_name_in_owner = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, -10)
-shape = SubResource("CircleShape2D_e8eoa")
+shape = SubResource("CircleShape2D_nxj0r")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
-[node name="Gun" parent="." instance=ExtResource("3_odmtp")]
+[node name="Gun" parent="." instance=ExtResource("3_0csm1")]
 position = Vector2(-2, -46)
 
 [node name="HurtBox" type="Area2D" parent="."]
@@ -53,7 +47,7 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
 position = Vector2(0, -10)
 scale = Vector2(0.87783, 0.87783)
-shape = SubResource("CircleShape2D_70s2o")
+shape = SubResource("CircleShape2D_0yvh4")
 debug_color = Color(0.946611, 0.12344, 0.492893, 0.42)
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
@@ -62,8 +56,8 @@ offset_left = -68.0
 offset_top = -129.0
 offset_right = 63.0
 offset_bottom = -102.0
-theme_override_styles/background = SubResource("StyleBoxFlat_s4bw0")
-theme_override_styles/fill = SubResource("StyleBoxFlat_lb4fv")
+theme_override_styles/background = SubResource("StyleBoxFlat_oy0t5")
+theme_override_styles/fill = SubResource("StyleBoxFlat_msueg")
 value = 100.0
 show_percentage = false
 
@@ -72,14 +66,14 @@ collision_layer = 0
 collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GrabArea"]
-shape = SubResource("CircleShape2D_8bmqp")
+shape = SubResource("CircleShape2D_nxj0r")
 
 [node name="CollectArea" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollectArea"]
-shape = SubResource("CircleShape2D_yl1vv")
+shape = SubResource("CircleShape2D_0yvh4")
 
 [connection signal="area_entered" from="GrabArea" to="." method="_on_grab_area_area_entered"]
 [connection signal="area_entered" from="CollectArea" to="." method="_on_collect_area_area_entered"]
