@@ -8,6 +8,7 @@ var time_remaining_init = 10
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_PAUSABLE
 	update_countdown_display()
+
 	open_random_map()
 	
 
@@ -21,7 +22,6 @@ func toggle_pause() -> void:
 	%PauseMenu.visible = get_tree().paused
 
 func spawn_mob():
-	# Find the current map's PathFollow2D node
 	var path_follow = find_child("PathFollow2D", true, false)
 	if not path_follow:
 		print("Warning: PathFollow2D not found in the current map")
@@ -61,6 +61,8 @@ func update_countdown_display() -> void:
 
 func show_map_complete() -> void:
 	print("Showing map complete screen")
+	print(has_node("%MapComplete"))
+	print(get_node_or_null("%MapComplete")) 
 	get_tree().paused = true
 	%MapComplete.visible = true
 	%MapComplete.process_mode = Node.PROCESS_MODE_ALWAYS
@@ -68,21 +70,14 @@ func show_map_complete() -> void:
 	%Countdown.visible = false
 	%Score.visible = false
 	emit_signal("game_completed")
-	
-	# Get two random unique maps
 	var map_options = get_random_map_options()
-	
 	var map1_btn = %MapComplete.get_node("ColorRect/HBoxContainer/Map1")
 	var map2_btn = %MapComplete.get_node("ColorRect/HBoxContainer/Map2")
 	if is_instance_valid(map1_btn):
 		map1_btn.process_mode = Node.PROCESS_MODE_ALWAYS
 		map2_btn.process_mode = Node.PROCESS_MODE_ALWAYS
-		
-		# Set button texts to map names
 		map1_btn.text = get_map_display_name(map_options[0])
 		map2_btn.text = get_map_display_name(map_options[1])
-		
-		# Store the map paths in the buttons
 		map1_btn.set_meta("map_path", map_options[0])
 		map2_btn.set_meta("map_path", map_options[1])
 		
@@ -94,9 +89,7 @@ func show_map_complete() -> void:
 				load_selected_map(map_options[1]))
 
 func get_map_display_name(map_path: String) -> String:
-	# Extract the file name without extension and format it
 	var file_name = map_path.get_file().trim_suffix(".tscn")
-	# Replace underscores with spaces and capitalize each word
 	var words = file_name.split("_")
 	var formatted_name = ""
 	for word in words:
@@ -109,9 +102,7 @@ func get_random_map_options() -> Array:
 		"res://maps/Prod_Maps/cozy_diner_map.tscn",
 		"res://maps/Prod_Maps/desert_map.tscn"
 	]
-	# Shuffle the array
 	maps.shuffle()
-	# Return first two maps
 	return maps.slice(0, 2)
 
 
@@ -120,17 +111,13 @@ func load_selected_map(map_path: String) -> void:
 	print("Starting map load: ", map_path)
 	get_tree().paused = false
 	%MapComplete.visible = false
-	
-	# Reset UI elements
 	%ExperienceBar.visible = true
 	%Countdown.visible = true
 	%Score.visible = true
 	
-	# Reset countdown
 	time_remaining = time_remaining_init
 	update_countdown_display()
-	
-	# Find and remove existing map nodes directly from children
+
 	print("Current children before cleanup: ", get_children())
 	for child in get_children():
 		print("Checking child: ", child.name)
@@ -141,7 +128,6 @@ func load_selected_map(map_path: String) -> void:
 	
 	await get_tree().process_frame
 	
-	# Load and add new map
 	print("Loading new map: ", map_path)
 	var selected_map = load(map_path).instantiate()
 	add_child(selected_map)
@@ -155,13 +141,11 @@ func _on_mob_mob_death() -> void:
 	pass
 	
 
-
 func _on_player_loot_collected() -> void:
 	score += 1
 	%Score.text = str(score)
 	print(score)
 
-# Pause Menu Button Handlers
 func _on_resume_button_pressed() -> void:
 	toggle_pause()
 
