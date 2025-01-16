@@ -86,6 +86,20 @@ theme_override_fonts/font = ExtResource("2_ygrgo")
 theme_override_font_sizes/font_size = 126
 text = "0"
 
+[node name="Countdown" type="Label" parent="CanvasLayer"]
+unique_name_in_owner = true
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -941.0
+offset_right = -744.0
+offset_bottom = 135.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_ygrgo")
+theme_override_font_sizes/font_size = 126
+text = "2:00"
+
 [node name="ExperienceBar" type="TextureProgressBar" parent="CanvasLayer"]
 unique_name_in_owner = true
 texture_filter = 1
@@ -131,6 +145,10 @@ position = Vector2(1316, 298)
 position = Vector2(1288, 264)
 
 [node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[node name="Timer4Countdown" type="Timer" parent="."]
+wait_time = 120.0
 autostart = true
 
 [node name="GameOver" type="CanvasLayer" parent="."]
@@ -324,6 +342,7 @@ text = "Back to Menu"
 
 [connection signal="health_depleted" from="Player" to="." method="_on_player_health_depleted"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Timer4Countdown" to="." method="_on_timer_timeout"]
 [connection signal="pressed" from="GameOver/ColorRect/VBoxContainer/RestartButton" to="GameOver/ColorRect" method="_on_restart_button_pressed"]
 [connection signal="pressed" from="GameOver/ColorRect/VBoxContainer/MainMenuButton" to="GameOver/ColorRect" method="_on_main_menu_button_pressed"]
 [connection signal="pressed" from="PauseMenu/PauseContainer/VBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
