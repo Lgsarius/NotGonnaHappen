@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=4 uid="uid://c8p4xkj6w53gv"]
 
 [ext_resource type="Script" path="res://scenes/Settings/settings.gd" id="1_k3rds"]
-[ext_resource type="Texture2D" uid="uid://dtyfjwnu0gmpe" path="res://assets/tilesets/TX Tileset Wall.png" id="2_05ndj"]
+[ext_resource type="Texture2D" uid="uid://dtyfjwnu0gmpe" path="res://assets/tilesets/fantasy/TX Tileset Wall.png" id="2_05ndj"]
 [ext_resource type="FontFile" uid="uid://bkbhtbio65dg5" path="res://PUBLIC/GrapeSoda.ttf" id="3_m5p8r"]
 [ext_resource type="LabelSettings" uid="uid://bdpxflrr37nx6" path="res://SettingsPre/FontSettings_SettingsMenu.tres" id="4_oytkm"]
 [ext_resource type="PackedScene" uid="uid://c6s72svsllb5m" path="res://scenes/AudioScenes/MusicMenuScene.tscn" id="5_2rys8"]
