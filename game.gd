@@ -21,6 +21,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel"): # Escape key
 		if not %GameOver.visible and not %MapComplete.visible:  # Don't pause if end screens showing
 			toggle_pause()
+			$PauseMenu/VBoxContainer/ResumeButton.grab_focus()
 
 func toggle_pause() -> void:
 	get_tree().paused = !get_tree().paused
@@ -64,6 +65,7 @@ func show_map_complete() -> void:
 	%MapComplete.process_mode = Node.PROCESS_MODE_ALWAYS
 	map1_btn.visible = true
 	map2_btn.visible = true
+	map1_btn.grab_focus()
 	%ExperienceBar.visible = false
 	%Countdown.visible = false
 	%Score.visible = false
@@ -138,14 +140,16 @@ func load_selected_map(map_path: String) -> void:
 
 func cleanup_map():
 	for child in get_children():
-		if "map" in child.get_groups() or "enemy" in child.get_groups():
+		if "map" in child.get_groups() or "enemy" in child.get_groups() or "loot" in child.get_groups():
 			print("Removing node: ", child.name)
 			remove_child(child)
 			child.queue_free()
 	player.global_position = $Spawnpoint.global_position
+	
 			
 func _on_player_health_depleted() -> void:
 	%GameOver.visible = true
+	$GameOver/ColorRect/VBoxContainer/RestartButton.grab_focus()
 	get_tree().paused = true
 
 
@@ -180,4 +184,4 @@ func _on_map_1_pressed() -> void:
 
 
 func _on_map_2_pressed() -> void:
-	load_selected_map(map_options[0])
+	load_selected_map(map_options[1])

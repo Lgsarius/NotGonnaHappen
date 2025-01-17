@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://c5vuxk0aa76sk"]
+[gd_scene load_steps=14 format=3 uid="uid://c5vuxk0aa76sk"]
 
 [ext_resource type="Script" path="res://game.gd" id="1_bamb0"]
 [ext_resource type="PackedScene" uid="uid://dle7ccr76jp26" path="res://player.tscn" id="1_ym5bf"]
@@ -6,6 +6,15 @@
 [ext_resource type="Texture2D" uid="uid://cbox2dwtg2npj" path="res://UI_Sprites/Level_Bar.png" id="5_s5vo4"]
 [ext_resource type="Texture2D" uid="uid://2m0t2erg3ol8" path="res://UI_Sprites/Level_Bar_Progress.png" id="6_eimp3"]
 [ext_resource type="PackedScene" uid="uid://bvhpswbs6abp5" path="res://maps/Prod_Maps/cozy_diner_map.tscn" id="6_pcvi6"]
+[ext_resource type="Script" path="res://restart_button.gd" id="7_adwdd"]
+[ext_resource type="Script" path="res://resume_button.gd" id="8_qki08"]
+
+[sub_resource type="GDScript" id="GDScript_rpyr3"]
+script/source = "extends Button
+
+func _ready() -> void:
+	grab_focus()
+"
 
 [sub_resource type="GDScript" id="GDScript_hw6ru"]
 script/source = "extends ColorRect
@@ -81,6 +90,7 @@ theme_override_constants/separation = 100
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Map1"
+script = SubResource("GDScript_rpyr3")
 
 [node name="Map2" type="Button" parent="MapComplete/ColorRect/HBoxContainer"]
 layout_mode = 2
@@ -225,6 +235,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_hover")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_pressed")
 theme_override_styles/normal = SubResource("StyleBoxFlat_normal")
 text = "Restart"
+script = ExtResource("7_adwdd")
 
 [node name="MainMenuButton" type="Button" parent="GameOver/ColorRect/VBoxContainer"]
 custom_minimum_size = Vector2(0, 50)
@@ -292,6 +303,7 @@ theme_override_constants/separation = 20
 [node name="ResumeButton" type="Button" parent="PauseMenu/VBoxContainer"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
+focus_neighbor_bottom = NodePath("../SettingsButton")
 theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
 theme_override_colors/font_pressed_color = Color(0.6, 0.6, 0.6, 1)
 theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 1)
@@ -301,6 +313,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_hover")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_pressed")
 theme_override_styles/normal = SubResource("StyleBoxFlat_normal")
 text = "Resume"
+script = ExtResource("8_qki08")
 
 [node name="SettingsButton" type="Button" parent="PauseMenu/VBoxContainer"]
 custom_minimum_size = Vector2(0, 50)
