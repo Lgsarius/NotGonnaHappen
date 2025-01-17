@@ -1,8 +1,7 @@
 extends Node2D
 
 var score = 0
-var time_remaining =10
-var time_remaining_init = 10
+
 var time_remaining =100
 var time_remaining_init = 100
 var mob_death_count = 0

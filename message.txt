@@ -1,8 +1,7 @@
-[gd_scene load_steps=17 format=3 uid="uid://c5vuxk0aa76sk"]
+[gd_scene load_steps=16 format=3 uid="uid://c5vuxk0aa76sk"]
 
 [ext_resource type="Script" path="res://game.gd" id="1_bamb0"]
 [ext_resource type="PackedScene" uid="uid://dle7ccr76jp26" path="res://player.tscn" id="1_ym5bf"]
-[ext_resource type="Script" path="res://upgrade_options.gd" id="2_6qk5y"]
 [ext_resource type="Texture2D" uid="uid://umglauc5rebc" path="res://UI_Sprites/Menu_Button.png" id="2_cmmel"]
 [ext_resource type="FontFile" uid="uid://bkbhtbio65dg5" path="res://PUBLIC/GrapeSoda.ttf" id="2_ygrgo"]
 [ext_resource type="Texture2D" uid="uid://c8xx70c77p1nx" path="res://UI_Sprites/Button_pressed.png" id="3_8ssqm"]
@@ -52,7 +51,7 @@ border_width_right = 4
 border_width_bottom = 4
 anti_aliasing = false
 
-[node name="Game" type="Node2D" groups=["Game"]]
+[node name="Game" type="Node2D"]
 process_mode = 1
 y_sort_enabled = true
 script = ExtResource("1_bamb0")
@@ -159,39 +158,6 @@ grow_horizontal = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 30
 text = "Map Complete!"
-
-[node name="LevelUp" type="CanvasLayer" parent="."]
-visible = false
-
-[node name="LevelUp" type="Panel" parent="LevelUp"]
-offset_left = 220.0
-offset_top = 50.0
-offset_right = 420.0
-offset_bottom = 300.0
-
-[node name="label_levelup" type="Label" parent="LevelUp/LevelUp"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -100.0
-offset_right = 100.0
-offset_bottom = 23.0
-grow_horizontal = 2
-mouse_filter = 0
-text = "Level Up"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="UpgradeOptions" type="VBoxContainer" parent="LevelUp/LevelUp"]
-unique_name_in_owner = true
-layout_mode = 0
-offset_left = 10.0
-offset_top = 50.0
-offset_right = 190.0
-offset_bottom = 100.0
-mouse_filter = 0
-script = ExtResource("2_6qk5y")
 
 [node name="Player" parent="." instance=ExtResource("1_ym5bf")]
 position = Vector2(320, 179)
@@ -442,12 +408,11 @@ position = Vector2(693, 399)
 
 [node name="CozyDiner_Map" parent="." instance=ExtResource("6_pcvi6")]
 
-[connection signal="pressed" from="MapComplete/ColorRect/HBoxContainer/Map1" to="." method="_on_map_1_pressed"]
 [connection signal="pressed" from="MapComplete/ColorRect/HBoxContainer/Map1" to="." method="_on_map1_pressed"]
-[connection signal="pressed" from="MapComplete/ColorRect/HBoxContainer/Map2" to="." method="_on_map_2_pressed"]
+[connection signal="pressed" from="MapComplete/ColorRect/HBoxContainer/Map1" to="." method="_on_map_1_pressed"]
 [connection signal="pressed" from="MapComplete/ColorRect/HBoxContainer/Map2" to="." method="_on_map2_pressed"]
+[connection signal="pressed" from="MapComplete/ColorRect/HBoxContainer/Map2" to="." method="_on_map_2_pressed"]
 [connection signal="health_depleted" from="Player" to="." method="_on_player_health_depleted"]
-[connection signal="level_up" from="Player" to="." method="_on_player_level_up"]
 [connection signal="timeout" from="MobSpawner" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="Timer4Countdown" to="." method="_on_timer_4_countdown_timeout"]
 [connection signal="pressed" from="GameOver/ColorRect/VBoxContainer/RestartButton" to="GameOver/ColorRect" method="_on_restart_button_pressed"]
