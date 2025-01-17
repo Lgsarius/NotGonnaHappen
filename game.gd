@@ -3,11 +3,16 @@ extends Node2D
 var score = 0
 var time_remaining =10
 var time_remaining_init = 10
+var time_remaining =100
+var time_remaining_init = 100
 var mob_death_count = 0
 
 @onready var player = $Player
 @onready var map1_btn = %MapComplete.get_node("ColorRect/HBoxContainer/Map1")
 @onready var map2_btn = %MapComplete.get_node("ColorRect/HBoxContainer/Map2")
+@onready var levelPanel = $LevelUp
+@onready var upgradeOptions = %UpgradeOptions
+@onready var itemOptions =preload("res://Utility/item_option.tscn")
 var map_options = ["nix","nix"]
  
 func _ready() -> void:
@@ -178,3 +183,34 @@ func _on_map_1_pressed() -> void:
 
 func _on_map_2_pressed() -> void:
 	load_selected_map(map_options[1])
+	
+	
+	
+
+
+func _on_player_level_up() -> void:
+	print("LevelUP")
+	levelPanel.visible = true
+	levelPanel.process_mode = Node.PROCESS_MODE_ALWAYS
+	var options = 0
+	var optionsmax = 3
+	while options < optionsmax:
+		var option_choice = itemOptions.instantiate()
+		#option_choice.pressed.connect(_upgrade_pressed)
+		upgradeOptions.add_child(option_choice)
+		options += 1
+	get_tree().paused = true
+
+func upgrade_character():
+	print("upgrade")
+	var option_children = upgradeOptions.get_children()
+	for child in upgradeOptions.get_children():
+		child.queue_free()
+	levelPanel.visible = false
+	get_tree().paused = false
+	
+func _upgrade_pressed():
+	print("Ich bring mich um")
+	
+	
+	

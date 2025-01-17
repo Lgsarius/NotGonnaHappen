@@ -1,7 +1,7 @@
 extends CharacterBody2D
 signal loot_collected
 signal health_depleted
-
+signal level_up
 var health = 100.0
 var experience = 0
 var experience_level = 1
@@ -118,6 +118,7 @@ func set_expbar(set_value = 1, set_max_value=100):
 
 
 func levelup():
+	level_up.emit()
 	score.text = str(experience_level)
 	var gun = preload("res://gun.tscn").instantiate()
 	call_deferred("add_child", gun)
@@ -130,3 +131,5 @@ func _on_dash_timer_timeout() -> void:
 func _on_dash_cooldown_timeout() -> void:
 	can_dash = true
 	$dash_cooldown.stop()
+	
+	
