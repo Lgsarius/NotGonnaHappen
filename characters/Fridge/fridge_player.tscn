@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://ck5ys2k78b6h8"]
 
-[ext_resource type="Texture2D" uid="uid://cs0ry6hcln20o" path="res://assets/playable_characters/fridge.png" id="1_rqfgh"]
+[ext_resource type="Texture2D" uid="uid://cpw0q1uf7gqo8" path="res://assets/playable_characters/Fridge/fridge.png" id="1_rqfgh"]
 [ext_resource type="Script" path="res://characters/Fridge/fridge_player.gd" id="1_vey6s"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_eangf"]
@@ -16,6 +16,11 @@ animations = [{
 "loop": true,
 "name": &"default",
 "speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
 }]
 
 [node name="Node2D" type="Node2D"]
@@ -23,3 +28,4 @@ script = ExtResource("1_vey6s")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_slhfj")
+animation = &"new_animation"

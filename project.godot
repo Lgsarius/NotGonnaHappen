@@ -82,6 +82,10 @@ boot_splash/image="res://PUBLIC/LOGO.png"
 boot_splash/fullsize=false
 config/icon="res://icon.png"
 
+[autoload]
+
+UpgradeDb="*res://Utility/upgrade_db.tscn"
+
 [display]
 
 window/size/viewport_width=640

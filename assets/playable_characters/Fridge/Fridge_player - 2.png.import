@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://brgpjilf7s2ul"
-path="res://.godot/imported/muzzle_flash.png-752b19c1a1a60c24eac6f205d487f2ea.ctex"
+uid="uid://bgqb2hgpqr6nm"
+path="res://.godot/imported/Fridge_player - 2.png-59842fe47b52010883a6f604e519f72e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://pistol/muzzle_flash/muzzle_flash.png"
-dest_files=["res://.godot/imported/muzzle_flash.png-752b19c1a1a60c24eac6f205d487f2ea.ctex"]
+source_file="res://assets/playable_characters/Fridge/Fridge_player - 2.png"
+dest_files=["res://.godot/imported/Fridge_player - 2.png-59842fe47b52010883a6f604e519f72e.ctex"]
 
 [params]
 

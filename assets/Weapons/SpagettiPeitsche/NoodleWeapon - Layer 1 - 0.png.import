@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dn80eu1qs371v"
-path="res://.godot/imported/circle.png-a2fa3270dee1c1c7e1cb0869903e82df.ctex"
+uid="uid://ck8c1a173r1r2"
+path="res://.godot/imported/NoodleWeapon - Layer 1 - 0.png-d4ff9263875e14bd3c7150f67e164a9c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://pistol/impact/circle.png"
-dest_files=["res://.godot/imported/circle.png-a2fa3270dee1c1c7e1cb0869903e82df.ctex"]
+source_file="res://assets/Weapons/SpagettiPeitsche/NoodleWeapon - Layer 1 - 0.png"
+dest_files=["res://.godot/imported/NoodleWeapon - Layer 1 - 0.png-d4ff9263875e14bd3c7150f67e164a9c.ctex"]
 
 [params]
 

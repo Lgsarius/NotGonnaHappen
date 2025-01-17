@@ -1,15 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://dle7ccr76jp26"]
+[gd_scene load_steps=12 format=3 uid="uid://dle7ccr76jp26"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_1lkpv"]
+[ext_resource type="Script" path="res://upgrade_options.gd" id="2_s5iod"]
 [ext_resource type="PackedScene" uid="uid://cfqo80c6r6a8r" path="res://characters/old_man/old_man.tscn" id="2_xqq8s"]
 [ext_resource type="PackedScene" uid="uid://y12v7xn84n1m" path="res://gun.tscn" id="3_odmtp"]
 [ext_resource type="Texture2D" uid="uid://b2o1pyqrdqmn5" path="res://assets/Effects/light.png" id="4_28qf8"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_e8eoa"]
-radius = 35.9026
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_70s2o"]
-radius = 45.3982
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s4bw0"]
 bg_color = Color(0.152941, 0.168627, 0.188235, 1)
@@ -25,14 +20,65 @@ corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_e8eoa"]
+radius = 35.9026
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_70s2o"]
+radius = 45.3982
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_8bmqp"]
 radius = 220.95
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yl1vv"]
 radius = 26.0768
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
 script = ExtResource("1_1lkpv")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+unique_name_in_owner = true
+offset_left = -5.0
+offset_top = -7.0
+offset_right = 126.0
+offset_bottom = 20.0
+scale = Vector2(0.106767, 0.106767)
+theme_override_styles/background = SubResource("StyleBoxFlat_s4bw0")
+theme_override_styles/fill = SubResource("StyleBoxFlat_lb4fv")
+value = 100.0
+show_percentage = false
+
+[node name="LevelUp" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="LevelUp" type="Panel" parent="LevelUp"]
+offset_left = 220.0
+offset_top = 50.0
+offset_right = 420.0
+offset_bottom = 300.0
+
+[node name="label_levelup" type="Label" parent="LevelUp/LevelUp"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -100.0
+offset_right = 100.0
+offset_bottom = 23.0
+grow_horizontal = 2
+mouse_filter = 0
+text = "Level Up"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="UpgradeOptions" type="VBoxContainer" parent="LevelUp/LevelUp"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 10.0
+offset_top = 50.0
+offset_right = 190.0
+offset_bottom = 100.0
+mouse_filter = 0
+script = ExtResource("2_s5iod")
 
 [node name="Old_man" parent="." instance=ExtResource("2_xqq8s")]
 unique_name_in_owner = true
@@ -61,18 +107,6 @@ position = Vector2(1, 24)
 scale = Vector2(0.242004, 0.242004)
 shape = SubResource("CircleShape2D_70s2o")
 debug_color = Color(0.946611, 0.12344, 0.492893, 0.42)
-
-[node name="ProgressBar" type="ProgressBar" parent="."]
-unique_name_in_owner = true
-offset_left = -5.0
-offset_top = -7.0
-offset_right = 126.0
-offset_bottom = 20.0
-scale = Vector2(0.106767, 0.106767)
-theme_override_styles/background = SubResource("StyleBoxFlat_s4bw0")
-theme_override_styles/fill = SubResource("StyleBoxFlat_lb4fv")
-value = 100.0
-show_percentage = false
 
 [node name="GrabArea" type="Area2D" parent="."]
 position = Vector2(0, 16)
