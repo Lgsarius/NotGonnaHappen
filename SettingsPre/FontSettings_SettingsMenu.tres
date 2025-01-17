@@ -1,19 +1,6 @@
-[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://bdpxflrr37nx6"]
-
-[sub_resource type="FontFile" id="FontFile_hhpse"]
-cache/0/15/0/ascent = 0.0
-cache/0/15/0/descent = 0.0
-cache/0/15/0/underline_position = 0.0
-cache/0/15/0/underline_thickness = 0.0
-cache/0/15/0/scale = 1.0
-cache/0/16/0/ascent = 0.0
-cache/0/16/0/descent = 0.0
-cache/0/16/0/underline_position = 0.0
-cache/0/16/0/underline_thickness = 0.0
-cache/0/16/0/scale = 1.0
+[gd_resource type="LabelSettings" format=3 uid="uid://bdpxflrr37nx6"]
 
 [resource]
-font = SubResource("FontFile_hhpse")
-font_size = 15
-outline_size = 5
+font_size = 10
+outline_size = 20
 outline_color = Color(0, 0, 0, 1)

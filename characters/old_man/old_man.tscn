@@ -206,4 +206,3 @@ script = ExtResource("1_awlm3")
 unique_name_in_owner = true
 sprite_frames = SubResource("SpriteFrames_8vxtq")
 animation = &"idle"
-frame_progress = 0.941156
