@@ -90,6 +90,10 @@ buses/default_bus_layout=""
 
 UpgradeDb="*res://Utility/upgrade_db.tscn"
 
+[debug]
+
+gdscript/warnings/integer_division=0
+
 [display]
 
 window/size/viewport_width=640
