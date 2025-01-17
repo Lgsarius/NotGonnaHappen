@@ -77,15 +77,13 @@ func show_map_complete() -> void:
 		map1_btn.process_mode = Node.PROCESS_MODE_ALWAYS
 		map2_btn.process_mode = Node.PROCESS_MODE_ALWAYS
 		
-		map1_btn.text = get_map_display_name(map_options[0])
-		map2_btn.text = get_map_display_name(map_options[1])
+		map1_btn.get_node("Map1Label").text = get_map_display_name(map_options[0])
+		map2_btn.get_node("Map2Label").text = get_map_display_name(map_options[1])
 		
 		map1_btn.set_meta("map_path", map_options[0])
 		map2_btn.set_meta("map_path", map_options[1])
 		
-		
-		
-				
+
 
 
 func get_map_display_name(map_path: String) -> String:

@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://brvexuddln6bj"]
+[gd_scene load_steps=6 format=3 uid="uid://brvexuddln6bj"]
 
 [ext_resource type="Script" path="res://scenes/MainMenu/menu.gd" id="1_6xrdc"]
 [ext_resource type="FontFile" uid="uid://bkbhtbio65dg5" path="res://PUBLIC/GrapeSoda.ttf" id="2_ygrgo"]
-[ext_resource type="Script" path="res://scenes/MainMenu/start_button.gd" id="3_2d5iw"]
+[ext_resource type="Texture2D" uid="uid://umglauc5rebc" path="res://UI_Sprites/Menu_Button.png" id="3_huo3d"]
+[ext_resource type="Texture2D" uid="uid://c8xx70c77p1nx" path="res://UI_Sprites/Button_pressed.png" id="4_3hqtg"]
 [ext_resource type="PackedScene" uid="uid://c6s72svsllb5m" path="res://scenes/AudioScenes/MusicMenuScene.tscn" id="8_6ftaq"]
 
 [node name="Main Menu Node" type="Control"]
@@ -28,10 +29,10 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -302.0
-offset_top = 14.0
-offset_right = 298.0
-offset_bottom = 114.0
+offset_left = -311.0
+offset_top = 22.0
+offset_right = 289.0
+offset_bottom = 122.0
 grow_horizontal = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("2_ygrgo")
@@ -47,66 +48,149 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -89.0
-offset_top = -43.0
-offset_right = 211.0
-offset_bottom = 247.0
+offset_left = -319.0
+offset_top = -4.99998
+offset_right = -19.0
+offset_bottom = 263.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.6, 0.6)
-theme_override_constants/separation = 30
+scale = Vector2(0.5, 0.681)
 
-[node name="StartButton" type="Button" parent="VBoxContainer"]
+[node name="StartButton2" type="TextureButton" parent="VBoxContainer"]
 custom_minimum_size = Vector2(300, 50)
 layout_mode = 2
-focus_neighbor_bottom = NodePath("../MultiplayerButton")
-theme_override_colors/font_hover_color = Color(0.95, 0.95, 0.95, 1)
-theme_override_colors/font_pressed_color = Color(0.7, 0.7, 0.7, 1)
+size_flags_vertical = 4
+focus_neighbor_bottom = NodePath("../MultiplayerButton2/MultiplayerButton")
+texture_normal = ExtResource("3_huo3d")
+texture_pressed = ExtResource("4_3hqtg")
+texture_focused = ExtResource("4_3hqtg")
+stretch_mode = 0
+
+[node name="StartButton" type="Label" parent="VBoxContainer/StartButton2"]
+custom_minimum_size = Vector2(300, 50)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -25.0
+offset_right = 150.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_neighbor_bottom = NodePath("../../MultiplayerButton2/MultiplayerButton")
 theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_ygrgo")
 theme_override_font_sizes/font_size = 32
 text = "New Game"
-flat = true
-script = ExtResource("3_2d5iw")
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="MultiplayerButton" type="Button" parent="VBoxContainer"]
+[node name="MultiplayerButton2" type="TextureButton" parent="VBoxContainer"]
 custom_minimum_size = Vector2(300, 50)
 layout_mode = 2
-focus_neighbor_top = NodePath("../StartButton")
-focus_neighbor_bottom = NodePath("../SettingsButton")
-theme_override_colors/font_hover_color = Color(0.95, 0.95, 0.95, 1)
-theme_override_colors/font_pressed_color = Color(0.7, 0.7, 0.7, 1)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_neighbor_top = NodePath("../StartButton2/StartButton")
+focus_neighbor_bottom = NodePath("../SettingsButton2/SettingsButton")
+texture_normal = ExtResource("3_huo3d")
+texture_pressed = ExtResource("4_3hqtg")
+texture_focused = ExtResource("4_3hqtg")
+stretch_mode = 0
+
+[node name="MultiplayerButton" type="Label" parent="VBoxContainer/MultiplayerButton2"]
+custom_minimum_size = Vector2(300, 50)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -25.0
+offset_right = 150.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_neighbor_top = NodePath("../../StartButton2/StartButton")
+focus_neighbor_bottom = NodePath("../../SettingsButton2/SettingsButton")
 theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_ygrgo")
 theme_override_font_sizes/font_size = 32
 text = "Multiplayer"
-flat = true
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="SettingsButton" type="Button" parent="VBoxContainer"]
+[node name="SettingsButton2" type="TextureButton" parent="VBoxContainer"]
 custom_minimum_size = Vector2(300, 50)
 layout_mode = 2
-theme_override_colors/font_hover_color = Color(0.95, 0.95, 0.95, 1)
-theme_override_colors/font_pressed_color = Color(0.7, 0.7, 0.7, 1)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("3_huo3d")
+texture_pressed = ExtResource("4_3hqtg")
+texture_focused = ExtResource("4_3hqtg")
+stretch_mode = 0
+
+[node name="SettingsButton" type="Label" parent="VBoxContainer/SettingsButton2"]
+custom_minimum_size = Vector2(300, 50)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -25.0
+offset_right = 150.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_ygrgo")
 theme_override_font_sizes/font_size = 32
 text = "Settings"
-flat = true
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="ExitButton" type="Button" parent="VBoxContainer"]
+[node name="ExitButton2" type="TextureButton" parent="VBoxContainer"]
 custom_minimum_size = Vector2(300, 50)
 layout_mode = 2
-theme_override_colors/font_hover_color = Color(0.95, 0.95, 0.95, 1)
-theme_override_colors/font_pressed_color = Color(0.7, 0.7, 0.7, 1)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("3_huo3d")
+texture_pressed = ExtResource("4_3hqtg")
+texture_focused = ExtResource("4_3hqtg")
+stretch_mode = 0
+
+[node name="ExitButton" type="Label" parent="VBoxContainer/ExitButton2"]
+custom_minimum_size = Vector2(300, 50)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -25.0
+offset_right = 150.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_ygrgo")
 theme_override_font_sizes/font_size = 32
 text = "Exit"
-flat = true
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="AudioStreamPlayer" parent="." instance=ExtResource("8_6ftaq")]
 
-[connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/MultiplayerButton" to="." method="_on_multiplayer_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/StartButton2" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/SettingsButton2" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/ExitButton2" to="." method="_on_exit_button_pressed"]

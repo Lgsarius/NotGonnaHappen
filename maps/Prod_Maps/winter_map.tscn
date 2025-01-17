@@ -2620,4 +2620,5 @@ position = Vector2(452.213, 408)
 rotation = 2.00109
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="." groups=["map", "navigation"]]
+visible = false
 navigation_polygon = SubResource("NavigationPolygon_vqhtn")
