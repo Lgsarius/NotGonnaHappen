@@ -102,7 +102,7 @@ func get_random_map_options() -> Array:
 	var maps = [
 		"res://maps/Prod_Maps/wood_map.tscn",
 		"res://maps/Prod_Maps/cozy_diner_map.tscn",
-		"res://maps/Prod_Maps/desert_map.tscn"
+		"res://maps/Prod_Maps/winter_map.tscn"
 	]
 	
 	maps.shuffle()
