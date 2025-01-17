@@ -1,10 +1,9 @@
 extends Node2D
 
-
-
 var score = 0
 var time_remaining =10
 var time_remaining_init = 10
+var mob_death_count = 0
 
 @onready var player = $Player
 @onready var map1_btn = %MapComplete.get_node("ColorRect/HBoxContainer/Map1")
@@ -70,7 +69,7 @@ func show_map_complete() -> void:
 	%Countdown.visible = false
 	%Score.visible = false
 	
-	
+	%MapComplete.get_node("ColorRect/MobDeathCount").text = "Killed Enemies: " + str(mob_death_count)
 	
 	map_options = get_random_map_options()
 	
@@ -78,10 +77,8 @@ func show_map_complete() -> void:
 		map1_btn.process_mode = Node.PROCESS_MODE_ALWAYS
 		map2_btn.process_mode = Node.PROCESS_MODE_ALWAYS
 		
-		
 		map1_btn.text = get_map_display_name(map_options[0])
 		map2_btn.text = get_map_display_name(map_options[1])
-		
 		
 		map1_btn.set_meta("map_path", map_options[0])
 		map2_btn.set_meta("map_path", map_options[1])
@@ -124,7 +121,7 @@ func load_selected_map(map_path: String) -> void:
 	%Countdown.visible = true
 	%Score.visible = true
 	
-
+	mob_death_count = 0
 	time_remaining = time_remaining_init
 	update_countdown_display()
 	
@@ -153,8 +150,7 @@ func _on_player_health_depleted() -> void:
 
 
 func _on_mob_mob_death() -> void:
-	pass
-	
+	mob_death_count += 1
 
 
 func _on_player_loot_collected() -> void:

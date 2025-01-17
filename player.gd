@@ -119,9 +119,6 @@ func set_expbar(set_value = 1, set_max_value=100):
 
 func levelup():
 	score.text = str(experience_level)
-	var level_up_label = preload("res://level_up_label.tscn").instantiate()
-	level_up_label.position = position - Vector2(0, 50)  
-	get_parent().add_child(level_up_label)
 	var gun = preload("res://gun.tscn").instantiate()
 	call_deferred("add_child", gun)
 
