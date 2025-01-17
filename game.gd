@@ -1,9 +1,9 @@
 extends Node2D
 
-signal game_completed
+
 
 var score = 0
-var time_remaining = 10  
+var time_remaining =10
 var time_remaining_init = 10
 
 @onready var player = $Player
@@ -69,7 +69,6 @@ func show_map_complete() -> void:
 	%ExperienceBar.visible = false
 	%Countdown.visible = false
 	%Score.visible = false
-	emit_signal("game_completed")
 	
 	# Get two random unique maps
 	
