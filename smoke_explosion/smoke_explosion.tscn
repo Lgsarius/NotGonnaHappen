@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://dhmhmrth6rdce"]
 
 [ext_resource type="Script" path="res://smoke_explosion/smoke_explosion.gd" id="1_kb8ql"]
-[ext_resource type="Texture2D" uid="uid://dym0scw18qqd" path="res://assets/Enemies/HotDogg_death.png" id="2_y8an0"]
+[ext_resource type="Texture2D" uid="uid://dym0scw18qqd" path="res://assets/Enemies/HotDogg/HotDogg_death.png" id="2_y8an0"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_3j0v5"]
 animations = [{

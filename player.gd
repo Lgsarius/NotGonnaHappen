@@ -152,6 +152,11 @@ func levelup():
 
 func upgrade_character(upgrade):
 	match upgrade:
+		"health1","health2","health3","health4":
+			maxhealth += 20
+			health+=20
+			%ProgressBar.max_value = maxhealth
+			%ProgressBar.value = health
 		"armor1","armor2","armor3","armor4":
 			armor += 1
 		"speed1","speed2","speed3","speed4":
@@ -166,9 +171,6 @@ func upgrade_character(upgrade):
 			health += 20
 			health = clamp(health,0,maxhealth)
 	
-	
-	
-	var option_children = upgradeOptions.get_children()
 	for child in upgradeOptions.get_children():
 		child.queue_free()
 	upgrade_options.clear()

@@ -35,7 +35,7 @@ func spawn_mob():
 		print("Warning: PathFollow2D not found in the current map")
 		return
 		
-	var new_mob = preload("res://mob.tscn").instantiate()
+	var new_mob = preload("res://Enemies/HotDogg/mob.tscn").instantiate()
 	path_follow.progress_ratio = randf()
 	new_mob.global_position = path_follow.global_position
 	new_mob.mob_death.connect(_on_mob_mob_death.bind())

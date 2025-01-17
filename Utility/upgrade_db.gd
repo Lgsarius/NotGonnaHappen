@@ -3,9 +3,41 @@ extends Node
 const ICON_PATH = "res://Textures/Items/Upgrades/"
 const WEAPON_PATH ="res://Textures/Items/Weapons/"
 const UPGRADES = {
+	"health1":{
+		"icon": ICON_PATH + "health_1.png",
+		"displayname": "Burger",
+		"details": "Increase Maxhealth by 20",
+		"level": "Level: 1",
+		"prerequisite": [],
+		"type": "upgrade"
+	},
+	"health2":{
+		"icon": ICON_PATH + "health_1.png",
+		"displayname": "Burger",
+		"details": "Increase Maxhealth by 20",
+		"level": "Level: 1",
+		"prerequisite": ["health1"],
+		"type": "upgrade"
+	},
+	"health3":{
+		"icon": ICON_PATH + "health_1.png",
+		"displayname": "Burger",
+		"details": "Increase Maxhealth by 20",
+		"level": "Level: 1",
+		"prerequisite": ["health2"],
+		"type": "upgrade"
+	},
+	"health4":{
+		"icon": ICON_PATH + "health_1.png",
+		"displayname": "Burger",
+		"details": "Increase Maxhealth by 20",
+		"level": "Level: 1",
+		"prerequisite": ["health3"],
+		"type": "upgrade"
+	},
 	"armor1": {
 		"icon": ICON_PATH + "helmet_1.png",
-		"displayname": "Armor",
+		"displayname": "Käseplatte",
 		"details": "Reduces Damage By 1 point",
 		"level": "Level: 1",
 		"prerequisite": [],
@@ -13,7 +45,7 @@ const UPGRADES = {
 	},
 	"armor2": {
 		"icon": ICON_PATH + "helmet_1.png",
-		"displayname": "Armor",
+		"displayname": "Käseplatte",
 		"details": "Reduces Damage By an additional 1 point",
 		"level": "Level: 2",
 		"prerequisite": ["armor1"],
@@ -21,7 +53,7 @@ const UPGRADES = {
 	},
 	"armor3": {
 		"icon": ICON_PATH + "helmet_1.png",
-		"displayname": "Armor",
+		"displayname": "Käseplatte",
 		"details": "Reduces Damage By an additional 1 point",
 		"level": "Level: 3",
 		"prerequisite": ["armor2"],
@@ -29,7 +61,7 @@ const UPGRADES = {
 	},
 	"armor4": {
 		"icon": ICON_PATH + "helmet_1.png",
-		"displayname": "Armor",
+		"displayname": "Käseplatte",
 		"details": "Reduces Damage By an additional 1 point",
 		"level": "Level: 4",
 		"prerequisite": ["armor3"],
@@ -37,7 +69,7 @@ const UPGRADES = {
 	},
 	"speed1": {
 		"icon": ICON_PATH + "boots_4_green.png",
-		"displayname": "Speed",
+		"displayname": "Espresso",
 		"details": "Movement Speed Increased by 50% of base speed",
 		"level": "Level: 1",
 		"prerequisite": [],
@@ -45,7 +77,7 @@ const UPGRADES = {
 	},
 	"speed2": {
 		"icon": ICON_PATH + "boots_4_green.png",
-		"displayname": "Speed",
+		"displayname": "Espresso",
 		"details": "Movement Speed Increased by an additional 50% of base speed",
 		"level": "Level: 2",
 		"prerequisite": ["speed1"],
@@ -53,7 +85,7 @@ const UPGRADES = {
 	},
 	"speed3": {
 		"icon": ICON_PATH + "boots_4_green.png",
-		"displayname": "Speed",
+		"displayname": "Espresso",
 		"details": "Movement Speed Increased by an additional 50% of base speed",
 		"level": "Level: 3",
 		"prerequisite": ["speed2"],
@@ -61,7 +93,7 @@ const UPGRADES = {
 	},
 	"speed4": {
 		"icon": ICON_PATH + "boots_4_green.png",
-		"displayname": "Speed",
+		"displayname": "Espresso",
 		"details": "Movement Speed Increased an additional 50% of base speed",
 		"level": "Level: 4",
 		"prerequisite": ["speed3"],
@@ -69,7 +101,7 @@ const UPGRADES = {
 	},
 	"tome1": {
 		"icon": ICON_PATH + "thick_new.png",
-		"displayname": "Tome",
+		"displayname": "Wassermelone",
 		"details": "Increases the size of spells an additional 10% of their base size",
 		"level": "Level: 1",
 		"prerequisite": [],
@@ -77,7 +109,7 @@ const UPGRADES = {
 	},
 	"tome2": {
 		"icon": ICON_PATH + "thick_new.png",
-		"displayname": "Tome",
+		"displayname": "Wassermelone",
 		"details": "Increases the size of spells an additional 10% of their base size",
 		"level": "Level: 2",
 		"prerequisite": ["tome1"],
@@ -85,7 +117,7 @@ const UPGRADES = {
 	},
 	"tome3": {
 		"icon": ICON_PATH + "thick_new.png",
-		"displayname": "Tome",
+		"displayname": "Wassermelone",
 		"details": "Increases the size of spells an additional 10% of their base size",
 		"level": "Level: 3",
 		"prerequisite": ["tome2"],
@@ -93,7 +125,7 @@ const UPGRADES = {
 	},
 	"tome4": {
 		"icon": ICON_PATH + "thick_new.png",
-		"displayname": "Tome",
+		"displayname": "Wassermelone",
 		"details": "Increases the size of spells an additional 10% of their base size",
 		"level": "Level: 4",
 		"prerequisite": ["tome3"],
@@ -101,7 +133,7 @@ const UPGRADES = {
 	},
 	"scroll1": {
 		"icon": ICON_PATH + "scroll_old.png",
-		"displayname": "Scroll",
+		"displayname": "Minztee",
 		"details": "Decreases of the cooldown of spells by an additional 5% of their base time",
 		"level": "Level: 1",
 		"prerequisite": [],
@@ -109,7 +141,7 @@ const UPGRADES = {
 	},
 	"scroll2": {
 		"icon": ICON_PATH + "scroll_old.png",
-		"displayname": "Scroll",
+		"displayname": "Minztee",
 		"details": "Decreases of the cooldown of spells by an additional 5% of their base time",
 		"level": "Level: 2",
 		"prerequisite": ["scroll1"],
@@ -117,7 +149,7 @@ const UPGRADES = {
 	},
 	"scroll3": {
 		"icon": ICON_PATH + "scroll_old.png",
-		"displayname": "Scroll",
+		"displayname": "Minztee",
 		"details": "Decreases of the cooldown of spells by an additional 5% of their base time",
 		"level": "Level: 3",
 		"prerequisite": ["scroll2"],
@@ -125,7 +157,7 @@ const UPGRADES = {
 	},
 	"scroll4": {
 		"icon": ICON_PATH + "scroll_old.png",
-		"displayname": "Scroll",
+		"displayname": "Minztee",
 		"details": "Decreases of the cooldown of spells by an additional 5% of their base time",
 		"level": "Level: 4",
 		"prerequisite": ["scroll3"],
@@ -133,7 +165,7 @@ const UPGRADES = {
 	},
 	"ring1": {
 		"icon": ICON_PATH + "urand_mage.png",
-		"displayname": "Ring",
+		"displayname": "Popcorn",
 		"details": "Your spells now spawn 1 more additional attack",
 		"level": "Level: 1",
 		"prerequisite": [],
@@ -141,7 +173,7 @@ const UPGRADES = {
 	},
 	"ring2": {
 		"icon": ICON_PATH + "urand_mage.png",
-		"displayname": "Ring",
+		"displayname": "Popcorn",
 		"details": "Your spells now spawn an additional attack",
 		"level": "Level: 2",
 		"prerequisite": ["ring1"],
@@ -149,7 +181,7 @@ const UPGRADES = {
 	},
 	"food": {
 		"icon": ICON_PATH + "chunk.png",
-		"displayname": "Food",
+		"displayname": "Suppe",
 		"details": "Heals you for 20 health",
 		"level": "N/A",
 		"prerequisite": [],
