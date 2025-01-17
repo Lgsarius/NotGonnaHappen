@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://c5vuxk0aa76sk"]
+[gd_scene load_steps=14 format=3 uid="uid://c5vuxk0aa76sk"]
 
 [ext_resource type="Script" path="res://game.gd" id="1_bamb0"]
 [ext_resource type="PackedScene" uid="uid://dle7ccr76jp26" path="res://player.tscn" id="1_ym5bf"]
@@ -15,30 +15,6 @@ script/source = "extends Button
 func _ready() -> void:
 	grab_focus()
 "
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xpbg"]
-bg_color = Color(0.2, 0.2, 0.2, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0, 0, 0, 1)
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xpfill"]
-bg_color = Color(0.8, 0.2, 0.2, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0, 0, 0, 1)
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
 
 [sub_resource type="GDScript" id="GDScript_hw6ru"]
 script/source = "extends ColorRect
@@ -132,43 +108,6 @@ grow_horizontal = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 30
 text = "Map Complete!"
-
-[node name="XPProgress" type="ProgressBar" parent="MapComplete"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(300, 30)
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -150.0
-offset_top = -50.0
-offset_right = 150.0
-offset_bottom = -20.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/background = SubResource("StyleBoxFlat_xpbg")
-theme_override_styles/fill = SubResource("StyleBoxFlat_xpfill")
-
-[node name="XPLabel" type="Label" parent="MapComplete/XPProgress"]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -33.0
-offset_top = 17.0
-offset_right = 33.0
-offset_bottom = 43.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 4
-text = "0/100 XP"
-horizontal_alignment = 1
 
 [node name="Player" parent="." instance=ExtResource("1_ym5bf")]
 position = Vector2(320, 179)

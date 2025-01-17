@@ -1,7 +1,6 @@
 extends CharacterBody2D
 signal loot_collected
 signal health_depleted
-signal experience_updated(current_exp: int, collected_exp: int, exp_cap: int)
 
 var health = 100.0
 var experience = 0
@@ -10,9 +9,10 @@ var collected_experience = 0
 var speed = 300
 const DAMAGE_RATE = 100
 
+
 var dash_speed = 900
 var dashing = false
-var can_dash = true
+var can_dash  = true
 var last_direction:float = 0.0
 var percentage_of_time
 
@@ -25,9 +25,10 @@ var percentage_of_time
 func _ready() -> void:
 	set_expbar(experience,calculate_experiencecap())
 	score.text = str(experience_level)
-	experience_updated.emit(experience, collected_experience, calculate_experiencecap())
 	
 func _physics_process(delta: float) -> void:
+	
+	
 	var direction = Input.get_vector("move_left","move_right","move_up","move_down")
 	if Input.is_action_just_pressed("dash") and can_dash:
 		can_dash = false
@@ -49,6 +50,7 @@ func _physics_process(delta: float) -> void:
 	else:
 		%Old_man.play_idle_animation()
 	
+	
 	var overlapping_mobs = %HurtBox.get_overlapping_bodies()
 	if overlapping_mobs.size() > 0:
 		health -= DAMAGE_RATE * overlapping_mobs.size() * delta
@@ -60,10 +62,15 @@ func _physics_process(delta: float) -> void:
 		$Dash_bar.value = percentage_of_time
 	else:
 		$Dash_bar.value = 100
+		
+		
+	
+		
 
 func _on_grab_area_area_entered(area: Area2D) -> void:
 	if area.is_in_group("loot"):
 		area.target = self
+
 
 func _on_collect_area_area_entered(area: Area2D) -> void:
 	if area.is_in_group("loot"):
@@ -78,11 +85,12 @@ func _on_collect_area_area_entered(area: Area2D) -> void:
 		calculate_experience(gem_exp)
 		loot_collected.emit()
 		
+		
+		
+		
 func calculate_experience(gem_exp):
 	var exp_required = calculate_experiencecap()
 	collected_experience += gem_exp
-	experience_updated.emit(experience, collected_experience, exp_required)
-	
 	if experience + collected_experience >= exp_required:
 		collected_experience -= exp_required-experience
 		experience_level += 1
@@ -92,7 +100,6 @@ func calculate_experience(gem_exp):
 	else:
 		experience += collected_experience
 		collected_experience = 0
-	
 	set_expbar(experience,exp_required)
 
 func calculate_experiencecap():
@@ -109,6 +116,7 @@ func set_expbar(set_value = 1, set_max_value=100):
 	expBar.value = set_value
 	expBar.max_value = set_max_value
 
+
 func levelup():
 	score.text = str(experience_level)
 	var level_up_label = preload("res://level_up_label.tscn").instantiate()
@@ -117,8 +125,10 @@ func levelup():
 	var gun = preload("res://gun.tscn").instantiate()
 	call_deferred("add_child", gun)
 
+
 func _on_dash_timer_timeout() -> void:
 	dashing = false
+
 
 func _on_dash_cooldown_timeout() -> void:
 	can_dash = true
