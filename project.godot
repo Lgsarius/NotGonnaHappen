@@ -119,6 +119,10 @@ enabled=PackedStringArray("res://addons/net.yarvis.pixel_pen/plugin.cfg")
 
 map=""
 
+[gui]
+
+theme/custom_font="res://assets/Fonts/JungleAdventurer.ttf"
+
 [input]
 
 ui_accept={

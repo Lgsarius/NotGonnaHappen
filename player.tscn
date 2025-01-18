@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://dfowxe2jkaehn"]
+[gd_scene load_steps=13 format=3 uid="uid://dfowxe2jkaehn"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_1lkpv"]
-[ext_resource type="Texture2D" uid="uid://cwruofj4t3mv0" path="res://UI_Sprites/Levelupbg.png" id="2_2loft"]
+[ext_resource type="Texture2D" uid="uid://33lpitwgbf4y" path="res://assets/UI_Sprites/Levelupbg.png" id="2_pyedv"]
 [ext_resource type="PackedScene" uid="uid://cfqo80c6r6a8r" path="res://characters/old_man/old_man.tscn" id="2_xqq8s"]
 [ext_resource type="PackedScene" uid="uid://y12v7xn84n1m" path="res://gun.tscn" id="3_odmtp"]
+[ext_resource type="FontFile" uid="uid://cp16dobp6sfke" path="res://assets/Fonts/Pixograd-nKdM.ttf" id="3_vqeku"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s4bw0"]
 bg_color = Color(0.152941, 0.168627, 0.188235, 1)
@@ -63,36 +64,48 @@ value = 100.0
 show_percentage = false
 
 [node name="LevelUp" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="LevelUp" type="TextureRect" parent="LevelUp"]
 offset_left = 220.0
 offset_top = 50.0
 offset_right = 420.0
 offset_bottom = 300.0
-texture = ExtResource("2_2loft")
+texture = ExtResource("2_pyedv")
 
 [node name="label_levelup" type="Label" parent="LevelUp/LevelUp"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -100.0
-offset_right = 100.0
-offset_bottom = 23.0
+offset_left = -124.0
+offset_top = 2.0
+offset_right = 4745.0
+offset_bottom = 865.0
 grow_horizontal = 2
+scale = Vector2(0.05, 0.05)
 mouse_filter = 0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 160
+theme_override_fonts/font = ExtResource("3_vqeku")
+theme_override_font_sizes/font_size = 726
 text = "Level Up"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="UpgradeOptions" type="VBoxContainer" parent="LevelUp/LevelUp"]
 unique_name_in_owner = true
-layout_mode = 0
-offset_left = 10.0
-offset_top = 50.0
-offset_right = 190.0
-offset_bottom = 100.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -90.0
+offset_top = -80.0
+offset_right = 90.0
+offset_bottom = -30.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 0
 script = SubResource("GDScript_7xq60")
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cwruofj4t3mv0"
-path="res://.godot/imported/Levelupbg.png-ebab2f0715962af0f3267069e01feb17.ctex"
+uid="uid://33lpitwgbf4y"
+path="res://.godot/imported/Levelupbg.png-d49ea1e99ac827278897096bf32c2493.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://UI_Sprites/Levelupbg.png"
-dest_files=["res://.godot/imported/Levelupbg.png-ebab2f0715962af0f3267069e01feb17.ctex"]
+source_file="res://assets/UI_Sprites/Levelupbg.png"
+dest_files=["res://.godot/imported/Levelupbg.png-d49ea1e99ac827278897096bf32c2493.ctex"]
 
 [params]
 

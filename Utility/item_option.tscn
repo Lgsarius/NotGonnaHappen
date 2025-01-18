@@ -6,7 +6,7 @@
 
 [node name="ItemOption" type="Panel"]
 z_index = 2
-custom_minimum_size = Vector2(180, 50)
+custom_minimum_size = Vector2(192, 64)
 anchors_preset = -1
 anchor_right = 0.281
 anchor_bottom = 0.139
