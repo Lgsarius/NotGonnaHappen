@@ -2,18 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-
-uid="uid://dmylil0yv2jxm"
-
-path="res://.godot/imported/Button_pressed.png-233bb887f3e57fa2da50034ccb0067aa.ctex"
+uid="uid://lotacacnfhtt"
+path="res://.godot/imported/UntitledArtwork11 - XP-Midbar.png-c7f391edc92916cf52a4104d7089ce58.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://DesignWork/Gameprojekt/Export/Button_pressed.png"
-dest_files=["res://.godot/imported/Button_pressed.png-233bb887f3e57fa2da50034ccb0067aa.ctex"]
+source_file="res://DesignWork/Gameprojekt/Export/UntitledArtwork11 - XP-Midbar.png"
+dest_files=["res://.godot/imported/UntitledArtwork11 - XP-Midbar.png-c7f391edc92916cf52a4104d7089ce58.ctex"]
 
 [params]
 

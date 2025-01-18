@@ -1,4 +1,4 @@
-extends Panel
+extends TextureRect
 
 
 @onready var lblName = $lbl_name

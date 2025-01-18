@@ -2,18 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-
-uid="uid://dmylil0yv2jxm"
-
-path="res://.godot/imported/Button_pressed.png-233bb887f3e57fa2da50034ccb0067aa.ctex"
+uid="uid://dhejj4x8qc8c6"
+path="res://.godot/imported/UntitledArtwork11 - Health_Bottom.png-3c6e49bef94e6d07cd57692e832e9a2c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://DesignWork/Gameprojekt/Export/Button_pressed.png"
-dest_files=["res://.godot/imported/Button_pressed.png-233bb887f3e57fa2da50034ccb0067aa.ctex"]
+source_file="res://DesignWork/Gameprojekt/Export/UntitledArtwork11 - Health_Bottom.png"
+dest_files=["res://.godot/imported/UntitledArtwork11 - Health_Bottom.png-3c6e49bef94e6d07cd57692e832e9a2c.ctex"]
 
 [params]
 

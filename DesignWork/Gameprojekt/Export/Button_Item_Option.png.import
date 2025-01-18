@@ -2,18 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-
-uid="uid://dmylil0yv2jxm"
-
-path="res://.godot/imported/Button_pressed.png-233bb887f3e57fa2da50034ccb0067aa.ctex"
+uid="uid://clqtk4i4xmnli"
+path="res://.godot/imported/Button_Item_Option.png-71d231708cdd24459dc3bf15fad2f650.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://DesignWork/Gameprojekt/Export/Button_pressed.png"
-dest_files=["res://.godot/imported/Button_pressed.png-233bb887f3e57fa2da50034ccb0067aa.ctex"]
+source_file="res://DesignWork/Gameprojekt/Export/Button_Item_Option.png"
+dest_files=["res://.godot/imported/Button_Item_Option.png-71d231708cdd24459dc3bf15fad2f650.ctex"]
 
 [params]
 
