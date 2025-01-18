@@ -6,7 +6,6 @@
 [ext_resource type="FontFile" uid="uid://clvfhgb14oc1w" path="res://assets/Fonts/Gamepixies-XGDzg.ttf" id="3_wo4n6"]
 [ext_resource type="PackedScene" uid="uid://bksq8t3qk3ayk" path="res://Utility/hurt_box.tscn" id="5_oniaj"]
 
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s4bw0"]
 bg_color = Color(0.152941, 0.168627, 0.188235, 1)
 corner_radius_top_left = 8
@@ -49,9 +48,11 @@ radius = 26.0768
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_la37x"]
 size = Vector2(17, 31)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_haroy"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y38lh"]
+size = Vector2(20, 20.7565)
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
+position = Vector2(321, 176)
 script = ExtResource("1_1lkpv")
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
@@ -182,8 +183,10 @@ collision_mask = 4
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyDetectionArea"]
-scale = Vector2(52.6998, 52.6998)
-shape = SubResource("CircleShape2D_haroy")
+position = Vector2(0, 7.39972)
+rotation = 3.14159
+scale = Vector2(32.0424, 16.9201)
+shape = SubResource("RectangleShape2D_y38lh")
 
 [connection signal="area_entered" from="GrabArea" to="." method="_on_grab_area_area_entered"]
 [connection signal="area_entered" from="CollectArea" to="." method="_on_collect_area_area_entered"]

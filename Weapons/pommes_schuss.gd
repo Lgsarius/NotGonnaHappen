@@ -18,8 +18,8 @@ func _ready() -> void:
 	match level:
 		1:
 			health = 2
-			speed = 100
-			damage = 5
+			speed = 200
+			damage = 10
 			knockback_amount = 100
 			attack_size = 1.0
 			
