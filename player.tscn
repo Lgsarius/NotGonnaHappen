@@ -1,8 +1,4 @@
-<<<<<<< Updated upstream
-[gd_scene load_steps=11 format=3 uid="uid://dle7ccr76jp26"]
-=======
-[gd_scene load_steps=13 format=3 uid="uid://dle7ccr76jp26"]
->>>>>>> Stashed changes
+[gd_scene load_steps=12 format=3 uid="uid://dfowxe2jkaehn"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_1lkpv"]
 [ext_resource type="Texture2D" uid="uid://cwruofj4t3mv0" path="res://UI_Sprites/Levelupbg.png" id="2_2loft"]
