@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://c5vuxk0aa76sk"]
+[gd_scene load_steps=22 format=3 uid="uid://c5vuxk0aa76sk"]
 
 [ext_resource type="Script" path="res://game.gd" id="1_bamb0"]
 [ext_resource type="PackedScene" uid="uid://dle7ccr76jp26" path="res://player.tscn" id="1_ym5bf"]
@@ -11,6 +11,9 @@
 [ext_resource type="PackedScene" uid="uid://bvhpswbs6abp5" path="res://maps/Prod_Maps/cozy_diner_map.tscn" id="6_pcvi6"]
 [ext_resource type="Script" path="res://restart_button.gd" id="7_adwdd"]
 [ext_resource type="Script" path="res://resume_button.gd" id="8_qki08"]
+[ext_resource type="PackedScene" uid="uid://dmxkuoih4uc1n" path="res://Enemies/Evil_Pizza/Evil_Pizza.tscn" id="12_jmief"]
+[ext_resource type="PackedScene" uid="uid://dw4t4shc4gyjl" path="res://Utility/enemy_spawner.tscn" id="12_kt2t7"]
+[ext_resource type="Script" path="res://Utility/spawn_info.gd" id="13_sgraj"]
 
 [sub_resource type="Theme" id="Theme_uq34s"]
 
@@ -51,6 +54,22 @@ border_width_top = 4
 border_width_right = 4
 border_width_bottom = 4
 anti_aliasing = false
+
+[sub_resource type="Resource" id="Resource_n34h3"]
+script = ExtResource("13_sgraj")
+time_start = 0
+time_end = 60
+enemy = ExtResource("12_jmief")
+enemy_num = 1
+enemy_spawn_delay = 1
+
+[sub_resource type="Resource" id="Resource_hvrhn"]
+script = ExtResource("13_sgraj")
+time_start = 10
+time_end = 0
+enemy = ExtResource("12_jmief")
+enemy_num = 200
+enemy_spawn_delay = 0
 
 [node name="Game" type="Node2D" groups=["Game"]]
 process_mode = 1
@@ -215,9 +234,6 @@ grow_vertical = 2
 scale = Vector2(0.4, 0.4)
 texture_under = ExtResource("5_s5vo4")
 texture_progress = ExtResource("6_eimp3")
-
-[node name="MobSpawner" type="Timer" parent="."]
-autostart = true
 
 [node name="Timer4Countdown" type="Timer" parent="."]
 autostart = true
@@ -409,13 +425,15 @@ position = Vector2(693, 399)
 
 [node name="CozyDiner_Map" parent="." instance=ExtResource("6_pcvi6")]
 
+[node name="EnemySpawner" parent="." instance=ExtResource("12_kt2t7")]
+spawns = Array[ExtResource("13_sgraj")]([SubResource("Resource_n34h3"), SubResource("Resource_hvrhn")])
+
 [connection signal="pressed" from="MapComplete/ColorRect/HBoxContainer/Map1" to="." method="_on_map_1_pressed"]
 [connection signal="pressed" from="MapComplete/ColorRect/HBoxContainer/Map1" to="." method="_on_map1_pressed"]
 [connection signal="pressed" from="MapComplete/ColorRect/HBoxContainer/Map2" to="." method="_on_map_2_pressed"]
 [connection signal="pressed" from="MapComplete/ColorRect/HBoxContainer/Map2" to="." method="_on_map2_pressed"]
 [connection signal="health_depleted" from="Player" to="." method="_on_player_health_depleted"]
 [connection signal="level_up" from="Player" to="." method="_on_player_level_up"]
-[connection signal="timeout" from="MobSpawner" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="Timer4Countdown" to="." method="_on_timer_4_countdown_timeout"]
 [connection signal="pressed" from="GameOver/ColorRect/VBoxContainer/RestartButton" to="GameOver/ColorRect" method="_on_restart_button_pressed"]
 [connection signal="pressed" from="GameOver/ColorRect/VBoxContainer/MainMenuButton" to="GameOver/ColorRect" method="_on_main_menu_button_pressed"]

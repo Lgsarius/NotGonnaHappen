@@ -29,6 +29,22 @@ var can_dash  = true
 var last_direction:float = 0.0
 var percentage_of_time
 
+
+
+
+
+var PommesSchuss = preload("res://Weapons/pommes_schuss.tscn")
+@onready var PommesSchussTimer = $Attack/PommesSchussTimer
+@onready var PommesSchussAttackTimer = $Attack/PommesSchussTimer/PommeesSchussAtackTimer
+var PommesSchuss_ammo = 0
+var PommesSchuss_baseammo = 1
+var PommesSchuss_attackspeed = 1.5
+var PommesSchuss_level = 1
+
+
+
+var enemy_close = []
+
 @onready var sprite = %Old_man
 @onready var expBar = %ExperienceBar
 @onready var score = %Score
@@ -38,23 +54,15 @@ var percentage_of_time
 func _ready() -> void:
 	set_expbar(experience,calculate_experiencecap())
 	score.text = str(experience_level)
-	
+	attack()
 func _physics_process(delta: float) -> void:
 	movement()
 	
 	
+	%ProgressBar.value = health
+	if health <= 0.0:
+		health_depleted.emit()
 	
-	var overlapping_mobs = %HurtBox.get_overlapping_bodies()
-	if overlapping_mobs.size() > 0:
-		health -= DAMAGE_RATE * overlapping_mobs.size() * delta
-		%ProgressBar.value = health
-		if health <= 0.0:
-			health_depleted.emit()
-	if dash_cd_timer.get_time_left() > 0:
-		percentage_of_time = ((1 - dash_cd_timer.get_time_left() / dash_cd_timer.get_wait_time()) *100)
-		$Dash_bar.value = percentage_of_time
-	else:
-		$Dash_bar.value = 100
 		
 		
 	
@@ -72,7 +80,12 @@ func movement():
 		dashing = true
 		$dash_timer.start()
 		dash_cd_timer.start()
-		
+	
+	if dash_cd_timer.get_time_left() > 0:
+		percentage_of_time = ((1 - dash_cd_timer.get_time_left() / dash_cd_timer.get_wait_time()) *100)
+		$Dash_bar.value = percentage_of_time
+	else:
+		$Dash_bar.value = 100
 	if dashing:
 		velocity = mov.normalized() * dash_speed
 	else:
@@ -85,6 +98,12 @@ func movement():
 		%Old_man.play_idle_animation()
 	
 	
+	
+func attack():
+	if PommesSchuss_level > 0:
+		PommesSchussTimer.wait_time = PommesSchuss_attackspeed
+		if PommesSchussTimer.is_stopped():
+			PommesSchussTimer.start()
 
 func _on_grab_area_area_entered(area: Area2D) -> void:
 	if area.is_in_group("loot"):
@@ -219,3 +238,42 @@ func get_random_item():
 	else:
 		return null
 	
+
+
+func _on_hurt_box_hurt(damage, _angle,_knockback):
+	health -= damage
+	
+
+
+func _on_pommes_schuss_timer_timeout() -> void:
+	PommesSchuss_ammo += PommesSchuss_baseammo
+	PommesSchussAttackTimer.start()
+
+
+func _on_pommees_schuss_atack_timer_timeout() -> void:
+	if PommesSchuss_ammo > 0:
+		var PommesSchuss_attack = PommesSchuss.instantiate()
+		PommesSchuss_attack.position = position
+		PommesSchuss_attack.target = get_random_target()
+		PommesSchuss_attack.level = PommesSchuss_level
+		add_child(PommesSchuss_attack)
+		PommesSchuss_ammo -= 1
+		if PommesSchuss_ammo >0:
+			PommesSchussAttackTimer.start()
+		else:
+			PommesSchussAttackTimer.stop()
+func get_random_target():
+	if enemy_close.size() > 0:
+		return enemy_close.pick_random().global_position
+	else:
+		return Vector2.UP
+
+
+func _on_enemy_detection_area_body_entered(body: Node2D) -> void:
+	if not enemy_close.has(body):
+		enemy_close.append(body)
+
+
+func _on_enemy_detection_area_body_exited(body: Node2D) -> void:
+	if enemy_close.has(body):
+		enemy_close.erase(body)

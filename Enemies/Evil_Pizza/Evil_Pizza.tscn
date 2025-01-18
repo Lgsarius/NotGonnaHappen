@@ -1,12 +1,108 @@
-[gd_scene load_steps=3 format=3 uid="uid://dmxkuoih4uc1n"]
+[gd_scene load_steps=14 format=3 uid="uid://dmxkuoih4uc1n"]
 
 [ext_resource type="Script" path="res://Enemies/Evil_Pizza/enemy.gd" id="1_gq7ae"]
+[ext_resource type="Texture2D" uid="uid://dwcijd3ix1u5y" path="res://assets/Enemies/EvilPizza/Evil Pizza.png" id="2_q4qtk"]
+[ext_resource type="PackedScene" uid="uid://bksq8t3qk3ayk" path="res://Utility/hurt_box.tscn" id="3_6jmam"]
+[ext_resource type="PackedScene" uid="uid://dvgyj4wu61ku3" path="res://Utility/hit_box.tscn" id="4_rjcjx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ilwk0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s1jnh"]
+atlas = ExtResource("2_q4qtk")
+region = Rect2(48, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7f0y8"]
+atlas = ExtResource("2_q4qtk")
+region = Rect2(16, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c5mf8"]
+atlas = ExtResource("2_q4qtk")
+region = Rect2(16, 48, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_erkox"]
+atlas = ExtResource("2_q4qtk")
+region = Rect2(48, 48, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lkujb"]
+atlas = ExtResource("2_q4qtk")
+region = Rect2(80, 48, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_677fu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s1jnh")
+}],
+"loop": true,
+"name": &"hurt",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7f0y8")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c5mf8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_erkox")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lkujb")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qnnyl"]
+size = Vector2(25, 31)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b0u1k"]
 
 [node name="Evil_Pizza" type="CharacterBody2D"]
-motion_mode = 1
+collision_layer = 5
+collision_mask = 5
 script = ExtResource("1_gq7ae")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 6)
+shape = SubResource("RectangleShape2D_ilwk0")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_677fu")
+animation = &"hurt"
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+
+[node name="PathTimer" type="Timer" parent="."]
+autostart = true
+
+[node name="HurtBox" parent="." instance=ExtResource("3_6jmam")]
+collision_layer = 4
+collision_mask = 4
+HurtBoxType = 1
+
+[node name="CollisionShape2D" parent="HurtBox" index="0"]
+position = Vector2(-1.5, 0.5)
+shape = SubResource("RectangleShape2D_qnnyl")
+
+[node name="HitBox" parent="." instance=ExtResource("4_rjcjx")]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" parent="HitBox" index="0"]
+position = Vector2(-2, 1)
+scale = Vector2(0.705063, 0.922555)
+shape = SubResource("RectangleShape2D_b0u1k")
+
+[connection signal="timeout" from="PathTimer" to="." method="_on_path_timer_timeout"]
+[connection signal="hurt" from="HurtBox" to="." method="_on_hurt_box_hurt"]
+
+[editable path="HurtBox"]
+[editable path="HitBox"]
