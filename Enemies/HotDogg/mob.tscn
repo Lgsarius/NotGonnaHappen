@@ -43,8 +43,6 @@ shape = SubResource("CircleShape2D_0ktf1")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_7kltc")
 animation = &"hurt"
-frame = 1
-frame_progress = 1.0
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true

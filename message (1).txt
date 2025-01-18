@@ -1,12 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://dle7ccr76jp26"]
+[gd_scene load_steps=13 format=3 uid="uid://dfowxe2jkaehn"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_1lkpv"]
 [ext_resource type="Texture2D" uid="uid://33lpitwgbf4y" path="res://assets/UI_Sprites/Levelupbg.png" id="2_pyedv"]
 [ext_resource type="PackedScene" uid="uid://cfqo80c6r6a8r" path="res://characters/old_man/old_man.tscn" id="2_xqq8s"]
-
+[ext_resource type="PackedScene" uid="uid://y12v7xn84n1m" path="res://gun.tscn" id="3_odmtp"]
 [ext_resource type="FontFile" uid="uid://clvfhgb14oc1w" path="res://assets/Fonts/Gamepixies-XGDzg.ttf" id="3_wo4n6"]
-[ext_resource type="PackedScene" uid="uid://bksq8t3qk3ayk" path="res://Utility/hurt_box.tscn" id="5_oniaj"]
-
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s4bw0"]
 bg_color = Color(0.152941, 0.168627, 0.188235, 1)
@@ -41,18 +39,16 @@ script/source = "extends VBoxContainer
 [sub_resource type="CircleShape2D" id="CircleShape2D_e8eoa"]
 radius = 35.9026
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_70s2o"]
+radius = 45.3982
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_8bmqp"]
 radius = 220.95
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yl1vv"]
 radius = 26.0768
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_la37x"]
-size = Vector2(17, 31)
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_haroy"]
-
-[node name="Player" type="CharacterBody2D" groups=["player"]]
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
 script = ExtResource("1_1lkpv")
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
@@ -128,6 +124,20 @@ limit_top = 0
 limit_right = 1390
 limit_bottom = 848
 
+[node name="Gun" parent="." instance=ExtResource("3_odmtp")]
+position = Vector2(0, 5)
+
+[node name="HurtBox" type="Area2D" parent="."]
+unique_name_in_owner = true
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(1, 24)
+scale = Vector2(0.242004, 0.242004)
+shape = SubResource("CircleShape2D_70s2o")
+debug_color = Color(0.946611, 0.12344, 0.492893, 0.42)
+
 [node name="GrabArea" type="Area2D" parent="."]
 position = Vector2(0, 16)
 collision_layer = 0
@@ -161,39 +171,7 @@ scale = Vector2(1.45858, 0.452799)
 rounded = true
 show_percentage = false
 
-[node name="HurtBox" parent="." instance=ExtResource("5_oniaj")]
-collision_layer = 2
-collision_mask = 2
-
-[node name="CollisionShape2D" parent="HurtBox" index="0"]
-position = Vector2(0.5, 16.5)
-shape = SubResource("RectangleShape2D_la37x")
-
-[node name="Attack" type="Node2D" parent="."]
-
-[node name="PommesSchussTimer" type="Timer" parent="Attack"]
-wait_time = 1.5
-
-[node name="PommeesSchussAtackTimer" type="Timer" parent="Attack/PommesSchussTimer"]
-wait_time = 0.075
-
-[node name="EnemyDetectionArea" type="Area2D" parent="."]
-collision_layer = 4
-collision_mask = 4
-monitorable = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyDetectionArea"]
-scale = Vector2(52.6998, 52.6998)
-shape = SubResource("CircleShape2D_haroy")
-
 [connection signal="area_entered" from="GrabArea" to="." method="_on_grab_area_area_entered"]
 [connection signal="area_entered" from="CollectArea" to="." method="_on_collect_area_area_entered"]
 [connection signal="timeout" from="dash_timer" to="." method="_on_dash_timer_timeout"]
 [connection signal="timeout" from="dash_cooldown" to="." method="_on_dash_cooldown_timeout"]
-[connection signal="hurt" from="HurtBox" to="." method="_on_hurt_box_hurt"]
-[connection signal="timeout" from="Attack/PommesSchussTimer" to="." method="_on_pommes_schuss_timer_timeout"]
-[connection signal="timeout" from="Attack/PommesSchussTimer/PommeesSchussAtackTimer" to="." method="_on_pommees_schuss_atack_timer_timeout"]
-[connection signal="body_entered" from="EnemyDetectionArea" to="." method="_on_enemy_detection_area_body_entered"]
-[connection signal="body_exited" from="EnemyDetectionArea" to="." method="_on_enemy_detection_area_body_exited"]
-
-[editable path="HurtBox"]

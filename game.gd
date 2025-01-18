@@ -28,22 +28,7 @@ func toggle_pause() -> void:
 	get_tree().paused = !get_tree().paused
 	%PauseMenu.visible = get_tree().paused
 
-func spawn_mob():
-	
-	var path_follow = find_child("PathFollow2D", true, false)
-	if not path_follow:
-		print("Warning: PathFollow2D not found in the current map")
-		return
-		
-	var new_mob = preload("res://Enemies/HotDogg/mob.tscn").instantiate()
-	path_follow.progress_ratio = randf()
-	new_mob.global_position = path_follow.global_position
-	new_mob.mob_death.connect(_on_mob_mob_death.bind())
-	add_child(new_mob)
 
-
-func _on_timer_timeout() -> void:
-	spawn_mob()
 
 
 func _on_timer_4_countdown_timeout() -> void:

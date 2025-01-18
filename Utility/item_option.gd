@@ -6,7 +6,7 @@ extends TextureRect
 @onready var lblLevel = $lbl_level
 @onready var itemIcon = $ColorRect/ItemIcon
 
-@onready var player = get_tree().get_first_node_in_group("Player")
+@onready var player = get_tree().get_first_node_in_group("player")
 
 
 var item = null
