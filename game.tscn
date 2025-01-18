@@ -428,10 +428,10 @@ position = Vector2(693, 399)
 [node name="EnemySpawner" parent="." instance=ExtResource("12_kt2t7")]
 spawns = Array[ExtResource("13_sgraj")]([SubResource("Resource_n34h3"), SubResource("Resource_hvrhn")])
 
-[connection signal="pressed" from="MapComplete/ColorRect/HBoxContainer/Map1" to="." method="_on_map_1_pressed"]
 [connection signal="pressed" from="MapComplete/ColorRect/HBoxContainer/Map1" to="." method="_on_map1_pressed"]
-[connection signal="pressed" from="MapComplete/ColorRect/HBoxContainer/Map2" to="." method="_on_map_2_pressed"]
+[connection signal="pressed" from="MapComplete/ColorRect/HBoxContainer/Map1" to="." method="_on_map_1_pressed"]
 [connection signal="pressed" from="MapComplete/ColorRect/HBoxContainer/Map2" to="." method="_on_map2_pressed"]
+[connection signal="pressed" from="MapComplete/ColorRect/HBoxContainer/Map2" to="." method="_on_map_2_pressed"]
 [connection signal="health_depleted" from="Player" to="." method="_on_player_health_depleted"]
 [connection signal="level_up" from="Player" to="." method="_on_player_level_up"]
 [connection signal="timeout" from="Timer4Countdown" to="." method="_on_timer_4_countdown_timeout"]
