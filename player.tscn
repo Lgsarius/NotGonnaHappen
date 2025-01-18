@@ -1,6 +1,11 @@
+<<<<<<< Updated upstream
 [gd_scene load_steps=11 format=3 uid="uid://dle7ccr76jp26"]
+=======
+[gd_scene load_steps=13 format=3 uid="uid://dle7ccr76jp26"]
+>>>>>>> Stashed changes
 
 [ext_resource type="Script" path="res://player.gd" id="1_1lkpv"]
+[ext_resource type="Texture2D" uid="uid://cwruofj4t3mv0" path="res://UI_Sprites/Levelupbg.png" id="2_2loft"]
 [ext_resource type="PackedScene" uid="uid://cfqo80c6r6a8r" path="res://characters/old_man/old_man.tscn" id="2_xqq8s"]
 [ext_resource type="PackedScene" uid="uid://y12v7xn84n1m" path="res://gun.tscn" id="3_odmtp"]
 
@@ -64,11 +69,12 @@ show_percentage = false
 [node name="LevelUp" type="CanvasLayer" parent="."]
 visible = false
 
-[node name="LevelUp" type="Panel" parent="LevelUp"]
+[node name="LevelUp" type="TextureRect" parent="LevelUp"]
 offset_left = 220.0
 offset_top = 50.0
 offset_right = 420.0
 offset_bottom = 300.0
+texture = ExtResource("2_2loft")
 
 [node name="label_levelup" type="Label" parent="LevelUp/LevelUp"]
 layout_mode = 1
