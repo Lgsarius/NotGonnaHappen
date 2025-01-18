@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=4 uid="uid://c8p4xkj6w53gv"]
+[gd_scene load_steps=17 format=4 uid="uid://c8p4xkj6w53gv"]
 
 [ext_resource type="Script" path="res://scenes/Settings/settings.gd" id="1_k3rds"]
 [ext_resource type="Texture2D" uid="uid://dtyfjwnu0gmpe" path="res://assets/tilesets/fantasy/TX Tileset Wall.png" id="2_05ndj"]
@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://c6s72svsllb5m" path="res://scenes/AudioScenes/MusicMenuScene.tscn" id="5_2rys8"]
 [ext_resource type="Texture2D" uid="uid://umglauc5rebc" path="res://assets/UI_Sprites/Button/Menu_Button.png" id="5_tvrn1"]
 [ext_resource type="Texture2D" uid="uid://c8xx70c77p1nx" path="res://assets/UI_Sprites/Button/Button_pressed.png" id="6_2p6vf"]
+[ext_resource type="Texture2D" uid="uid://2r7mp6syh0f0" path="res://assets/UI_Sprites/Slider/Slider - Layer 2.png" id="8_dons6"]
+[ext_resource type="StyleBox" uid="uid://b75blhfhbaxj8" path="res://scenes/Settings/Slider.tres" id="8_xjusf"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_l58m6"]
 texture = ExtResource("2_05ndj")
@@ -400,6 +402,18 @@ terrain_set_0/terrain_0/name = "Background"
 terrain_set_0/terrain_0/color = Color(0.0570125, 0.0397958, 0.0224071, 1)
 sources/0 = SubResource("TileSetAtlasSource_l58m6")
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_g5gk8"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7tufj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_n6kt3"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ur71o"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ta1db"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_s4tqo"]
+
 [node name="Settings Menu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -487,9 +501,11 @@ offset_right = -128.0
 offset_bottom = 92.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = -10
 
 [node name="MasterVolumeContainer" type="VBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
+theme_override_constants/separation = -20
 
 [node name="Label" type="Label" parent="VBoxContainer/MasterVolumeContainer"]
 layout_mode = 2
@@ -497,9 +513,17 @@ text = "Master Volume"
 
 [node name="HSlider" type="HSlider" parent="VBoxContainer/MasterVolumeContainer"]
 layout_mode = 2
+size_flags_vertical = 2
+theme_override_icons/grabber = ExtResource("8_dons6")
+theme_override_icons/grabber_highlight = ExtResource("8_dons6")
+theme_override_styles/slider = ExtResource("8_xjusf")
+theme_override_styles/grabber_area = SubResource("StyleBoxEmpty_g5gk8")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxEmpty_7tufj")
 
 [node name="MusicVolumeContainer" type="VBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/separation = -20
 
 [node name="Label" type="Label" parent="VBoxContainer/MusicVolumeContainer"]
 layout_mode = 2
@@ -507,9 +531,15 @@ text = "Music Volume"
 
 [node name="HSlider" type="HSlider" parent="VBoxContainer/MusicVolumeContainer"]
 layout_mode = 2
+theme_override_icons/grabber = ExtResource("8_dons6")
+theme_override_icons/grabber_highlight = ExtResource("8_dons6")
+theme_override_styles/slider = ExtResource("8_xjusf")
+theme_override_styles/grabber_area = SubResource("StyleBoxEmpty_n6kt3")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxEmpty_ur71o")
 
 [node name="SFXVolumeContainer" type="VBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
+theme_override_constants/separation = -20
 
 [node name="Label" type="Label" parent="VBoxContainer/SFXVolumeContainer"]
 layout_mode = 2
@@ -517,6 +547,11 @@ text = "SFX Volume"
 
 [node name="HSlider" type="HSlider" parent="VBoxContainer/SFXVolumeContainer"]
 layout_mode = 2
+theme_override_icons/grabber = ExtResource("8_dons6")
+theme_override_icons/grabber_highlight = ExtResource("8_dons6")
+theme_override_styles/slider = ExtResource("8_xjusf")
+theme_override_styles/grabber_area = SubResource("StyleBoxEmpty_ta1db")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxEmpty_s4tqo")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2

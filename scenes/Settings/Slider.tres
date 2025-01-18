@@ -1,0 +1,8 @@
+[gd_resource type="StyleBoxTexture" load_steps=2 format=3 uid="uid://b75blhfhbaxj8"]
+
+[ext_resource type="Texture2D" uid="uid://dlgjdxhuej60p" path="res://assets/UI_Sprites/Slider/Slider - Layer 1 - Merged.png" id="1_t4okx"]
+
+[resource]
+texture = ExtResource("1_t4okx")
+texture_margin_top = 64.0
+texture_margin_right = 5.0
