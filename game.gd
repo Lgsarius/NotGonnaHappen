@@ -149,7 +149,20 @@ func _on_resume_button_pressed() -> void:
 	toggle_pause()
 
 func _on_settings_button_pressed() -> void:
-	get_tree().change_scene_to_file("res://scenes/Settings/Settings.tscn")
+	var settings_scene = load("res://scenes/Settings/GameSettings.tscn").instantiate()
+	settings_scene.process_mode = Node.PROCESS_MODE_ALWAYS
+	
+	var settings_layer = CanvasLayer.new()
+	settings_layer.layer = 3  # Put it above other UI layers
+	add_child(settings_layer)
+	settings_layer.add_child(settings_scene)
+	
+	%PauseMenu.visible = false
+	settings_scene.get_node("BackButton").pressed.connect(_on_settings_back_pressed.bind(settings_scene, settings_layer))
+
+func _on_settings_back_pressed(settings_scene: Node, settings_layer: CanvasLayer) -> void:
+	settings_layer.queue_free()  # This will also free the settings_scene
+	%PauseMenu.visible = true
 
 func _on_pause_restart_pressed() -> void:
 	get_tree().paused = false

@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://c5vuxk0aa76sk"]
+[gd_scene load_steps=26 format=3 uid="uid://c5vuxk0aa76sk"]
 
 [ext_resource type="Script" path="res://game.gd" id="1_bamb0"]
 [ext_resource type="PackedScene" uid="uid://dle7ccr76jp26" path="res://player.tscn" id="1_ym5bf"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://cfqo80c6r6a8r" path="res://characters/old_man/old_man.tscn" id="10_luns8"]
 [ext_resource type="PackedScene" uid="uid://dmxkuoih4uc1n" path="res://Enemies/Evil_Pizza/Evil_Pizza.tscn" id="12_jmief"]
 [ext_resource type="PackedScene" uid="uid://dw4t4shc4gyjl" path="res://Utility/enemy_spawner.tscn" id="12_kt2t7"]
+[ext_resource type="Texture2D" uid="uid://dmylil0yv2jxm" path="res://DesignWork/Gameprojekt/Export/Button_pressed.png" id="13_3nlbj"]
 [ext_resource type="Script" path="res://Utility/spawn_info.gd" id="13_sgraj"]
 
 [sub_resource type="Theme" id="Theme_uq34s"]
@@ -56,6 +57,8 @@ border_width_top = 4
 border_width_right = 4
 border_width_bottom = 4
 anti_aliasing = false
+
+[sub_resource type="Theme" id="Theme_jqb0v"]
 
 [sub_resource type="Resource" id="Resource_n34h3"]
 script = ExtResource("13_sgraj")
@@ -363,89 +366,171 @@ color = Color(0, 0, 0, 0.607843)
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -200.0
-offset_top = 47.0
-offset_right = 200.0
-offset_bottom = 107.0
+offset_left = -466.0
+offset_right = 466.0
+offset_bottom = 57.0
 grow_horizontal = 2
 theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_x = 2
 theme_override_constants/shadow_offset_y = 2
-theme_override_fonts/font = ExtResource("2_ygrgo")
+theme_override_fonts/font = ExtResource("6_nn0oi")
 theme_override_font_sizes/font_size = 48
 text = "Paused"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu"]
-anchors_preset = 7
+anchors_preset = 8
 anchor_left = 0.5
-anchor_top = 1.0
+anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -127.0
-offset_top = -159.0
-offset_right = 373.0
-offset_bottom = 141.0
+anchor_bottom = 0.5
+offset_left = -236.0
+offset_top = -126.0
+offset_right = 696.0
+offset_bottom = 498.0
 grow_horizontal = 2
-grow_vertical = 0
+grow_vertical = 2
 scale = Vector2(0.5, 0.5)
-theme_override_constants/separation = 20
+size_flags_horizontal = 6
+size_flags_vertical = 3
+theme_override_constants/separation = -49
 
-[node name="ResumeButton" type="Button" parent="PauseMenu/VBoxContainer"]
+[node name="ResumeButton" type="TextureButton" parent="PauseMenu/VBoxContainer"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
+size_flags_vertical = 3
 focus_neighbor_bottom = NodePath("../SettingsButton")
-theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
-theme_override_colors/font_pressed_color = Color(0.6, 0.6, 0.6, 1)
-theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 1)
-theme_override_fonts/font = ExtResource("2_ygrgo")
-theme_override_font_sizes/font_size = 32
-theme_override_styles/hover = SubResource("StyleBoxFlat_hover")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_pressed")
-theme_override_styles/normal = SubResource("StyleBoxFlat_normal")
-text = "Resume"
+theme = SubResource("Theme_jqb0v")
+texture_normal = ExtResource("2_cmmel")
+texture_pressed = ExtResource("3_8ssqm")
+texture_hover = ExtResource("13_3nlbj")
+texture_focused = ExtResource("13_3nlbj")
+stretch_mode = 5
 script = ExtResource("8_qki08")
 
-[node name="SettingsButton" type="Button" parent="PauseMenu/VBoxContainer"]
+[node name="Label" type="Label" parent="PauseMenu/VBoxContainer/ResumeButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -73.0
+offset_top = -28.0
+offset_right = 73.0
+offset_bottom = 28.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = ExtResource("6_nn0oi")
+theme_override_font_sizes/font_size = 48
+text = "Resume"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SettingsButton" type="TextureButton" parent="PauseMenu/VBoxContainer"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
-theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
-theme_override_colors/font_pressed_color = Color(0.6, 0.6, 0.6, 1)
+size_flags_vertical = 3
+texture_normal = ExtResource("2_cmmel")
+texture_pressed = ExtResource("13_3nlbj")
+texture_hover = ExtResource("13_3nlbj")
+texture_focused = ExtResource("13_3nlbj")
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="PauseMenu/VBoxContainer/SettingsButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -73.0
+offset_top = -28.0
+offset_right = 73.0
+offset_bottom = 28.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 1)
-theme_override_fonts/font = ExtResource("2_ygrgo")
-theme_override_font_sizes/font_size = 32
-theme_override_styles/hover = SubResource("StyleBoxFlat_hover")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_pressed")
-theme_override_styles/normal = SubResource("StyleBoxFlat_normal")
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = ExtResource("6_nn0oi")
+theme_override_font_sizes/font_size = 48
 text = "Settings"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="RestartButton" type="Button" parent="PauseMenu/VBoxContainer"]
+[node name="RestartButton" type="TextureButton" parent="PauseMenu/VBoxContainer"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
-theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
-theme_override_colors/font_pressed_color = Color(0.6, 0.6, 0.6, 1)
+size_flags_vertical = 3
+texture_normal = ExtResource("2_cmmel")
+texture_pressed = ExtResource("3_8ssqm")
+texture_hover = ExtResource("3_8ssqm")
+texture_focused = ExtResource("3_8ssqm")
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="PauseMenu/VBoxContainer/RestartButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -73.0
+offset_top = -28.0
+offset_right = 73.0
+offset_bottom = 28.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 1)
-theme_override_fonts/font = ExtResource("2_ygrgo")
-theme_override_font_sizes/font_size = 32
-theme_override_styles/hover = SubResource("StyleBoxFlat_hover")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_pressed")
-theme_override_styles/normal = SubResource("StyleBoxFlat_normal")
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = ExtResource("6_nn0oi")
+theme_override_font_sizes/font_size = 48
 text = "Restart"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="MainMenuButton" type="Button" parent="PauseMenu/VBoxContainer"]
+[node name="MainMenuButton" type="TextureButton" parent="PauseMenu/VBoxContainer"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
-theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
-theme_override_colors/font_pressed_color = Color(0.6, 0.6, 0.6, 1)
+size_flags_vertical = 3
+texture_normal = ExtResource("2_cmmel")
+texture_pressed = ExtResource("13_3nlbj")
+texture_hover = ExtResource("13_3nlbj")
+texture_focused = ExtResource("13_3nlbj")
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="PauseMenu/VBoxContainer/MainMenuButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -73.0
+offset_top = -28.0
+offset_right = 73.0
+offset_bottom = 28.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 1)
-theme_override_fonts/font = ExtResource("2_ygrgo")
-theme_override_font_sizes/font_size = 32
-theme_override_styles/hover = SubResource("StyleBoxFlat_hover")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_pressed")
-theme_override_styles/normal = SubResource("StyleBoxFlat_normal")
-text = "Back to Menu"
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = ExtResource("6_nn0oi")
+theme_override_font_sizes/font_size = 48
+text = "Menu"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Spawnpoint" type="Node2D" parent="."]
 position = Vector2(693, 399)
