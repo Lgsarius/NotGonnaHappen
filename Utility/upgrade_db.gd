@@ -132,32 +132,32 @@ const UPGRADES = {
 		"type": "upgrade"
 	},
 	"scroll1": {
-		#"icon": ICON_PATH + "scroll_old.png",
-		"displayname": "Minztee",
+		"icon": ICON_PATH + "Cola.png",
+		"displayname": "Cola",
 		"details": "Decreases of the cooldown of spells by an additional 5% of their base time",
 		"level": "Level: 1",
 		"prerequisite": [],
 		"type": "upgrade"
 	},
 	"scroll2": {
-		#"icon": ICON_PATH + "scroll_old.png",
-		"displayname": "Minztee",
+		"icon": ICON_PATH + "Cola.png",
+		"displayname": "Cola",
 		"details": "Decreases of the cooldown of spells by an additional 5% of their base time",
 		"level": "Level: 2",
 		"prerequisite": ["scroll1"],
 		"type": "upgrade"
 	},
 	"scroll3": {
-		#"icon": ICON_PATH + "scroll_old.png",
-		"displayname": "Minztee",
+		"icon": ICON_PATH + "Cola.png",
+		"displayname": "Cola",
 		"details": "Decreases of the cooldown of spells by an additional 5% of their base time",
 		"level": "Level: 3",
 		"prerequisite": ["scroll2"],
 		"type": "upgrade"
 	},
 	"scroll4": {
-		#"icon": ICON_PATH + "scroll_old.png",
-		"displayname": "Minztee",
+		"icon": ICON_PATH + "Cola.png",
+		"displayname": "Cola",
 		"details": "Decreases of the cooldown of spells by an additional 5% of their base time",
 		"level": "Level: 4",
 		"prerequisite": ["scroll3"],

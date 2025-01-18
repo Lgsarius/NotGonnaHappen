@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://v61d36v6xllc"]
+[gd_scene load_steps=4 format=3 uid="uid://v61d36v6xllc"]
 
 [ext_resource type="Script" path="res://Utility/item_option.gd" id="1_o2foa"]
 [ext_resource type="FontFile" uid="uid://bkbhtbio65dg5" path="res://PUBLIC/GrapeSoda.ttf" id="2_fjjil"]
+[ext_resource type="Texture2D" uid="uid://cpvh3u6kt8fy5" path="res://assets/UI_Sprites/Border/Item_Border.png" id="2_ssd78"]
 
 [node name="ItemOption" type="Panel"]
 z_index = 2
@@ -13,19 +14,29 @@ offset_right = 0.160004
 offset_bottom = -0.0400009
 script = ExtResource("1_o2foa")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="TextureRect" parent="."]
 layout_mode = 0
 offset_left = 2.0
 offset_top = 2.0
 offset_right = 26.0
 offset_bottom = 26.0
-color = Color(0, 0, 0, 1)
+texture = ExtResource("2_ssd78")
+
+[node name="ColorRect2" type="ColorRect" parent="ColorRect"]
+z_as_relative = false
+layout_mode = 0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 42.0
+offset_bottom = 42.0
+scale = Vector2(0.689876, 0.701603)
+color = Color(0.0266328, 0.191122, 0.123913, 1)
 
 [node name="ItemIcon" type="TextureRect" parent="ColorRect"]
 layout_mode = 0
 offset_right = 32.0
 offset_bottom = 32.0
-scale = Vector2(0.75, 0.75)
+scale = Vector2(1.00358, 1)
 
 [node name="lbl_level" type="Label" parent="."]
 layout_mode = 0
@@ -40,10 +51,11 @@ text = "level:1"
 
 [node name="lbl_description" type="Label" parent="."]
 layout_mode = 0
-offset_left = 4.0
-offset_top = 27.0
-offset_right = 166.0
-offset_bottom = 48.0
+offset_left = 39.0
+offset_top = 24.0
+offset_right = 201.0
+offset_bottom = 45.0
+scale = Vector2(1.09301, 1.12281)
 mouse_filter = 1
 theme_override_font_sizes/font_size = 8
 text = "Description of Item"

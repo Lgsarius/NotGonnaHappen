@@ -10,7 +10,7 @@ signal level_up
 
 var health = 100.0
 var maxhealth =100.0
-var movement_speed = 300
+var movement_speed = 200
 var armor = 0
 var spell_cooldown = 0
 var spell_size = 0
@@ -23,7 +23,7 @@ var upgrade_options = []
 const DAMAGE_RATE = 100
 
 
-var dash_speed = 900
+var dash_speed = 600
 var dashing = false
 var can_dash  = true
 var last_direction:float = 0.0
@@ -60,20 +60,23 @@ func _physics_process(delta: float) -> void:
 	
 		
 func movement():
-	var direction = Input.get_vector("move_left","move_right","move_up","move_down")
+	var x_mov = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
+	var y_mov = Input.get_action_strength("move_down") - Input.get_action_strength("move_up")
+	var mov = Vector2(x_mov,y_mov)
+	if mov.x > 0:
+		sprite.flip_sprite(false)
+	elif mov.x < 0:
+		sprite.flip_sprite(true)
 	if Input.is_action_just_pressed("dash") and can_dash:
 		can_dash = false
 		dashing = true
 		$dash_timer.start()
 		dash_cd_timer.start()
-	if direction.x != 0 and sign(direction.x) != sign(last_direction):
-		%Old_man.flip_sprite()
-		last_direction = direction.x
 		
 	if dashing:
-		velocity = direction * dash_speed
+		velocity = mov.normalized() * dash_speed
 	else:
-		velocity = direction * movement_speed
+		velocity = mov.normalized() * movement_speed
 	move_and_slide()
 	
 	if velocity.length() > 0.0:
