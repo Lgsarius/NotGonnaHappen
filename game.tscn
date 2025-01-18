@@ -202,6 +202,8 @@ offset_right = -165.0
 offset_bottom = 353.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 nine_patch_stretch = true
 texture_under = ExtResource("6_lf43h")
 texture_progress = ExtResource("7_i167d")
@@ -465,8 +467,10 @@ spawns = Array[ExtResource("13_sgraj")]([SubResource("Resource_n34h3"), SubResou
 [connection signal="pressed" from="MapComplete/ColorRect/HBoxContainer/Map1" to="." method="_on_map_1_pressed"]
 [connection signal="pressed" from="MapComplete/ColorRect/HBoxContainer/Map2" to="." method="_on_map2_pressed"]
 [connection signal="pressed" from="MapComplete/ColorRect/HBoxContainer/Map2" to="." method="_on_map_2_pressed"]
+[connection signal="pressed" from="MapComplete/ColorRect/HBoxContainer/Map2" to="." method="_on_map2_pressed"]
 [connection signal="health_depleted" from="Player" to="." method="_on_player_health_depleted"]
 [connection signal="level_up" from="Player" to="." method="_on_player_level_up"]
+[connection signal="timeout" from="MobSpawner" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="Timer4Countdown" to="." method="_on_timer_4_countdown_timeout"]
 [connection signal="pressed" from="GameOver/ColorRect/VBoxContainer/RestartButton" to="GameOver/ColorRect" method="_on_restart_button_pressed"]
 [connection signal="pressed" from="GameOver/ColorRect/VBoxContainer/MainMenuButton" to="GameOver/ColorRect" method="_on_main_menu_button_pressed"]
