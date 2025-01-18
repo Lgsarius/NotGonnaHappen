@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dlgjdxhuej60p"
-path="res://.godot/imported/Slider - Layer 1 - Merged.png-66ff9993c70c4bef0720e9accd3de92a.ctex"
+uid="uid://ccbuvive6n4lh"
+path="res://.godot/imported/Popcorn.png-f2c2d55449e8158d14cba904459b6621.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://UI_Sprites/Slider - Layer 1 - Merged.png"
-dest_files=["res://.godot/imported/Slider - Layer 1 - Merged.png-66ff9993c70c4bef0720e9accd3de92a.ctex"]
+source_file="res://Textures/Items/Upgrades/Popcorn.png"
+dest_files=["res://.godot/imported/Popcorn.png-f2c2d55449e8158d14cba904459b6621.ctex"]
 
 [params]
 

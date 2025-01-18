@@ -19,7 +19,8 @@ func _ready():
 	lblName.text = UpgradeDb.UPGRADES[item]["displayname"]
 	lblDescription.text  =UpgradeDb.UPGRADES[item]["details"]
 	lblLevel.text = UpgradeDb.UPGRADES[item]["level"]
-	#itemIcon.texture = load(UpgradeDb.UPGRADES[item]["icon"])
+	if UpgradeDb.UPGRADES[item].has("icon"):
+		itemIcon.texture = load(UpgradeDb.UPGRADES[item]["icon"])
 
 
 

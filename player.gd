@@ -40,8 +40,26 @@ func _ready() -> void:
 	score.text = str(experience_level)
 	
 func _physics_process(delta: float) -> void:
+	movement()
 	
 	
+	
+	var overlapping_mobs = %HurtBox.get_overlapping_bodies()
+	if overlapping_mobs.size() > 0:
+		health -= DAMAGE_RATE * overlapping_mobs.size() * delta
+		%ProgressBar.value = health
+		if health <= 0.0:
+			health_depleted.emit()
+	if dash_cd_timer.get_time_left() > 0:
+		percentage_of_time = ((1 - dash_cd_timer.get_time_left() / dash_cd_timer.get_wait_time()) *100)
+		$Dash_bar.value = percentage_of_time
+	else:
+		$Dash_bar.value = 100
+		
+		
+	
+		
+func movement():
 	var direction = Input.get_vector("move_left","move_right","move_up","move_down")
 	if Input.is_action_just_pressed("dash") and can_dash:
 		can_dash = false
@@ -64,21 +82,6 @@ func _physics_process(delta: float) -> void:
 		%Old_man.play_idle_animation()
 	
 	
-	var overlapping_mobs = %HurtBox.get_overlapping_bodies()
-	if overlapping_mobs.size() > 0:
-		health -= DAMAGE_RATE * overlapping_mobs.size() * delta
-		%ProgressBar.value = health
-		if health <= 0.0:
-			health_depleted.emit()
-	if dash_cd_timer.get_time_left() > 0:
-		percentage_of_time = ((1 - dash_cd_timer.get_time_left() / dash_cd_timer.get_wait_time()) *100)
-		$Dash_bar.value = percentage_of_time
-	else:
-		$Dash_bar.value = 100
-		
-		
-	
-		
 
 func _on_grab_area_area_entered(area: Area2D) -> void:
 	if area.is_in_group("loot"):

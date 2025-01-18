@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://brvexuddln6bj"]
+[gd_scene load_steps=7 format=3 uid="uid://brvexuddln6bj"]
 
 [ext_resource type="Script" path="res://scenes/MainMenu/menu.gd" id="1_6xrdc"]
 [ext_resource type="FontFile" uid="uid://bkbhtbio65dg5" path="res://PUBLIC/GrapeSoda.ttf" id="2_ygrgo"]
-[ext_resource type="Texture2D" uid="uid://umglauc5rebc" path="res://UI_Sprites/Menu_Button.png" id="3_huo3d"]
-[ext_resource type="Texture2D" uid="uid://c8xx70c77p1nx" path="res://UI_Sprites/Button_pressed.png" id="4_3hqtg"]
+[ext_resource type="Texture2D" uid="uid://umglauc5rebc" path="res://assets/UI_Sprites/Button/Menu_Button.png" id="3_huo3d"]
+[ext_resource type="Texture2D" uid="uid://c8xx70c77p1nx" path="res://assets/UI_Sprites/Button/Button_pressed.png" id="4_3hqtg"]
+[ext_resource type="Texture2D" uid="uid://54166xehivmj" path="res://assets/UI_Sprites/Button/Button_Focus.png" id="5_fl7b3"]
 [ext_resource type="PackedScene" uid="uid://c6s72svsllb5m" path="res://scenes/AudioScenes/MusicMenuScene.tscn" id="8_6ftaq"]
 
 [node name="Main Menu Node" type="Control"]
@@ -60,10 +61,11 @@ scale = Vector2(0.5, 0.681)
 custom_minimum_size = Vector2(300, 50)
 layout_mode = 2
 size_flags_vertical = 4
-focus_neighbor_bottom = NodePath("../MultiplayerButton2/MultiplayerButton")
+focus_neighbor_top = NodePath("../ExitButton2")
+focus_neighbor_bottom = NodePath("../MultiplayerButton2")
 texture_normal = ExtResource("3_huo3d")
 texture_pressed = ExtResource("4_3hqtg")
-texture_focused = ExtResource("4_3hqtg")
+texture_focused = ExtResource("5_fl7b3")
 stretch_mode = 0
 
 [node name="StartButton" type="Label" parent="VBoxContainer/StartButton2"]
@@ -94,11 +96,11 @@ custom_minimum_size = Vector2(300, 50)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-focus_neighbor_top = NodePath("../StartButton2/StartButton")
-focus_neighbor_bottom = NodePath("../SettingsButton2/SettingsButton")
+focus_neighbor_top = NodePath("../StartButton2")
+focus_neighbor_bottom = NodePath("../SettingsButton2")
 texture_normal = ExtResource("3_huo3d")
 texture_pressed = ExtResource("4_3hqtg")
-texture_focused = ExtResource("4_3hqtg")
+texture_focused = ExtResource("5_fl7b3")
 stretch_mode = 0
 
 [node name="MultiplayerButton" type="Label" parent="VBoxContainer/MultiplayerButton2"]
@@ -130,9 +132,11 @@ custom_minimum_size = Vector2(300, 50)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+focus_neighbor_top = NodePath("../MultiplayerButton2")
+focus_neighbor_bottom = NodePath("../ExitButton2")
 texture_normal = ExtResource("3_huo3d")
 texture_pressed = ExtResource("4_3hqtg")
-texture_focused = ExtResource("4_3hqtg")
+texture_focused = ExtResource("5_fl7b3")
 stretch_mode = 0
 
 [node name="SettingsButton" type="Label" parent="VBoxContainer/SettingsButton2"]
@@ -162,9 +166,11 @@ custom_minimum_size = Vector2(300, 50)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+focus_neighbor_top = NodePath("../SettingsButton2")
+focus_neighbor_bottom = NodePath("../StartButton2")
 texture_normal = ExtResource("3_huo3d")
 texture_pressed = ExtResource("4_3hqtg")
-texture_focused = ExtResource("4_3hqtg")
+texture_focused = ExtResource("5_fl7b3")
 stretch_mode = 0
 
 [node name="ExitButton" type="Label" parent="VBoxContainer/ExitButton2"]

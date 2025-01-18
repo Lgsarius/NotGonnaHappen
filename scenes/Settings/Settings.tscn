@@ -4,10 +4,10 @@
 [ext_resource type="Texture2D" uid="uid://dtyfjwnu0gmpe" path="res://assets/tilesets/fantasy/TX Tileset Wall.png" id="2_05ndj"]
 [ext_resource type="FontFile" uid="uid://bkbhtbio65dg5" path="res://PUBLIC/GrapeSoda.ttf" id="3_m5p8r"]
 [ext_resource type="PackedScene" uid="uid://c6s72svsllb5m" path="res://scenes/AudioScenes/MusicMenuScene.tscn" id="5_2rys8"]
-[ext_resource type="Texture2D" uid="uid://umglauc5rebc" path="res://UI_Sprites/Menu_Button.png" id="5_tvrn1"]
-[ext_resource type="Texture2D" uid="uid://c8xx70c77p1nx" path="res://UI_Sprites/Button_pressed.png" id="6_2p6vf"]
-[ext_resource type="Texture2D" uid="uid://dlgjdxhuej60p" path="res://UI_Sprites/Slider - Layer 1 - Merged.png" id="7_1jy01"]
-[ext_resource type="Texture2D" uid="uid://2r7mp6syh0f0" path="res://UI_Sprites/Slider - Layer 2.png" id="8_dons6"]
+[ext_resource type="Texture2D" uid="uid://umglauc5rebc" path="res://assets/UI_Sprites/Button/Menu_Button.png" id="5_tvrn1"]
+[ext_resource type="Texture2D" uid="uid://c8xx70c77p1nx" path="res://assets/UI_Sprites/Button/Button_pressed.png" id="6_2p6vf"]
+[ext_resource type="Texture2D" uid="uid://dlgjdxhuej60p" path="res://assets/UI_Sprites/Slider/Slider - Layer 1 - Merged.png" id="7_1jy01"]
+[ext_resource type="Texture2D" uid="uid://2r7mp6syh0f0" path="res://assets/UI_Sprites/Slider/Slider - Layer 2.png" id="8_dons6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_l58m6"]
 texture = ExtResource("2_05ndj")

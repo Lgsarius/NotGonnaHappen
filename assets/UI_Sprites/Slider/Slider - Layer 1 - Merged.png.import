@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cbox2dwtg2npj"
-path="res://.godot/imported/Level_Bar.png-1e9814962faddb123ea92f2814a285e8.ctex"
+uid="uid://dlgjdxhuej60p"
+path="res://.godot/imported/Slider - Layer 1 - Merged.png-cec9c2f839efbf704f73317b8fc3c85f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://UI_Sprites/Level_Bar.png"
-dest_files=["res://.godot/imported/Level_Bar.png-1e9814962faddb123ea92f2814a285e8.ctex"]
+source_file="res://assets/UI_Sprites/Slider/Slider - Layer 1 - Merged.png"
+dest_files=["res://.godot/imported/Slider - Layer 1 - Merged.png-cec9c2f839efbf704f73317b8fc3c85f.ctex"]
 
 [params]
 

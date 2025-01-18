@@ -1,9 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://dle7ccr76jp26"]
+[gd_scene load_steps=11 format=3 uid="uid://dle7ccr76jp26"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_1lkpv"]
 [ext_resource type="PackedScene" uid="uid://cfqo80c6r6a8r" path="res://characters/old_man/old_man.tscn" id="2_xqq8s"]
 [ext_resource type="PackedScene" uid="uid://y12v7xn84n1m" path="res://gun.tscn" id="3_odmtp"]
-[ext_resource type="Texture2D" uid="uid://b2o1pyqrdqmn5" path="res://assets/Effects/light.png" id="4_28qf8"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s4bw0"]
 bg_color = Color(0.152941, 0.168627, 0.188235, 1)
@@ -154,13 +153,7 @@ offset_right = 10.0
 offset_bottom = 65.0
 scale = Vector2(1.45858, 0.452799)
 rounded = true
-fill_mode = 1
 show_percentage = false
-
-[node name="PointLight2D" type="PointLight2D" parent="."]
-energy = 0.5
-texture = ExtResource("4_28qf8")
-texture_scale = 0.6
 
 [connection signal="area_entered" from="GrabArea" to="." method="_on_grab_area_area_entered"]
 [connection signal="area_entered" from="CollectArea" to="." method="_on_collect_area_area_entered"]

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b20utxb0j50rm"
-path="res://.godot/imported/light.png-010d3bc29f31c0538b873405570507f2.ctex"
+uid="uid://7mi46c0rryaj"
+path="res://.godot/imported/GoldenApple.png-3292f71ec951b8a2de7aa6aca1b9ae93.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://UI_Sprites/light.png"
-dest_files=["res://.godot/imported/light.png-010d3bc29f31c0538b873405570507f2.ctex"]
+source_file="res://Textures/Items/Upgrades/GoldenApple.png"
+dest_files=["res://.godot/imported/GoldenApple.png-3292f71ec951b8a2de7aa6aca1b9ae93.ctex"]
 
 [params]
 

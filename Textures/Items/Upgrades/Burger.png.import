@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://2r7mp6syh0f0"
-path="res://.godot/imported/Slider - Layer 2.png-e6d85338d684be7246ed1c3b6e68651a.ctex"
+uid="uid://b6wof1jfqpmpi"
+path="res://.godot/imported/Burger.png-85adef05d2ad71038cd511b48c3b1e3c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://UI_Sprites/Slider - Layer 2.png"
-dest_files=["res://.godot/imported/Slider - Layer 2.png-e6d85338d684be7246ed1c3b6e68651a.ctex"]
+source_file="res://Textures/Items/Upgrades/Burger.png"
+dest_files=["res://.godot/imported/Burger.png-85adef05d2ad71038cd511b48c3b1e3c.ctex"]
 
 [params]
 

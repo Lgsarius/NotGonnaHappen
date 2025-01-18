@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=4 uid="uid://d3c1kcn0dgfqr"]
+[gd_scene load_steps=6 format=4 uid="uid://bnn3j5jyu0pqo"]
 
 [ext_resource type="Texture2D" uid="uid://b2wynd0tbfxpu" path="res://assets/tilesets/snow/spritesheet.png" id="1_tpooi"]
 
@@ -2609,9 +2609,6 @@ tile_set = SubResource("TileSet_igwcj")
 y_sort_enabled = true
 tile_map_data = PackedByteArray("AABaAAkAAAAYAAwAAABaAAoAAAAYAA0AAABaAAsAAAAYAA4AAABaAAwAAAAYAA8AAABbAAkAAAAZAAwAAABbAAoAAAAZAA0AAABbAAsAAAAZAA4AAABbAAwAAAAZAA8AAABcAAoAAAAaAA0AAABcAAwAAAAaAA8AAABOAAgAAAAYAAwAAABOAAkAAAAYAA0AAABOAAoAAAAYAA4AAABOAAsAAAAYAA8AAABPAAgAAAAZAAwAAABPAAkAAAAZAA0AAABPAAoAAAAZAA4AAABPAAsAAAAZAA8AAABQAAkAAAAaAA0AAABQAAsAAAAaAA8AAABJAAkAAAAYAAwAAABJAAoAAAAYAA0AAABJAAsAAAAYAA4AAABJAAwAAAAYAA8AAABKAAkAAAAZAAwAAABKAAoAAAAZAA0AAABKAAsAAAAZAA4AAABKAAwAAAAZAA8AAABLAAoAAAAaAA0AAABLAAwAAAAaAA8AAAA=")
 tile_set = SubResource("TileSet_igwcj")
-
-[node name="CanvasModulate" type="CanvasModulate" parent="Node2D"]
-color = Color(0.496937, 0.518086, 0.562224, 1)
 
 [node name="Path2D" type="Path2D" parent="."]
 position = Vector2(-191.94, -202)

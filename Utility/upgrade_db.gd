@@ -4,7 +4,7 @@ const ICON_PATH = "res://Textures/Items/Upgrades/"
 const WEAPON_PATH ="res://Textures/Items/Weapons/"
 const UPGRADES = {
 	"health1":{
-		"icon": ICON_PATH + "health_1.png",
+		"icon": ICON_PATH + "Burger.png",
 		"displayname": "Burger",
 		"details": "Increase Maxhealth by 20",
 		"level": "Level: 1",
@@ -12,7 +12,7 @@ const UPGRADES = {
 		"type": "upgrade"
 	},
 	"health2":{
-		"icon": ICON_PATH + "health_1.png",
+		"icon": ICON_PATH + "Burger.png",
 		"displayname": "Burger",
 		"details": "Increase Maxhealth by 20",
 		"level": "Level: 1",
@@ -20,7 +20,7 @@ const UPGRADES = {
 		"type": "upgrade"
 	},
 	"health3":{
-		"icon": ICON_PATH + "health_1.png",
+		"icon": ICON_PATH + "Burger.png",
 		"displayname": "Burger",
 		"details": "Increase Maxhealth by 20",
 		"level": "Level: 1",
@@ -28,7 +28,7 @@ const UPGRADES = {
 		"type": "upgrade"
 	},
 	"health4":{
-		"icon": ICON_PATH + "health_1.png",
+		"icon": ICON_PATH + "Burger.png",
 		"displayname": "Burger",
 		"details": "Increase Maxhealth by 20",
 		"level": "Level: 1",
@@ -36,39 +36,39 @@ const UPGRADES = {
 		"type": "upgrade"
 	},
 	"armor1": {
-		"icon": ICON_PATH + "helmet_1.png",
-		"displayname": "Käseplatte",
+		"icon": ICON_PATH + "Candy.png",
+		"displayname": "Bonbon",
 		"details": "Reduces Damage By 1 point",
 		"level": "Level: 1",
 		"prerequisite": [],
 		"type": "upgrade"
 	},
 	"armor2": {
-		"icon": ICON_PATH + "helmet_1.png",
-		"displayname": "Käseplatte",
+		"icon": ICON_PATH + "Candy.png",
+		"displayname": "Bonbon",
 		"details": "Reduces Damage By an additional 1 point",
 		"level": "Level: 2",
 		"prerequisite": ["armor1"],
 		"type": "upgrade"
 	},
 	"armor3": {
-		"icon": ICON_PATH + "helmet_1.png",
-		"displayname": "Käseplatte",
+		"icon": ICON_PATH + "Candy.png",
+		"displayname": "Bonbon",
 		"details": "Reduces Damage By an additional 1 point",
 		"level": "Level: 3",
 		"prerequisite": ["armor2"],
 		"type": "upgrade"
 	},
 	"armor4": {
-		"icon": ICON_PATH + "helmet_1.png",
-		"displayname": "Käseplatte",
+		"icon": ICON_PATH + "Candy.png",
+		"displayname": "Bonbon",
 		"details": "Reduces Damage By an additional 1 point",
 		"level": "Level: 4",
 		"prerequisite": ["armor3"],
 		"type": "upgrade"
 	},
 	"speed1": {
-		"icon": ICON_PATH + "boots_4_green.png",
+		"icon": ICON_PATH + "Coffee.png",
 		"displayname": "Espresso",
 		"details": "Movement Speed Increased by 50% of base speed",
 		"level": "Level: 1",
@@ -76,7 +76,7 @@ const UPGRADES = {
 		"type": "upgrade"
 	},
 	"speed2": {
-		"icon": ICON_PATH + "boots_4_green.png",
+		"icon": ICON_PATH + "Coffee.png",
 		"displayname": "Espresso",
 		"details": "Movement Speed Increased by an additional 50% of base speed",
 		"level": "Level: 2",
@@ -84,7 +84,7 @@ const UPGRADES = {
 		"type": "upgrade"
 	},
 	"speed3": {
-		"icon": ICON_PATH + "boots_4_green.png",
+		"icon": ICON_PATH + "Coffee.png",
 		"displayname": "Espresso",
 		"details": "Movement Speed Increased by an additional 50% of base speed",
 		"level": "Level: 3",
@@ -92,7 +92,7 @@ const UPGRADES = {
 		"type": "upgrade"
 	},
 	"speed4": {
-		"icon": ICON_PATH + "boots_4_green.png",
+		"icon": ICON_PATH + "Coffee.png",
 		"displayname": "Espresso",
 		"details": "Movement Speed Increased an additional 50% of base speed",
 		"level": "Level: 4",
@@ -100,7 +100,7 @@ const UPGRADES = {
 		"type": "upgrade"
 	},
 	"tome1": {
-		"icon": ICON_PATH + "thick_new.png",
+		"icon": ICON_PATH + "Melone.png",
 		"displayname": "Wassermelone",
 		"details": "Increases the size of spells an additional 10% of their base size",
 		"level": "Level: 1",
@@ -108,7 +108,7 @@ const UPGRADES = {
 		"type": "upgrade"
 	},
 	"tome2": {
-		"icon": ICON_PATH + "thick_new.png",
+		"icon": ICON_PATH + "Melone.png",
 		"displayname": "Wassermelone",
 		"details": "Increases the size of spells an additional 10% of their base size",
 		"level": "Level: 2",
@@ -116,7 +116,7 @@ const UPGRADES = {
 		"type": "upgrade"
 	},
 	"tome3": {
-		"icon": ICON_PATH + "thick_new.png",
+		"icon": ICON_PATH + "Melone.png",
 		"displayname": "Wassermelone",
 		"details": "Increases the size of spells an additional 10% of their base size",
 		"level": "Level: 3",
@@ -124,7 +124,7 @@ const UPGRADES = {
 		"type": "upgrade"
 	},
 	"tome4": {
-		"icon": ICON_PATH + "thick_new.png",
+		"icon": ICON_PATH + "Melone.png",
 		"displayname": "Wassermelone",
 		"details": "Increases the size of spells an additional 10% of their base size",
 		"level": "Level: 4",
@@ -132,7 +132,7 @@ const UPGRADES = {
 		"type": "upgrade"
 	},
 	"scroll1": {
-		"icon": ICON_PATH + "scroll_old.png",
+		#"icon": ICON_PATH + "scroll_old.png",
 		"displayname": "Minztee",
 		"details": "Decreases of the cooldown of spells by an additional 5% of their base time",
 		"level": "Level: 1",
@@ -140,7 +140,7 @@ const UPGRADES = {
 		"type": "upgrade"
 	},
 	"scroll2": {
-		"icon": ICON_PATH + "scroll_old.png",
+		#"icon": ICON_PATH + "scroll_old.png",
 		"displayname": "Minztee",
 		"details": "Decreases of the cooldown of spells by an additional 5% of their base time",
 		"level": "Level: 2",
@@ -148,7 +148,7 @@ const UPGRADES = {
 		"type": "upgrade"
 	},
 	"scroll3": {
-		"icon": ICON_PATH + "scroll_old.png",
+		#"icon": ICON_PATH + "scroll_old.png",
 		"displayname": "Minztee",
 		"details": "Decreases of the cooldown of spells by an additional 5% of their base time",
 		"level": "Level: 3",
@@ -156,7 +156,7 @@ const UPGRADES = {
 		"type": "upgrade"
 	},
 	"scroll4": {
-		"icon": ICON_PATH + "scroll_old.png",
+		#"icon": ICON_PATH + "scroll_old.png",
 		"displayname": "Minztee",
 		"details": "Decreases of the cooldown of spells by an additional 5% of their base time",
 		"level": "Level: 4",
@@ -164,7 +164,7 @@ const UPGRADES = {
 		"type": "upgrade"
 	},
 	"ring1": {
-		"icon": ICON_PATH + "urand_mage.png",
+		"icon": ICON_PATH + "Popcorn.png",
 		"displayname": "Popcorn",
 		"details": "Your spells now spawn 1 more additional attack",
 		"level": "Level: 1",
@@ -172,7 +172,7 @@ const UPGRADES = {
 		"type": "upgrade"
 	},
 	"ring2": {
-		"icon": ICON_PATH + "urand_mage.png",
+		"icon": ICON_PATH + "Popcorn.png",
 		"displayname": "Popcorn",
 		"details": "Your spells now spawn an additional attack",
 		"level": "Level: 2",
@@ -180,8 +180,8 @@ const UPGRADES = {
 		"type": "upgrade"
 	},
 	"food": {
-		"icon": ICON_PATH + "chunk.png",
-		"displayname": "Suppe",
+		"icon": ICON_PATH + "GoldenApple.png",
+		"displayname": "Golden Apple",
 		"details": "Heals you for 20 health",
 		"level": "N/A",
 		"prerequisite": [],

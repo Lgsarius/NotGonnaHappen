@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://2m0t2erg3ol8"
-path="res://.godot/imported/Level_Bar_Progress.png-b48f3189464fe49f2617443db905dcb6.ctex"
+uid="uid://54166xehivmj"
+path="res://.godot/imported/Button_Focus.png-6c15120b103690c86fa90ac908b6da38.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://UI_Sprites/Level_Bar_Progress.png"
-dest_files=["res://.godot/imported/Level_Bar_Progress.png-b48f3189464fe49f2617443db905dcb6.ctex"]
+source_file="res://assets/UI_Sprites/Button/Button_Focus.png"
+dest_files=["res://.godot/imported/Button_Focus.png-6c15120b103690c86fa90ac908b6da38.ctex"]
 
 [params]
 
