@@ -52,9 +52,10 @@ func show_map_complete() -> void:
 	map1_btn.visible = true
 	map2_btn.visible = true
 	map1_btn.grab_focus()
-	%ExperienceBar.visible = false
-	%Countdown.visible = false
-	%Score.visible = false
+	
+	
+	%CharacterInfo.visible = false
+	
 	
 	%MapComplete.get_node("ColorRect/MobDeathCount").text = "Killed Enemies: " + str(mob_death_count)
 	
@@ -102,9 +103,8 @@ func load_selected_map(map_path: String) -> void:
 	%MapComplete.visible = false
 	
 	
-	%ExperienceBar.visible = true
-	%Countdown.visible = true
-	%Score.visible = true
+	%CharacterInfo.visible = true
+
 	
 	mob_death_count = 0
 	time_remaining = time_remaining_init

@@ -1,19 +1,18 @@
-[gd_scene load_steps=22 format=3 uid="uid://c5vuxk0aa76sk"]
-
+[gd_scene load_steps=24 format=3 uid="uid://c5vuxk0aa76sk"]
 
 [ext_resource type="Script" path="res://game.gd" id="1_bamb0"]
-[ext_resource type="PackedScene" uid="uid://dfowxe2jkaehn" path="res://player.tscn" id="1_ym5bf"]
+[ext_resource type="PackedScene" uid="uid://dle7ccr76jp26" path="res://player.tscn" id="1_ym5bf"]
 [ext_resource type="Texture2D" uid="uid://umglauc5rebc" path="res://assets/UI_Sprites/Button/Menu_Button.png" id="2_cmmel"]
 [ext_resource type="FontFile" uid="uid://bkbhtbio65dg5" path="res://PUBLIC/GrapeSoda.ttf" id="2_ygrgo"]
 [ext_resource type="Texture2D" uid="uid://c8xx70c77p1nx" path="res://assets/UI_Sprites/Button/Button_pressed.png" id="3_8ssqm"]
 [ext_resource type="Texture2D" uid="uid://54166xehivmj" path="res://assets/UI_Sprites/Button/Button_Focus.png" id="4_eb2np"]
 [ext_resource type="Texture2D" uid="uid://cmv8jfi4xf05g" path="res://assets/UI_Sprites/XPBar/XP-Bottom.png" id="6_lf43h"]
 [ext_resource type="FontFile" uid="uid://clvfhgb14oc1w" path="res://assets/Fonts/Gamepixies-XGDzg.ttf" id="6_nn0oi"]
-[ext_resource type="PackedScene" uid="uid://bvhpswbs6abp5" path="res://maps/Prod_Maps/cozy_diner_map.tscn" id="6_pcvi6"]
 [ext_resource type="Script" path="res://restart_button.gd" id="7_adwdd"]
 [ext_resource type="Texture2D" uid="uid://cayy43y0t4dnr" path="res://assets/UI_Sprites/XPBar/XP-Midbar.png" id="7_i167d"]
 [ext_resource type="Texture2D" uid="uid://2wjv2m17pxjg" path="res://assets/UI_Sprites/CharacterDisplay/CharacterDisplay.png" id="8_f80o3"]
 [ext_resource type="Script" path="res://resume_button.gd" id="8_qki08"]
+[ext_resource type="PackedScene" uid="uid://cfqo80c6r6a8r" path="res://characters/old_man/old_man.tscn" id="10_luns8"]
 [ext_resource type="PackedScene" uid="uid://dmxkuoih4uc1n" path="res://Enemies/Evil_Pizza/Evil_Pizza.tscn" id="12_jmief"]
 [ext_resource type="PackedScene" uid="uid://dw4t4shc4gyjl" path="res://Utility/enemy_spawner.tscn" id="12_kt2t7"]
 [ext_resource type="Script" path="res://Utility/spawn_info.gd" id="13_sgraj"]
@@ -186,18 +185,72 @@ text = "Map Complete!"
 position = Vector2(344, 183)
 scale = Vector2(1.351, 1)
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="CharacterInfo" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
 layer = 2
 
-[node name="ExperienceBar" type="TextureProgressBar" parent="CanvasLayer"]
+[node name="ImageInfo" type="TextureRect" parent="CharacterInfo"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = -67.0
+offset_right = 164.0
+offset_bottom = -3.0
+grow_vertical = 0
+texture = ExtResource("8_f80o3")
+
+[node name="Countdown" type="Label" parent="CharacterInfo/ImageInfo"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.4375
+anchor_top = 4.75
+anchor_right = 2.39375
+anchor_bottom = 7.10938
+offset_top = -296.0
+offset_right = 29.0
+offset_bottom = -278.0
+scale = Vector2(0.1, 0.1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("6_nn0oi")
+theme_override_font_sizes/font_size = 160
+text = "2:00
+"
+metadata/_edit_use_anchors_ = true
+
+[node name="Score" type="Label" parent="CharacterInfo/ImageInfo"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 60.0
+offset_top = -23.0
+offset_right = 251.0
+offset_bottom = 286.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.05, 0.05)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("6_nn0oi")
+theme_override_font_sizes/font_size = 300
+text = "0"
+
+[node name="ExperienceBar" type="TextureProgressBar" parent="CharacterInfo/ImageInfo"]
 unique_name_in_owner = true
 texture_filter = 1
+layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.5
 offset_left = 67.0
-offset_top = 344.0
-offset_right = -165.0
-offset_bottom = 353.0
+offset_top = 48.0
+offset_right = 74.0
+offset_bottom = 57.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
@@ -206,63 +259,8 @@ nine_patch_stretch = true
 texture_under = ExtResource("6_lf43h")
 texture_progress = ExtResource("7_i167d")
 
-[node name="ColorRect" type="TextureRect" parent="CanvasLayer"]
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_top = -64.0
-offset_right = 160.0
-grow_vertical = 0
-texture = ExtResource("8_f80o3")
-
-[node name="Score" type="Label" parent="CanvasLayer"]
-unique_name_in_owner = true
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = 277.0
-offset_top = 4.0
-offset_right = 362.0
-offset_bottom = 176.0
-grow_horizontal = 2
-scale = Vector2(0.565445, 0.357019)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 10
-theme_override_fonts/font = ExtResource("6_nn0oi")
-theme_override_font_sizes/font_size = 126
-text = "0"
-metadata/_edit_use_anchors_ = true
-
-[node name="Countdown" type="Label" parent="CanvasLayer"]
-unique_name_in_owner = true
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -306.0
-offset_top = 1.0
-offset_right = -173.0
-offset_bottom = 70.0
-grow_horizontal = 2
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 10
-theme_override_fonts/font = ExtResource("6_nn0oi")
-theme_override_font_sizes/font_size = 60
-text = "2:00
-"
-metadata/_edit_use_anchors_ = true
-
-[node name="ExperienceBarTop" type="TextureProgressBar" parent="CanvasLayer"]
-unique_name_in_owner = true
-texture_filter = 1
-anchors_preset = -1
-anchor_right = 0.5
-offset_left = 344.0
-offset_top = 21.0
-offset_right = 664.0
-offset_bottom = 53.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.4, 0.4)
+[node name="Old_man" parent="CharacterInfo/ImageInfo" instance=ExtResource("10_luns8")]
+position = Vector2(28, 15)
 
 [node name="Timer4Countdown" type="Timer" parent="."]
 autostart = true
@@ -451,8 +449,6 @@ text = "Back to Menu"
 
 [node name="Spawnpoint" type="Node2D" parent="."]
 position = Vector2(693, 399)
-
-[node name="CozyDiner_Map" parent="." instance=ExtResource("6_pcvi6")]
 
 [node name="EnemySpawner" parent="." instance=ExtResource("12_kt2t7")]
 spawns = Array[ExtResource("13_sgraj")]([SubResource("Resource_n34h3"), SubResource("Resource_hvrhn")])
