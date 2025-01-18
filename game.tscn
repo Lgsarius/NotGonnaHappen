@@ -1,13 +1,14 @@
-[gd_scene load_steps=17 format=3 uid="uid://c5vuxk0aa76sk"]
+[gd_scene load_steps=18 format=3 uid="uid://c5vuxk0aa76sk"]
 
 [ext_resource type="Script" path="res://game.gd" id="1_bamb0"]
-[ext_resource type="PackedScene" uid="uid://dle7ccr76jp26" path="res://player.tscn" id="1_ym5bf"]
+[ext_resource type="PackedScene" uid="uid://dfowxe2jkaehn" path="res://player.tscn" id="1_ym5bf"]
 [ext_resource type="Texture2D" uid="uid://umglauc5rebc" path="res://assets/UI_Sprites/Button/Menu_Button.png" id="2_cmmel"]
 [ext_resource type="FontFile" uid="uid://bkbhtbio65dg5" path="res://PUBLIC/GrapeSoda.ttf" id="2_ygrgo"]
 [ext_resource type="Texture2D" uid="uid://c8xx70c77p1nx" path="res://assets/UI_Sprites/Button/Button_pressed.png" id="3_8ssqm"]
 [ext_resource type="Texture2D" uid="uid://54166xehivmj" path="res://assets/UI_Sprites/Button/Button_Focus.png" id="4_eb2np"]
 [ext_resource type="Texture2D" uid="uid://cbox2dwtg2npj" path="res://assets/UI_Sprites/XPBar/Level_Bar.png" id="5_s5vo4"]
 [ext_resource type="Texture2D" uid="uid://2m0t2erg3ol8" path="res://assets/UI_Sprites/XPBar/Level_Bar_Progress.png" id="6_eimp3"]
+[ext_resource type="FontFile" uid="uid://clvfhgb14oc1w" path="res://assets/Fonts/Gamepixies-XGDzg.ttf" id="6_nn0oi"]
 [ext_resource type="PackedScene" uid="uid://bvhpswbs6abp5" path="res://maps/Prod_Maps/cozy_diner_map.tscn" id="6_pcvi6"]
 [ext_resource type="Script" path="res://restart_button.gd" id="7_adwdd"]
 [ext_resource type="Script" path="res://resume_button.gd" id="8_qki08"]
@@ -161,25 +162,34 @@ theme_override_font_sizes/font_size = 30
 text = "Map Complete!"
 
 [node name="Player" parent="." instance=ExtResource("1_ym5bf")]
-position = Vector2(320, 179)
+position = Vector2(344, 183)
 scale = Vector2(1.351, 1)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 2
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+z_index = 400
+offset_left = 24.0
+offset_top = 318.0
+offset_right = 184.0
+offset_bottom = 368.0
+color = Color(0.420114, 0.181483, 0.470906, 1)
 
 [node name="Score" type="Label" parent="CanvasLayer"]
 unique_name_in_owner = true
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = 283.0
-offset_top = 2.0
-offset_right = 356.0
-offset_bottom = 174.0
+offset_left = 277.0
+offset_top = 4.0
+offset_right = 362.0
+offset_bottom = 176.0
 grow_horizontal = 2
 scale = Vector2(0.565445, 0.357019)
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("2_ygrgo")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("6_nn0oi")
 theme_override_font_sizes/font_size = 126
 text = "0"
 metadata/_edit_use_anchors_ = true
@@ -190,12 +200,13 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -306.0
-offset_top = 12.0
-offset_right = -208.0
-offset_bottom = 80.0
+offset_top = 1.0
+offset_right = -173.0
+offset_bottom = 70.0
 grow_horizontal = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("2_ygrgo")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("6_nn0oi")
 theme_override_font_sizes/font_size = 60
 text = "2:00
 "
@@ -206,13 +217,10 @@ unique_name_in_owner = true
 texture_filter = 1
 anchors_preset = -1
 anchor_right = 0.5
-offset_left = 344.0
-offset_top = 21.0
-offset_right = 664.0
-offset_bottom = 53.0
+offset_right = 320.0
+offset_bottom = 32.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.4, 0.4)
 texture_under = ExtResource("5_s5vo4")
 texture_progress = ExtResource("6_eimp3")
 
