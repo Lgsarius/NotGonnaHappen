@@ -5,23 +5,23 @@ var config = ConfigFile.new()
 
 func _ready() -> void:
 	# Set initial values for fullscreen
-	$FullscreenToggle.button_pressed = DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_FULLSCREEN
+	$VBoxContainer/HBoxContainer/FullscreenToggle.button_pressed = DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_FULLSCREEN
 	
 	# Load saved settings
 	load_settings()
 	
 	# Set initial slider values from current audio bus volumes
 	var master_volume = db_to_linear(AudioServer.get_bus_volume_db(AudioServer.get_bus_index("Master"))) * 100
-	$MasterVolume/HSlider3.value = master_volume
+	$VBoxContainer/MasterVolumeContainer/HSlider.value = master_volume
 	
 	# Only set Music and SFX if the buses exist
 	if AudioServer.get_bus_index("Music") >= 0:
 		var music_volume = db_to_linear(AudioServer.get_bus_volume_db(AudioServer.get_bus_index("Music"))) * 100
-		$MusicVolume/HSlider2.value = music_volume
+		$VBoxContainer/MusicVolumeContainer/HSlider/HSlider.value = music_volume
 	
 	if AudioServer.get_bus_index("SFX") >= 0:
 		var sfx_volume = db_to_linear(AudioServer.get_bus_volume_db(AudioServer.get_bus_index("SFX"))) * 100
-		$SFXVolume/HSlider.value = sfx_volume
+		$VBoxContainer/SFXVolumeContainer/HSlider.value = sfx_volume
 
 func load_settings() -> void:
 	var err = config.load(SAVE_PATH)
@@ -40,17 +40,17 @@ func load_settings() -> void:
 	
 	# Load fullscreen setting
 	var fullscreen = config.get_value("video", "fullscreen", false)
-	$FullscreenToggle.button_pressed = fullscreen
+	$VBoxContainer/HBoxContainer/FullscreenToggle.button_pressed = fullscreen
 	_on_fullscreen_toggle(fullscreen)
 
 func save_settings() -> void:
 	# Save volumes
-	config.set_value("audio", "master", $MasterVolume/HSlider3.value)
-	config.set_value("audio", "music", $MusicVolume/HSlider2.value)
-	config.set_value("audio", "sfx", $SFXVolume/HSlider.value)
+	config.set_value("audio", "master", $VBoxContainer/MasterVolumeContainer/HSlider.value)
+	config.set_value("audio", "music", $VBoxContainer/MusicVolumeContainer/HSlider.value)
+	config.set_value("audio", "sfx", $VBoxContainer/SFXVolumeContainer/HSlider.value)
 	
 	# Save fullscreen setting
-	config.set_value("video", "fullscreen", $FullscreenToggle.button_pressed)
+	config.set_value("video", "fullscreen", $VBoxContainer/HBoxContainer/FullscreenToggle.button_pressed)
 	
 	# Save to file
 	config.save(SAVE_PATH)
