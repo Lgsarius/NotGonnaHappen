@@ -4,5 +4,4 @@
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer"]
 stream = ExtResource("1_wj4tj")
-autoplay = true
 parameters/looping = true

@@ -28,9 +28,6 @@ func toggle_pause() -> void:
 	get_tree().paused = !get_tree().paused
 	%PauseMenu.visible = get_tree().paused
 
-
-
-
 func _on_timer_4_countdown_timeout() -> void:
 	time_remaining -= 1
 	if time_remaining <= 0:
@@ -179,13 +176,16 @@ func _on_map_1_pressed() -> void:
 
 func _on_map_2_pressed() -> void:
 	load_selected_map(map_options[1])
-	
-	
-	
-
-
-
 
 func _upgrade_pressed():
 	print("Ich bring mich um")
 	
+func become_host():
+	print("Host Pressed")
+	%HostButton.hide()
+	MultiplayerManager.become_host()
+
+func join_as_player_2():
+	print("Join as Player 2")
+	%JoinButton.hide()
+	MultiplayerManager.join_as_player_2()

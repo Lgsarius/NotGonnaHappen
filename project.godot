@@ -89,6 +89,7 @@ buses/default_bus_layout=""
 [autoload]
 
 UpgradeDb="*res://Utility/upgrade_db.tscn"
+MultiplayerManager="*res://scenes/multiplayer/multiplayer_manager.gd"
 
 [debug]
 
@@ -98,8 +99,7 @@ gdscript/warnings/integer_division=0
 
 window/size/viewport_width=640
 window/size/viewport_height=360
-window/size/window_width_override=1920
-window/size/window_height_override=1080
+window/size/always_on_top=true
 window/stretch/mode="viewport"
 
 [dotnet]
