@@ -22,10 +22,11 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel"): 
 		if not %GameOver.visible and not %MapComplete.visible:  
 			toggle_pause()
-			$PauseMenu/VBoxContainer/ResumeButton.grab_focus()
+			$PauseMenu/HBoxContainer/VBoxContainer/ResumeButton.grab_focus()
 
 func toggle_pause() -> void:
 	get_tree().paused = !get_tree().paused
+	%CharacterInfo.visible = false
 	%PauseMenu.visible = get_tree().paused
 
 func _on_timer_4_countdown_timeout() -> void:
@@ -144,6 +145,7 @@ func _on_player_loot_collected() -> void:
 
 func _on_resume_button_pressed() -> void:
 	toggle_pause()
+	%CharacterInfo.visible = true
 
 func _on_settings_button_pressed() -> void:
 	var settings_scene = load("res://scenes/Settings/GameSettings.tscn").instantiate()

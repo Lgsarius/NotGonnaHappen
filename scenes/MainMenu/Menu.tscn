@@ -42,8 +42,8 @@ scale = Vector2(1.98911, 3.91304)
 curve = SubResource("Curve2D_2v4j0")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="ColorRect/Path2D"]
-position = Vector2(115.139, 20.9512)
-rotation = 0.00051088
+position = Vector2(115.138, 20.9512)
+rotation = 0.000510972
 progress = 491.677
 
 [node name="Player" type="AnimatedSprite2D" parent="ColorRect/Path2D/PathFollow2D"]

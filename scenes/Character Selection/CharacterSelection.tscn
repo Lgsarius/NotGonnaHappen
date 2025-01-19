@@ -640,6 +640,7 @@ texture = ExtResource("8_bakgv")
 
 [node name="WKey" type="AnimatedSprite2D" parent="CanvasLayer/HBoxContainer2/TextureRect"]
 position = Vector2(96, 16)
+scale = Vector2(0.990043, 1.04314)
 sprite_frames = SubResource("SpriteFrames_n53qf")
 animation = &"WKEyPress"
 autoplay = "WKEyPress"
