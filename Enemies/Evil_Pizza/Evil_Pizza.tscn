@@ -1,64 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://dmxkuoih4uc1n"]
+[gd_scene load_steps=8 format=3 uid="uid://dmxkuoih4uc1n"]
 
 [ext_resource type="Script" path="res://Enemies/Evil_Pizza/enemy.gd" id="1_gq7ae"]
-[ext_resource type="Texture2D" uid="uid://dwcijd3ix1u5y" path="res://assets/Enemies/EvilPizza/Evil Pizza.png" id="2_q4qtk"]
-[ext_resource type="PackedScene" uid="uid://bksq8t3qk3ayk" path="res://Utility/hurt_box.tscn" id="3_6jmam"]
-[ext_resource type="PackedScene" uid="uid://dvgyj4wu61ku3" path="res://Utility/hit_box.tscn" id="4_rjcjx"]
+[ext_resource type="SpriteFrames" uid="uid://sme1i5icbsim" path="res://Enemies/Evil_Pizza/Evil_Pizza.tres" id="2_a8sm7"]
+[ext_resource type="PackedScene" path="res://Utility/hurt_box.tscn" id="3_6jmam"]
+[ext_resource type="PackedScene" path="res://Utility/hit_box.tscn" id="4_rjcjx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ilwk0"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_s1jnh"]
-atlas = ExtResource("2_q4qtk")
-region = Rect2(48, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_7f0y8"]
-atlas = ExtResource("2_q4qtk")
-region = Rect2(16, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_c5mf8"]
-atlas = ExtResource("2_q4qtk")
-region = Rect2(16, 48, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_erkox"]
-atlas = ExtResource("2_q4qtk")
-region = Rect2(48, 48, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_lkujb"]
-atlas = ExtResource("2_q4qtk")
-region = Rect2(80, 48, 32, 32)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_677fu"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_s1jnh")
-}],
-"loop": true,
-"name": &"hurt",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_7f0y8")
-}],
-"loop": true,
-"name": &"idle",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_c5mf8")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_erkox")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_lkujb")
-}],
-"loop": true,
-"name": &"walk",
-"speed": 5.0
-}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qnnyl"]
 size = Vector2(25, 31)
@@ -75,7 +22,7 @@ position = Vector2(-1, 6)
 shape = SubResource("RectangleShape2D_ilwk0")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_677fu")
+sprite_frames = ExtResource("2_a8sm7")
 animation = &"hurt"
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]

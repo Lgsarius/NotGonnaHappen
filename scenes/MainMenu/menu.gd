@@ -1,6 +1,8 @@
 extends Control
 
+@onready var path_follow: PathFollow2D = $ColorRect/Path2D/PathFollow2D
 
+@export var speed = 100
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$VBoxContainer/StartButton2.grab_focus()
@@ -9,11 +11,11 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	pass
+	path_follow.progress += speed * _delta
 
 
 func _on_start_button_pressed() -> void:
-	get_tree().change_scene_to_file("res://game.tscn")
+	get_tree().change_scene_to_file("res://scenes/Character Selection/CharacterSelection.tscn")
 	print("Start Pressed")
 
 

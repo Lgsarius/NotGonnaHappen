@@ -1,0 +1,56 @@
+[gd_resource type="SpriteFrames" load_steps=7 format=3 uid="uid://sme1i5icbsim"]
+
+[ext_resource type="Texture2D" uid="uid://dwcijd3ix1u5y" path="res://assets/Enemies/EvilPizza/Evil Pizza.png" id="1_prk1p"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s1jnh"]
+atlas = ExtResource("1_prk1p")
+region = Rect2(48, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7f0y8"]
+atlas = ExtResource("1_prk1p")
+region = Rect2(16, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c5mf8"]
+atlas = ExtResource("1_prk1p")
+region = Rect2(16, 48, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_erkox"]
+atlas = ExtResource("1_prk1p")
+region = Rect2(48, 48, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lkujb"]
+atlas = ExtResource("1_prk1p")
+region = Rect2(80, 48, 32, 32)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s1jnh")
+}],
+"loop": true,
+"name": &"hurt",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7f0y8")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c5mf8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_erkox")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lkujb")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
