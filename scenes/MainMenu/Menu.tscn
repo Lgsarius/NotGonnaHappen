@@ -12,7 +12,7 @@
 
 [sub_resource type="Curve2D" id="Curve2D_2v4j0"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -521.842, 21.2111, 0, 0, 0, 0, 213.664, 20.7)
+"points": PackedVector2Array(0, 0, 0, 0, -376.55, 20.7, 0, 0, 0, 0, 123.673, 20.9556)
 }
 point_count = 2
 
@@ -42,9 +42,9 @@ scale = Vector2(1.98911, 3.91304)
 curve = SubResource("Curve2D_2v4j0")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="ColorRect/Path2D"]
-position = Vector2(161.927, 20.736)
-rotation = -0.000694894
-progress = 683.753
+position = Vector2(115.139, 20.9512)
+rotation = 0.00051088
+progress = 491.677
 
 [node name="Player" type="AnimatedSprite2D" parent="ColorRect/Path2D/PathFollow2D"]
 position = Vector2(29.5942, 1.72261e-09)
