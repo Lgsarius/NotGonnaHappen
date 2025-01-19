@@ -425,7 +425,7 @@ expand_mode = 2
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="CanvasLayer/HBoxContainer/TextureRect4"]
 unique_name_in_owner = true
 position = Vector2(62, 36)
-scale = Vector2(2, 1.70833)
+scale = Vector2(1.99246, 1.78882)
 sprite_frames = SubResource("SpriteFrames_vmy6m")
 animation = &"idle"
 frame_progress = 0.386453
