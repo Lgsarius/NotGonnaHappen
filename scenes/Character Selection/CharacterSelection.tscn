@@ -335,13 +335,13 @@ text = "Select Your Character"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="StartButton2" type="TextureButton" parent="CanvasLayer/Label"]
+[node name="Start Button" type="TextureButton" parent="CanvasLayer/Label"]
 custom_minimum_size = Vector2(300, 50)
 layout_mode = 0
 offset_left = 102.0
-offset_top = 64.0
+offset_top = 45.0
 offset_right = 402.0
-offset_bottom = 128.0
+offset_bottom = 109.0
 size_flags_vertical = 4
 focus_neighbor_top = NodePath("../ExitButton2")
 focus_neighbor_bottom = NodePath("../MultiplayerButton2")
@@ -350,7 +350,7 @@ texture_pressed = ExtResource("4_rdpna")
 texture_focused = ExtResource("5_d5uow")
 stretch_mode = 0
 
-[node name="StartButton" type="Label" parent="CanvasLayer/Label/StartButton2"]
+[node name="StartButton" type="Label" parent="CanvasLayer/Label/Start Button"]
 custom_minimum_size = Vector2(300, 50)
 layout_mode = 1
 anchors_preset = 8
@@ -369,7 +369,44 @@ theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("6_p0mcq")
 theme_override_font_sizes/font_size = 32
-text = "New Game"
+text = "Start GAme"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Host Button" type="TextureButton" parent="CanvasLayer/Label"]
+custom_minimum_size = Vector2(300, 50)
+offset_left = 102.0
+offset_top = 98.0
+offset_right = 402.0
+offset_bottom = 162.0
+size_flags_vertical = 4
+focus_neighbor_top = NodePath("../ExitButton2")
+focus_neighbor_bottom = NodePath("../MultiplayerButton2")
+texture_normal = ExtResource("3_3lrc3")
+texture_pressed = ExtResource("4_rdpna")
+texture_focused = ExtResource("5_d5uow")
+stretch_mode = 0
+
+[node name="HostButton" type="Label" parent="CanvasLayer/Label/Host Button"]
+custom_minimum_size = Vector2(300, 50)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -25.0
+offset_right = 150.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_neighbor_bottom = NodePath("../../MultiplayerButton2/MultiplayerButton")
+theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_p0mcq")
+theme_override_font_sizes/font_size = 32
+text = "Host Game"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -481,6 +518,53 @@ layout_mode = 2
 size_flags_horizontal = 3
 texture = ExtResource("2_cfycx")
 expand_mode = 2
+
+[node name="JoinButton" type="TextureButton" parent="CanvasLayer/HBoxContainer/TextureRect2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -38.0
+offset_top = -40.0
+offset_right = 90.0
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.6, 0.6)
+size_flags_vertical = 4
+focus_neighbor_top = NodePath("../ExitButton2")
+focus_neighbor_bottom = NodePath("../MultiplayerButton2")
+texture_normal = ExtResource("3_3lrc3")
+texture_pressed = ExtResource("4_rdpna")
+texture_focused = ExtResource("5_d5uow")
+stretch_mode = 0
+
+[node name="JoinButton" type="Label" parent="CanvasLayer/HBoxContainer/TextureRect2/JoinButton"]
+custom_minimum_size = Vector2(300, 50)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -30.6667
+offset_top = -0.33334
+offset_right = 302.333
+offset_bottom = 67.6667
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.2, 0.2)
+focus_neighbor_bottom = NodePath("../../MultiplayerButton2/MultiplayerButton")
+theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_p0mcq")
+theme_override_font_sizes/font_size = 60
+text = "Join Game
+"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Left Button" type="TextureButton" parent="CanvasLayer/HBoxContainer/TextureRect2"]
 layout_mode = 1
@@ -634,5 +718,5 @@ texture_pressed = SubResource("CompressedTexture2D_j5e1p")
 texture_hover = SubResource("CompressedTexture2D_j5e1p")
 stretch_mode = 0
 
-[connection signal="pressed" from="CanvasLayer/Label/StartButton2" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Label/Start Button" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/BackButton" to="." method="_on_back_button_pressed"]
