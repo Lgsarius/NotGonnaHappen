@@ -32,17 +32,20 @@ var dashing = false
 var can_dash  = true
 var last_direction:float = 0.0
 var percentage_of_time
+
 var PommesSchuss = preload("res://Weapons/pommes_schuss.tscn")
 var PommesSchuss_ammo = 0
-var PommesSchuss_baseammo = 1
+var PommesSchuss_baseammo = 0
 var PommesSchuss_attackspeed = 1.5
-var PommesSchuss_level = 1
+var PommesSchuss_level = 0
 var enemy_close = []
 
 func _ready() -> void:
 	set_expbar(experience,calculate_experiencecap())
 	score.text = str(experience_level)
+	upgrade_character("PommesSchuss1")
 	attack()
+	
 func _physics_process(delta: float) -> void:
 	movement()
 	
@@ -82,7 +85,7 @@ func movement():
 	
 func attack():
 	if PommesSchuss_level > 0:
-		PommesSchussTimer.wait_time = PommesSchuss_attackspeed
+		PommesSchussTimer.wait_time = PommesSchuss_attackspeed * (1-spell_cooldown)
 		if PommesSchussTimer.is_stopped():
 			PommesSchussTimer.start()
 
@@ -154,6 +157,18 @@ func levelup():
 
 func upgrade_character(upgrade):
 	match upgrade:
+		"PommesSchuss1":
+			PommesSchuss_level  = 1
+			PommesSchuss_baseammo += 1
+		"PommesSchuss2":
+			PommesSchuss_level  = 2
+			PommesSchuss_baseammo += 1
+		"PommesSchuss3":
+			PommesSchuss_level  = 3
+			PommesSchuss_baseammo += 1
+		"PommesSchuss4":
+			PommesSchuss_level  = 4
+			PommesSchuss_baseammo += 1
 		"health1","health2","health3","health4":
 			maxhealth += 20
 			health+=20
@@ -173,13 +188,14 @@ func upgrade_character(upgrade):
 			health += 20
 			health = clamp(health,0,maxhealth)
 	
+	attack()
 	for child in upgradeOptions.get_children():
 		child.queue_free()
 	upgrade_options.clear()
 	collected_upgrades.append(upgrade)
 	levelPanel.visible = false
 	get_tree().paused = false
-	
+	calculate_experience(0)
 
 func _on_dash_timer_timeout() -> void:
 	dashing = false
@@ -223,8 +239,9 @@ func _on_hurt_box_hurt(damage, _angle,_knockback):
 
 
 func _on_pommes_schuss_timer_timeout() -> void:
-	PommesSchuss_ammo += PommesSchuss_baseammo
-	PommesSchussAttackTimer.start()
+	if enemy_close.size() >0:
+		PommesSchuss_ammo += PommesSchuss_baseammo + additional_attacks
+		PommesSchussAttackTimer.start()
 
 
 func _on_pommees_schuss_atack_timer_timeout() -> void:

@@ -3,6 +3,38 @@ extends Node
 const ICON_PATH = "res://Textures/Items/Upgrades/"
 const WEAPON_PATH ="res://Textures/Items/Weapons/"
 const UPGRADES = {
+	"PommesSchuss1":{
+		#"icon": ICON_PATH + "Burger.png",
+		"displayname": "Pommes",
+		"details": "Penis",
+		"level": "Level: 1",
+		"prerequisite": [],
+		"type": "weapon"
+	},
+	"PommesSchuss2":{
+		#"icon": ICON_PATH + "Burger.png",
+		"displayname": "Pommes",
+		"details": "Penis",
+		"level": "Level: 2",
+		"prerequisite": ["PommesSchuss1"],
+		"type": "weapon"
+	},
+	"PommesSchuss3":{
+		#"icon": ICON_PATH + "Burger.png",
+		"displayname": "Pommes",
+		"details": "Penis",
+		"level": "Level: 3",
+		"prerequisite": ["PommesSchuss2"],
+		"type": "weapon"
+	},
+	"PommesSchuss4":{
+		#"icon": ICON_PATH + "Burger.png",
+		"displayname": "Pommes",
+		"details": "Penis",
+		"level": "Level: 1",
+		"prerequisite": ["PommesSchuss3"],
+		"type": "weapon"
+	},
 	"health1":{
 		"icon": ICON_PATH + "Burger.png",
 		"displayname": "Burger",
