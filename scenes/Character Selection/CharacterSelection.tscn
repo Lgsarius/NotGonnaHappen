@@ -1,9 +1,8 @@
-[gd_scene load_steps=54 format=3 uid="uid://dsclthieyep67"]
+[gd_scene load_steps=53 format=3 uid="uid://dsclthieyep67"]
 
 [ext_resource type="Script" path="res://scenes/Character Selection/character_selection.gd" id="1_e0h17"]
 [ext_resource type="FontFile" uid="uid://clvfhgb14oc1w" path="res://assets/Fonts/Gamepixies-XGDzg.ttf" id="1_u2nrw"]
 [ext_resource type="Texture2D" uid="uid://dt537wjluvne1" path="res://assets/UI_Sprites/CharacterSelectBox/Character select box - Main.png" id="2_cfycx"]
-[ext_resource type="PackedScene" uid="uid://ctj3k63qbjku" path="res://game.tscn" id="2_d1viy"]
 [ext_resource type="Texture2D" uid="uid://umglauc5rebc" path="res://assets/UI_Sprites/Button/Menu_Button.png" id="3_3lrc3"]
 [ext_resource type="Texture2D" uid="uid://cjoqb3528xb3" path="res://characters/old_man/IDLE.png" id="3_k4ljh"]
 [ext_resource type="Texture2D" uid="uid://c8xx70c77p1nx" path="res://assets/UI_Sprites/Button/Button_pressed.png" id="4_rdpna"]
@@ -297,8 +296,6 @@ animations = [{
 [node name="CharacterSelection" type="Node2D"]
 script = ExtResource("1_e0h17")
 
-[node name="Game" parent="." instance=ExtResource("2_d1viy")]
-
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
@@ -374,7 +371,6 @@ offset_left = 102.0
 offset_top = 98.0
 offset_right = 402.0
 offset_bottom = 162.0
-offset_bottom = 162.0
 size_flags_vertical = 4
 focus_neighbor_top = NodePath("../ExitButton2")
 focus_neighbor_bottom = NodePath("../MultiplayerButton2")
@@ -402,7 +398,6 @@ theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("6_p0mcq")
 theme_override_font_sizes/font_size = 32
-text = "Host Game"
 text = "Host Game"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -553,7 +548,7 @@ offset_right = 302.333
 offset_bottom = 67.6667
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.2, 0.2)
+scale = Vector2(0.201759, 0.204067)
 focus_neighbor_bottom = NodePath("../../MultiplayerButton2/MultiplayerButton")
 theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
@@ -717,6 +712,4 @@ texture_hover = SubResource("CompressedTexture2D_j5e1p")
 stretch_mode = 0
 
 [connection signal="pressed" from="CanvasLayer/Label/Start Button" to="." method="_on_start_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/Label/HostButton" to="Game" method="become_host"]
-[connection signal="pressed" from="CanvasLayer/HBoxContainer/TextureRect2/JoinButton" to="Game" method="join_as_player_2"]
 [connection signal="pressed" from="CanvasLayer/BackButton" to="." method="_on_back_button_pressed"]
