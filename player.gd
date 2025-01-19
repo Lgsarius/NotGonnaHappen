@@ -3,10 +3,16 @@ signal loot_collected
 signal health_depleted
 signal level_up
 
-
 @onready var levelPanel = $LevelUp
 @onready var upgradeOptions = %UpgradeOptions
 @onready var itemOptions =preload("res://Utility/item_option.tscn")
+@onready var sprite = %Old_man
+@onready var expBar = %ExperienceBar
+@onready var score = %Score
+@onready var dash_bar = $Dash_bar
+@onready var dash_cd_timer = $dash_cooldown
+@onready var PommesSchussTimer = $Attack/PommesSchussTimer
+@onready var PommesSchussAttackTimer = $Attack/PommesSchussTimer/PommeesSchussAtackTimer
 
 var health = 100.0
 var maxhealth =100.0
@@ -21,35 +27,17 @@ var collected_experience = 0
 var collected_upgrades  = []
 var upgrade_options = []
 const DAMAGE_RATE = 100
-
-
 var dash_speed = 600
 var dashing = false
 var can_dash  = true
 var last_direction:float = 0.0
 var percentage_of_time
-
-
-
-
-
 var PommesSchuss = preload("res://Weapons/pommes_schuss.tscn")
-@onready var PommesSchussTimer = $Attack/PommesSchussTimer
-@onready var PommesSchussAttackTimer = $Attack/PommesSchussTimer/PommeesSchussAtackTimer
 var PommesSchuss_ammo = 0
 var PommesSchuss_baseammo = 1
 var PommesSchuss_attackspeed = 1.5
 var PommesSchuss_level = 1
-
-
-
 var enemy_close = []
-
-@onready var sprite = %Old_man
-@onready var expBar = %ExperienceBar
-@onready var score = %Score
-@onready var dash_bar = $Dash_bar
-@onready var dash_cd_timer = $dash_cooldown
 
 func _ready() -> void:
 	set_expbar(experience,calculate_experiencecap())
@@ -58,14 +46,9 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	movement()
 	
-	
 	%ProgressBar.value = health
 	if health <= 0.0:
 		health_depleted.emit()
-	
-		
-		
-	
 		
 func movement():
 	var x_mov = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
@@ -97,8 +80,6 @@ func movement():
 	else:
 		%Old_man.play_idle_animation()
 	
-	
-	
 func attack():
 	if PommesSchuss_level > 0:
 		PommesSchussTimer.wait_time = PommesSchuss_attackspeed
@@ -108,7 +89,6 @@ func attack():
 func _on_grab_area_area_entered(area: Area2D) -> void:
 	if area.is_in_group("loot"):
 		area.target = self
-
 
 func _on_collect_area_area_entered(area: Area2D) -> void:
 	if area.is_in_group("loot"):
@@ -122,9 +102,6 @@ func _on_collect_area_area_entered(area: Area2D) -> void:
 		get_parent().add_child(xp_label)
 		calculate_experience(gem_exp)
 		loot_collected.emit()
-		
-		
-		
 		
 func calculate_experience(gem_exp):
 	var exp_required = calculate_experiencecap()

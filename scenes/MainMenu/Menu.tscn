@@ -52,7 +52,7 @@ scale = Vector2(1.61655, 1)
 sprite_frames = ExtResource("2_ta8nd")
 animation = &"run"
 autoplay = "run"
-frame_progress = 0.865203
+frame_progress = 0.372774
 
 [node name="EnemieRun" type="AnimatedSprite2D" parent="ColorRect/Path2D/PathFollow2D"]
 position = Vector2(-69.2859, 17.3457)
@@ -61,7 +61,7 @@ scale = Vector2(1, 0.576)
 sprite_frames = ExtResource("3_ow70y")
 animation = &"walk"
 autoplay = "walk"
-frame_progress = 0.390514
+frame_progress = 0.267322
 flip_h = true
 
 [node name="EnemieRun2" type="AnimatedSprite2D" parent="ColorRect/Path2D/PathFollow2D"]
@@ -72,7 +72,7 @@ skew = 0.0185226
 sprite_frames = ExtResource("3_ow70y")
 animation = &"walk"
 autoplay = "walk"
-frame_progress = 0.448103
+frame_progress = 0.324911
 flip_h = true
 
 [node name="Label" type="Label" parent="."]

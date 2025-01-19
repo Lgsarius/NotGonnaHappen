@@ -27,7 +27,7 @@ func load_settings() -> void:
 	var err = config.load(SAVE_PATH)
 	if err != OK:
 		return
-	
+
 	# Load volumes
 	var master_vol = config.get_value("audio", "master", 80.0)
 	var music_vol = config.get_value("audio", "music", 80.0)
