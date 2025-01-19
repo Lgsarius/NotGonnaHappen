@@ -7,8 +7,8 @@ var time_remaining_init = 100
 var mob_death_count = 0
 
 @onready var player = $Player
-@onready var map1_btn = %MapComplete.get_node("ColorRect/HBoxContainer/Map1")
-@onready var map2_btn = %MapComplete.get_node("ColorRect/HBoxContainer/Map2")
+@onready var map1_btn = %MapComplete.get_node("ColorRect/Map1")
+@onready var map2_btn = %MapComplete.get_node("ColorRect/Map2/")
 
 var map_options = ["nix","nix"]
  
