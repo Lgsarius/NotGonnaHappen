@@ -25,7 +25,13 @@ func _unhandled_input(event: InputEvent) -> void:
 		if not %GameOver.visible and not %MapComplete.visible:  
 			toggle_pause()
 			$PauseMenu/HBoxContainer/VBoxContainer/ResumeButton.grab_focus()
-
+	if event.is_action_pressed("debug"):
+		if not $DebugWindow.visible:
+			$DebugWindow.visible  = true
+			$DebugWindow.process_mode = Node.PROCESS_MODE_ALWAYS
+		else:
+			$DebugWindow.visible = false
+	
 func toggle_pause() -> void:
 	get_tree().paused = !get_tree().paused
 	player.toggle_character_info(false)
@@ -148,7 +154,7 @@ func _on_player_loot_collected() -> void:
 
 func _on_resume_button_pressed() -> void:
 	toggle_pause()
-	%CharacterInfo.visible = true
+	player.toggle_character_info(true)
 
 func _on_settings_button_pressed() -> void:
 	var settings_scene = load("res://scenes/Settings/GameSettings.tscn").instantiate()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://ctj3k63qbjku"]
+[gd_scene load_steps=24 format=3 uid="uid://ctj3k63qbjku"]
 
 [ext_resource type="Script" path="res://game.gd" id="1_bamb0"]
 [ext_resource type="PackedScene" uid="uid://dle7ccr76jp26" path="res://player.tscn" id="1_ym5bf"]
@@ -16,6 +16,8 @@
 [ext_resource type="PackedScene" uid="uid://dw4t4shc4gyjl" path="res://Utility/enemy_spawner.tscn" id="12_kt2t7"]
 [ext_resource type="Texture2D" uid="uid://dmylil0yv2jxm" path="res://DesignWork/Gameprojekt/Export/Button_pressed.png" id="13_3nlbj"]
 [ext_resource type="Script" path="res://Utility/spawn_info.gd" id="13_sgraj"]
+[ext_resource type="Script" path="res://debug.gd" id="17_ctlcm"]
+[ext_resource type="FontFile" uid="uid://b0re2f6plrnns" path="res://addons/net.yarvis.pixel_pen/resources/fonts/inter/static/Inter-Bold.ttf" id="18_vl7ya"]
 
 [sub_resource type="Theme" id="Theme_uq34s"]
 
@@ -499,8 +501,28 @@ size_flags_vertical = 3
 [node name="Spawnpoint" type="Node2D" parent="."]
 position = Vector2(693, 399)
 
-[node name="EnemySpawner" parent="." instance=ExtResource("12_kt2t7")]
+[node name="EnemySpawner" parent="." groups=["enemyspawner"] instance=ExtResource("12_kt2t7")]
 spawns = Array[ExtResource("13_sgraj")]([SubResource("Resource_27w51")])
+
+[node name="DebugWindow" type="CanvasLayer" parent="."]
+visible = false
+script = ExtResource("17_ctlcm")
+
+[node name="Panel" type="Panel" parent="DebugWindow"]
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(3.82725, 7.24328)
+
+[node name="Label" type="Label" parent="DebugWindow/Panel"]
+layout_mode = 0
+offset_right = 1.0
+offset_bottom = 17.0
+scale = Vector2(0.01, 0.01)
+theme_override_fonts/font = ExtResource("18_vl7ya")
+theme_override_font_sizes/font_size = 259
+
+[node name="DebugTimer" type="Timer" parent="DebugWindow"]
+autostart = true
 
 [connection signal="Game_time" from="." to="Player" method="_on_game_game_time"]
 [connection signal="map_completed" from="." to="EnemySpawner" method="_on_game_map_completed"]
@@ -514,3 +536,4 @@ spawns = Array[ExtResource("13_sgraj")]([SubResource("Resource_27w51")])
 [connection signal="pressed" from="PauseMenu/HBoxContainer/VBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
 [connection signal="pressed" from="PauseMenu/HBoxContainer/VBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
 [connection signal="pressed" from="PauseMenu/HBoxContainer/VBoxContainer/MainMenuButton" to="." method="_on_pause_menu_pressed"]
+[connection signal="timeout" from="DebugWindow/DebugTimer" to="DebugWindow" method="_on_debug_timer_timeout"]

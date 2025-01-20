@@ -3,6 +3,7 @@ extends CharacterBody2D
 
 @export var movement_speed = 20
 @export var health  = 30
+@export var damage  =1
 @onready var knockback_recovery  =3.5
 var knockback = Vector2.ZERO
 
@@ -10,13 +11,16 @@ var knockback = Vector2.ZERO
 @onready var player = get_tree().get_first_node_in_group("player")
 @onready var sprite = $AnimatedSprite2D
 @onready var nav_agent = $NavigationAgent2D as NavigationAgent2D
+@onready var HitBox = $HitBox
 @onready var exp_gem = preload("res://orb.tscn")
 signal remove_from_array(object)
 
 
 func _ready():
+	
 	sprite.play("walk")
 func _physics_process(_delta: float) -> void:
+	HitBox.damage = damage
 	knockback = knockback.move_toward(Vector2.ZERO,knockback_recovery)
 	#var dir = global_position.direction_to(player.global_position)
 	var next_path_pos := nav_agent.get_next_path_position()
@@ -41,8 +45,8 @@ func death():
 	get_parent().call_deferred("add_child",new_orb)
 	queue_free()
 	
-func _on_hurt_box_hurt(damage,angle,knockback_amount):
-	health -= damage
+func _on_hurt_box_hurt(inc_damage,angle,knockback_amount):
+	health -= inc_damage
 	knockback = angle * knockback_amount
 	if health <= 0:
 		death()
