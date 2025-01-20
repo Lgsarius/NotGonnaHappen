@@ -10,6 +10,8 @@ var mob_death_count = 0
 @onready var map1_btn = %MapComplete.get_node("ColorRect/Map1")
 @onready var map2_btn = %MapComplete.get_node("ColorRect/Map2/")
 
+signal map_completed
+
 var map_options = ["nix","nix"]
  
 func _ready() -> void:
@@ -42,6 +44,7 @@ func update_countdown_display() -> void:
 	%Countdown.text = "%d:%02d" % [minutes, seconds]
 
 func show_map_complete() -> void:
+	map_completed.emit()
 	print("Showing map complete screen")
 	get_tree().paused = true
 	
@@ -119,8 +122,13 @@ func load_selected_map(map_path: String) -> void:
 
 func cleanup_map():
 	for child in get_children():
-		if "map" in child.get_groups() or "enemy" in child.get_groups() or "loot" in child.get_groups():
+		if "map" in child.get_groups() :
 			print("Removing node: ", child.name)
+			remove_child(child)
+			child.queue_free()
+	for child in $EnemySpawner.get_children():
+		if "enemy" in child.get_groups() or "loot" in child.get_groups():
+			print("Removing node: ",child.name)
 			remove_child(child)
 			child.queue_free()
 	player.global_position = $Spawnpoint.global_position

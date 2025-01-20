@@ -31,7 +31,7 @@ const UPGRADES = {
 		#"icon": ICON_PATH + "Burger.png",
 		"displayname": "Pommes",
 		"details": "Penis",
-		"level": "Level: 1",
+		"level": "Level: 4",
 		"prerequisite": ["PommesSchuss3"],
 		"type": "weapon"
 	},

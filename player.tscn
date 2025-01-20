@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://33lpitwgbf4y" path="res://assets/UI_Sprites/Levelupbg.png" id="2_pyedv"]
 [ext_resource type="PackedScene" uid="uid://cfqo80c6r6a8r" path="res://characters/old_man/old_man.tscn" id="2_xqq8s"]
 [ext_resource type="FontFile" uid="uid://clvfhgb14oc1w" path="res://assets/Fonts/Gamepixies-XGDzg.ttf" id="3_wo4n6"]
-[ext_resource type="PackedScene" path="res://Utility/hurt_box.tscn" id="5_oniaj"]
+[ext_resource type="PackedScene" uid="uid://bksq8t3qk3ayk" path="res://Utility/hurt_box.tscn" id="5_oniaj"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s4bw0"]
 bg_color = Color(0.152941, 0.168627, 0.188235, 1)

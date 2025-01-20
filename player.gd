@@ -14,6 +14,7 @@ signal level_up
 @onready var PommesSchussTimer = $Attack/PommesSchussTimer
 @onready var PommesSchussAttackTimer = $Attack/PommesSchussTimer/PommeesSchussAtackTimer
 
+var level  = 1
 var health = 100.0
 var maxhealth =100.0
 var movement_speed = 200
@@ -136,6 +137,7 @@ func set_expbar(set_value = 1, set_max_value=100):
 
 
 func levelup():
+	level += 1
 	level_up.emit()
 	score.text = str(experience_level)
 	print("LevelUP")
