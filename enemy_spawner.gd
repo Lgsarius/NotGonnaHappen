@@ -71,3 +71,8 @@ func calc_multi():
 
 func _on_game_map_completed() -> void:
 	maps_completed += 1
+	for child in get_children():
+		if "enemy" in child.get_groups() or "loot" in child.get_groups():
+			print("Removing node: ", child.name)
+			remove_child(child)
+			child.queue_free()

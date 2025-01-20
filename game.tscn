@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://ctj3k63qbjku"]
+[gd_scene load_steps=22 format=3 uid="uid://ctj3k63qbjku"]
 
 [ext_resource type="Script" path="res://game.gd" id="1_bamb0"]
 [ext_resource type="PackedScene" uid="uid://dle7ccr76jp26" path="res://player.tscn" id="1_ym5bf"]
@@ -9,12 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://54166xehivmj" path="res://assets/UI_Sprites/Button/Button_Focus.png" id="4_eb2np"]
 [ext_resource type="Texture2D" uid="uid://nb41lnqiojch" path="res://assets/UI_Sprites/CharacterSelectBox/Character select box - Button right.png" id="5_fsv6f"]
 [ext_resource type="Texture2D" uid="uid://bkg5v4nrf0yf8" path="res://assets/UI_Sprites/MapEndMenu/MapendMenu - Layer 1.png" id="6_75b40"]
-[ext_resource type="Texture2D" uid="uid://cmv8jfi4xf05g" path="res://assets/UI_Sprites/XPBar/XP-Bottom.png" id="6_lf43h"]
 [ext_resource type="FontFile" uid="uid://clvfhgb14oc1w" path="res://assets/Fonts/Gamepixies-XGDzg.ttf" id="6_nn0oi"]
-[ext_resource type="Texture2D" uid="uid://cayy43y0t4dnr" path="res://assets/UI_Sprites/XPBar/XP-Midbar.png" id="7_i167d"]
-[ext_resource type="Texture2D" uid="uid://2wjv2m17pxjg" path="res://assets/UI_Sprites/CharacterDisplay/CharacterDisplay.png" id="8_f80o3"]
 [ext_resource type="Script" path="res://resume_button.gd" id="8_qki08"]
-[ext_resource type="PackedScene" uid="uid://cfqo80c6r6a8r" path="res://characters/old_man/old_man.tscn" id="10_luns8"]
 [ext_resource type="Texture2D" uid="uid://bvs767rts03sv" path="res://assets/UI_Sprites/PauseMenu/PauseMenu.png" id="12_7c04e"]
 [ext_resource type="PackedScene" uid="uid://dmxkuoih4uc1n" path="res://Enemies/Evil_Pizza/Evil_Pizza.tscn" id="12_jmief"]
 [ext_resource type="PackedScene" uid="uid://dw4t4shc4gyjl" path="res://Utility/enemy_spawner.tscn" id="12_kt2t7"]
@@ -54,6 +50,7 @@ script = ExtResource("1_bamb0")
 
 [node name="MapComplete" type="CanvasLayer" parent="."]
 unique_name_in_owner = true
+visible = false
 
 [node name="ColorRect" type="TextureRect" parent="MapComplete"]
 anchors_preset = 15
@@ -197,84 +194,6 @@ vertical_alignment = 1
 [node name="Player" parent="." instance=ExtResource("1_ym5bf")]
 position = Vector2(344, 183)
 scale = Vector2(1.351, 1)
-
-[node name="CharacterInfo" type="CanvasLayer" parent="."]
-unique_name_in_owner = true
-layer = 2
-visible = false
-
-[node name="ImageInfo" type="TextureRect" parent="CharacterInfo"]
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 4.0
-offset_top = -67.0
-offset_right = 164.0
-offset_bottom = -3.0
-grow_vertical = 0
-texture = ExtResource("8_f80o3")
-
-[node name="Countdown" type="Label" parent="CharacterInfo/ImageInfo"]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.4375
-anchor_top = 4.75
-anchor_right = 2.39375
-anchor_bottom = 7.10938
-offset_top = -296.0
-offset_right = 29.0
-offset_bottom = -278.0
-scale = Vector2(0.1, 0.1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 10
-theme_override_fonts/font = ExtResource("6_nn0oi")
-theme_override_font_sizes/font_size = 160
-text = "2:00
-"
-metadata/_edit_use_anchors_ = true
-
-[node name="Score" type="Label" parent="CharacterInfo/ImageInfo"]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 60.0
-offset_top = -23.0
-offset_right = 251.0
-offset_bottom = 286.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.05, 0.05)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 10
-theme_override_fonts/font = ExtResource("6_nn0oi")
-theme_override_font_sizes/font_size = 300
-text = "0"
-
-[node name="ExperienceBar" type="TextureProgressBar" parent="CharacterInfo/ImageInfo"]
-unique_name_in_owner = true
-texture_filter = 1
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 0.5
-offset_left = 67.0
-offset_top = 48.0
-offset_right = 74.0
-offset_bottom = 57.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-nine_patch_stretch = true
-texture_under = ExtResource("6_lf43h")
-texture_progress = ExtResource("7_i167d")
-
-[node name="Old_man" parent="CharacterInfo/ImageInfo" instance=ExtResource("10_luns8")]
-position = Vector2(28, 15)
 
 [node name="Timer4Countdown" type="Timer" parent="."]
 autostart = true
@@ -583,6 +502,7 @@ position = Vector2(693, 399)
 [node name="EnemySpawner" parent="." instance=ExtResource("12_kt2t7")]
 spawns = Array[ExtResource("13_sgraj")]([SubResource("Resource_27w51")])
 
+[connection signal="Game_time" from="." to="Player" method="_on_game_game_time"]
 [connection signal="map_completed" from="." to="EnemySpawner" method="_on_game_map_completed"]
 [connection signal="pressed" from="MapComplete/ColorRect/Map2" to="." method="_on_map_2_pressed"]
 [connection signal="pressed" from="MapComplete/ColorRect/Map1" to="." method="_on_map_1_pressed"]

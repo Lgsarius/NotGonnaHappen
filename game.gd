@@ -11,14 +11,14 @@ var mob_death_count = 0
 @onready var map2_btn = %MapComplete.get_node("ColorRect/Map2/")
 
 signal map_completed
-
+signal Game_time(minutes,seconds)
 var map_options = ["nix","nix"]
  
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_PAUSABLE
 	update_countdown_display()
 	load_selected_map(get_random_map_options()[0])
-	
+	player.toggle_character_info(true)
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel"): 
@@ -28,7 +28,7 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func toggle_pause() -> void:
 	get_tree().paused = !get_tree().paused
-	%CharacterInfo.visible = false
+	player.toggle_character_info(false)
 	%PauseMenu.visible = get_tree().paused
 
 func _on_timer_4_countdown_timeout() -> void:
@@ -41,7 +41,7 @@ func _on_timer_4_countdown_timeout() -> void:
 func update_countdown_display() -> void:
 	var minutes = floor(time_remaining / 60)
 	var seconds = time_remaining % 60
-	%Countdown.text = "%d:%02d" % [minutes, seconds]
+	Game_time.emit(minutes,seconds)
 
 func show_map_complete() -> void:
 	map_completed.emit()
@@ -55,7 +55,7 @@ func show_map_complete() -> void:
 	map1_btn.grab_focus()
 	
 	
-	%CharacterInfo.visible = false
+	player.toggle_character_info(false)
 	
 	
 	%MapComplete.get_node("ColorRect/MobDeathCount").text = "Killed Enemies: " + str(mob_death_count)
@@ -104,7 +104,7 @@ func load_selected_map(map_path: String) -> void:
 	%MapComplete.visible = false
 	
 	
-	%CharacterInfo.visible = true
+	player.toggle_character_info(true)
 
 	
 	mob_death_count = 0
@@ -126,14 +126,9 @@ func cleanup_map():
 			print("Removing node: ", child.name)
 			remove_child(child)
 			child.queue_free()
-	for child in $EnemySpawner.get_children():
-		if "enemy" in child.get_groups() or "loot" in child.get_groups():
-			print("Removing node: ",child.name)
-			remove_child(child)
-			child.queue_free()
 	player.global_position = $Spawnpoint.global_position
 	player.health = player.maxhealth
-	player.get_child(0).value = player.health
+	
 			
 func _on_player_health_depleted() -> void:
 	%GameOver.visible = true
@@ -167,7 +162,7 @@ func _on_settings_button_pressed() -> void:
 	%PauseMenu.visible = false
 	settings_scene.get_node("BackButton").pressed.connect(_on_settings_back_pressed.bind(settings_scene, settings_layer))
 
-func _on_settings_back_pressed(settings_scene: Node, settings_layer: CanvasLayer) -> void:
+func _on_settings_back_pressed(_settings_scene: Node, settings_layer: CanvasLayer) -> void:
 	settings_layer.queue_free()  # This will also free the settings_scene
 	%PauseMenu.visible = true
 

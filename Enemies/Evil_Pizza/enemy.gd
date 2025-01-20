@@ -16,7 +16,7 @@ signal remove_from_array(object)
 
 func _ready():
 	sprite.play("walk")
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	knockback = knockback.move_toward(Vector2.ZERO,knockback_recovery)
 	#var dir = global_position.direction_to(player.global_position)
 	var next_path_pos := nav_agent.get_next_path_position()

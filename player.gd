@@ -47,10 +47,9 @@ func _ready() -> void:
 	upgrade_character("PommesSchuss1")
 	attack()
 	
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	movement()
-	
-	%ProgressBar.value = health
+	%HealthBar.value = health
 	if health <= 0.0:
 		health_depleted.emit()
 		
@@ -174,8 +173,8 @@ func upgrade_character(upgrade):
 		"health1","health2","health3","health4":
 			maxhealth += 20
 			health+=20
-			%ProgressBar.max_value = maxhealth
-			%ProgressBar.value = health
+			%HealthBar.max_value = maxhealth
+			%HealthBar.value = health
 		"armor1","armor2","armor3","armor4":
 			armor += 1
 		"speed1","speed2","speed3","speed4":
@@ -236,7 +235,7 @@ func get_random_item():
 
 
 func _on_hurt_box_hurt(damage, _angle,_knockback):
-	health -= damage
+	health -= clamp(damage -armor, 1.0,999.0)
 	
 
 
@@ -273,3 +272,10 @@ func _on_enemy_detection_area_body_entered(body: Node2D) -> void:
 func _on_enemy_detection_area_body_exited(body: Node2D) -> void:
 	if enemy_close.has(body):
 		enemy_close.erase(body)
+		
+func toggle_character_info(toggle):
+	%CharacterInfo.visible = toggle
+
+
+func _on_game_game_time(minutes: Variant, seconds: Variant) -> void:
+	%Countdown.text = "%d:%02d" % [minutes, seconds]
