@@ -1,28 +1,34 @@
-[gd_scene load_steps=10 format=3 uid="uid://dle7ccr76jp26"]
+[gd_scene load_steps=17 format=3 uid="uid://dle7ccr76jp26"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_1lkpv"]
-[ext_resource type="PackedScene" uid="uid://pbmyh1qru7p" path="res://characters/happy_boo/happy_boo.tscn" id="1_ody6f"]
-[ext_resource type="PackedScene" uid="uid://y12v7xn84n1m" path="res://gun.tscn" id="3_odmtp"]
+[ext_resource type="Texture2D" uid="uid://33lpitwgbf4y" path="res://assets/UI_Sprites/Levelupbg.png" id="2_pyedv"]
+[ext_resource type="Texture2D" uid="uid://2wjv2m17pxjg" path="res://assets/UI_Sprites/CharacterDisplay/CharacterDisplay.png" id="2_r5nd2"]
+[ext_resource type="PackedScene" uid="uid://cfqo80c6r6a8r" path="res://characters/old_man/old_man.tscn" id="2_xqq8s"]
+[ext_resource type="FontFile" uid="uid://clvfhgb14oc1w" path="res://assets/Fonts/Gamepixies-XGDzg.ttf" id="3_wo4n6"]
+[ext_resource type="Texture2D" uid="uid://cmv8jfi4xf05g" path="res://assets/UI_Sprites/XPBar/XP-Bottom.png" id="4_8y6ao"]
+[ext_resource type="Texture2D" uid="uid://bjn54413ejmi1" path="res://assets/UI_Sprites/HealthBar/Health_Bottom.png" id="4_xu41v"]
+[ext_resource type="PackedScene" uid="uid://bksq8t3qk3ayk" path="res://Utility/hurt_box.tscn" id="5_oniaj"]
+[ext_resource type="Texture2D" uid="uid://bvujenpggge5j" path="res://assets/UI_Sprites/HealthBar/Health-Midbar.png" id="5_q0g00"]
+[ext_resource type="Texture2D" uid="uid://cayy43y0t4dnr" path="res://assets/UI_Sprites/XPBar/XP-Midbar.png" id="5_q5kcm"]
+
+[sub_resource type="GDScript" id="GDScript_7xq60"]
+script/source = "extends VBoxContainer
+#
+#@onready var itemOptions =preload(\"res://Utility/button_1.tscn\")
+#@onready var game = get_tree().get_first_node_in_group(\"Game\")
+#func _ready():
+	#var button = Button.new()
+	#button.text = \"Test Button\"
+	#add_child(button)
+	#button.pressed.connect(_on_button_pressed)
+	#button.focus_mode = Control.FOCUS_ALL
+#
+#func _on_button_pressed():
+	#print(\"Test Button clicked!\")
+"
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_e8eoa"]
 radius = 35.9026
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_70s2o"]
-radius = 45.3982
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s4bw0"]
-bg_color = Color(0.152941, 0.168627, 0.188235, 1)
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lb4fv"]
-bg_color = Color(0.388235, 0.8, 0.372549, 1)
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8bmqp"]
 radius = 220.95
@@ -30,56 +36,235 @@ radius = 220.95
 [sub_resource type="CircleShape2D" id="CircleShape2D_yl1vv"]
 radius = 26.0768
 
-[node name="Player" type="CharacterBody2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_la37x"]
+size = Vector2(17, 31)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rj58n"]
+
+[node name="Player" type="CharacterBody2D" groups=["player"]]
+position = Vector2(321, 176)
 script = ExtResource("1_1lkpv")
 
-[node name="HappyBoo" parent="." instance=ExtResource("1_ody6f")]
+[node name="CharacterInfo" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
+layer = 2
+follow_viewport_scale = 1000.0
+
+[node name="ImageInfo" type="TextureRect" parent="CharacterInfo"]
+z_index = 2
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = -67.0
+offset_right = 164.0
+offset_bottom = -3.0
+grow_vertical = 0
+texture = ExtResource("2_r5nd2")
+
+[node name="Countdown" type="Label" parent="CharacterInfo/ImageInfo"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.4375
+anchor_top = 4.75
+anchor_right = 2.39375
+anchor_bottom = 7.10938
+offset_top = -296.0
+offset_right = 29.0
+offset_bottom = -278.0
+scale = Vector2(0.1, 0.1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("3_wo4n6")
+theme_override_font_sizes/font_size = 160
+text = "2:00
+"
+metadata/_edit_use_anchors_ = true
+
+[node name="Score" type="Label" parent="CharacterInfo/ImageInfo"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 60.0
+offset_top = -23.0
+offset_right = 251.0
+offset_bottom = 286.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.05, 0.05)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("3_wo4n6")
+theme_override_font_sizes/font_size = 300
+text = "0"
+
+[node name="HealthBar" type="TextureProgressBar" parent="CharacterInfo/ImageInfo"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 67.0
+offset_top = 37.0
+offset_right = 155.0
+offset_bottom = 46.0
+value = 100.0
+texture_under = ExtResource("4_xu41v")
+texture_progress = ExtResource("5_q0g00")
+texture_progress_offset = Vector2(1, 1)
+
+[node name="ExperienceBar" type="TextureProgressBar" parent="CharacterInfo/ImageInfo"]
+unique_name_in_owner = true
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.5
+offset_left = 67.0
+offset_top = 48.0
+offset_right = 74.0
+offset_bottom = 57.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+nine_patch_stretch = true
+texture_under = ExtResource("4_8y6ao")
+texture_progress = ExtResource("5_q5kcm")
+
+[node name="Old_man" parent="CharacterInfo/ImageInfo" instance=ExtResource("2_xqq8s")]
+position = Vector2(28, 15)
+
+[node name="LevelUp" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="LevelUp" type="TextureRect" parent="LevelUp"]
+offset_left = 220.0
+offset_top = 50.0
+offset_right = 420.0
+offset_bottom = 300.0
+texture = ExtResource("2_pyedv")
+
+[node name="label_levelup" type="Label" parent="LevelUp/LevelUp"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -124.0
+offset_top = 2.0
+offset_right = 4745.0
+offset_bottom = 865.0
+grow_horizontal = 2
+scale = Vector2(0.05, 0.05)
+mouse_filter = 0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 160
+theme_override_fonts/font = ExtResource("3_wo4n6")
+theme_override_font_sizes/font_size = 726
+text = "Level Up"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="UpgradeOptions" type="VBoxContainer" parent="LevelUp/LevelUp"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -90.0
+offset_top = -78.0
+offset_right = 90.0
+offset_bottom = -28.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+script = SubResource("GDScript_7xq60")
+
+[node name="Old_man" parent="." instance=ExtResource("2_xqq8s")]
 unique_name_in_owner = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1, -10)
+position = Vector2(1, 24)
+scale = Vector2(0.250112, 0.250112)
 shape = SubResource("CircleShape2D_e8eoa")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-
-[node name="Gun" parent="." instance=ExtResource("3_odmtp")]
-position = Vector2(-2, -46)
-
-[node name="HurtBox" type="Area2D" parent="."]
-unique_name_in_owner = true
-collision_layer = 0
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
-position = Vector2(0, -10)
-scale = Vector2(0.87783, 0.87783)
-shape = SubResource("CircleShape2D_70s2o")
-debug_color = Color(0.946611, 0.12344, 0.492893, 0.42)
-
-[node name="ProgressBar" type="ProgressBar" parent="."]
-unique_name_in_owner = true
-offset_left = -68.0
-offset_top = -129.0
-offset_right = 63.0
-offset_bottom = -102.0
-theme_override_styles/background = SubResource("StyleBoxFlat_s4bw0")
-theme_override_styles/fill = SubResource("StyleBoxFlat_lb4fv")
-value = 100.0
-show_percentage = false
+limit_left = 0
+limit_top = 0
+limit_right = 1390
+limit_bottom = 848
 
 [node name="GrabArea" type="Area2D" parent="."]
+position = Vector2(0, 16)
 collision_layer = 0
 collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GrabArea"]
+scale = Vector2(0.293089, 0.293089)
 shape = SubResource("CircleShape2D_8bmqp")
 
 [node name="CollectArea" type="Area2D" parent="."]
+position = Vector2(0, -10)
 collision_layer = 0
 collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollectArea"]
+position = Vector2(0, 24)
+scale = Vector2(0.331948, 0.331948)
 shape = SubResource("CircleShape2D_yl1vv")
+
+[node name="dash_timer" type="Timer" parent="."]
+wait_time = 0.2
+
+[node name="dash_cooldown" type="Timer" parent="."]
+
+[node name="Dash_bar" type="ProgressBar" parent="."]
+offset_left = -19.0
+offset_top = 38.0
+offset_right = 10.0
+offset_bottom = 65.0
+scale = Vector2(1.45858, 0.452799)
+rounded = true
+show_percentage = false
+
+[node name="HurtBox" parent="." instance=ExtResource("5_oniaj")]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" parent="HurtBox" index="0"]
+position = Vector2(0.5, 16.5)
+shape = SubResource("RectangleShape2D_la37x")
+
+[node name="Attack" type="Node2D" parent="."]
+
+[node name="PommesSchussTimer" type="Timer" parent="Attack"]
+wait_time = 1.5
+
+[node name="PommeesSchussAtackTimer" type="Timer" parent="Attack/PommesSchussTimer"]
+wait_time = 0.075
+
+[node name="EnemyDetectionArea" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 4
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyDetectionArea"]
+position = Vector2(0, 7.39972)
+rotation = 3.14159
+scale = Vector2(18.4423, 18.4181)
+shape = SubResource("CircleShape2D_rj58n")
 
 [connection signal="area_entered" from="GrabArea" to="." method="_on_grab_area_area_entered"]
 [connection signal="area_entered" from="CollectArea" to="." method="_on_collect_area_area_entered"]
+[connection signal="timeout" from="dash_timer" to="." method="_on_dash_timer_timeout"]
+[connection signal="timeout" from="dash_cooldown" to="." method="_on_dash_cooldown_timeout"]
+[connection signal="hurt" from="HurtBox" to="." method="_on_hurt_box_hurt"]
+[connection signal="timeout" from="Attack/PommesSchussTimer" to="." method="_on_pommes_schuss_timer_timeout"]
+[connection signal="timeout" from="Attack/PommesSchussTimer/PommeesSchussAtackTimer" to="." method="_on_pommees_schuss_atack_timer_timeout"]
+[connection signal="body_entered" from="EnemyDetectionArea" to="." method="_on_enemy_detection_area_body_entered"]
+[connection signal="body_exited" from="EnemyDetectionArea" to="." method="_on_enemy_detection_area_body_exited"]
+
+[editable path="HurtBox"]

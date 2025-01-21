@@ -1,0 +1,356 @@
+[gd_scene load_steps=10 format=3 uid="uid://c5vuxk0aa76sk"]
+
+[ext_resource type="Script" path="res://game.gd" id="1_bamb0"]
+[ext_resource type="PackedScene" uid="uid://dle7ccr76jp26" path="res://player.tscn" id="1_ym5bf"]
+[ext_resource type="FontFile" uid="uid://bkbhtbio65dg5" path="res://PUBLIC/GrapeSoda.ttf" id="2_ygrgo"]
+[ext_resource type="Texture2D" uid="uid://cbox2dwtg2npj" path="res://UI_Sprites/Level_Bar.png" id="5_s5vo4"]
+[ext_resource type="Texture2D" uid="uid://2m0t2erg3ol8" path="res://UI_Sprites/Level_Bar_Progress.png" id="6_eimp3"]
+
+[sub_resource type="GDScript" id="GDScript_hw6ru"]
+script/source = "extends ColorRect
+
+func _on_restart_button_pressed() -> void:
+	get_tree().paused = false
+	get_tree().reload_current_scene()
+
+func _on_main_menu_button_pressed() -> void:
+	get_tree().paused = false
+	get_tree().change_scene_to_file(\"res://scenes/MainMenu/Menu.tscn\")
+"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hover"]
+bg_color = Color(0.2, 0.2, 0.2, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(1, 1, 1, 1)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pressed"]
+bg_color = Color(0.133333, 0.133333, 0.133333, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.6, 0.6, 0.6, 1)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_normal"]
+bg_color = Color(0.12549, 0.12549, 0.12549, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+anti_aliasing = false
+
+[node name="Game" type="Node2D"]
+process_mode = 1
+y_sort_enabled = true
+script = ExtResource("1_bamb0")
+
+[node name="MapComplete" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="MapComplete"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.384314, 0.384314, 0.384314, 0.568627)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MapComplete/ColorRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -248.0
+offset_top = 53.0
+offset_right = 237.0
+offset_bottom = 148.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 100
+
+[node name="Map1" type="Button" parent="MapComplete/ColorRect/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Map1"
+
+[node name="Map2" type="Button" parent="MapComplete/ColorRect/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Map2"
+
+[node name="Label" type="Label" parent="MapComplete"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -112.0
+offset_top = 54.0
+offset_right = 110.0
+offset_bottom = 104.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "Map Complete!"
+
+[node name="Player" parent="." instance=ExtResource("1_ym5bf")]
+position = Vector2(320, 179)
+scale = Vector2(1.351, 1)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="Score" type="Label" parent="CanvasLayer"]
+unique_name_in_owner = true
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 283.0
+offset_top = 2.0
+offset_right = 356.0
+offset_bottom = 174.0
+grow_horizontal = 2
+scale = Vector2(0.565445, 0.357019)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_ygrgo")
+theme_override_font_sizes/font_size = 126
+text = "0"
+metadata/_edit_use_anchors_ = true
+
+[node name="Countdown" type="Label" parent="CanvasLayer"]
+unique_name_in_owner = true
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -306.0
+offset_top = 12.0
+offset_right = -208.0
+offset_bottom = 80.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_ygrgo")
+theme_override_font_sizes/font_size = 60
+text = "2:00
+"
+metadata/_edit_use_anchors_ = true
+
+[node name="ExperienceBar" type="TextureProgressBar" parent="CanvasLayer"]
+unique_name_in_owner = true
+texture_filter = 1
+anchors_preset = -1
+anchor_right = 0.5
+offset_left = 344.0
+offset_top = 21.0
+offset_right = 664.0
+offset_bottom = 53.0
+grow_horizontal = 2
+scale = Vector2(0.4, 0.4)
+texture_under = ExtResource("5_s5vo4")
+texture_progress = ExtResource("6_eimp3")
+metadata/_edit_use_anchors_ = true
+
+[node name="MobSpawner" type="Timer" parent="."]
+autostart = true
+
+[node name="Timer4Countdown" type="Timer" parent="."]
+autostart = true
+
+[node name="GameOver" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
+process_mode = 3
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="GameOver"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -56.0
+offset_top = -21.0
+offset_right = 14.0
+offset_bottom = 47.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.607843)
+script = SubResource("GDScript_hw6ru")
+
+[node name="Label" type="Label" parent="GameOver/ColorRect"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -209.0
+offset_top = 57.0
+offset_right = 666.0
+offset_bottom = 257.0
+grow_horizontal = 2
+scale = Vector2(0.5, 0.5)
+theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 1)
+theme_override_fonts/font = ExtResource("2_ygrgo")
+theme_override_font_sizes/font_size = 185
+text = "GAME OVER"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GameOver/ColorRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -90.0
+offset_top = 3.0
+offset_right = 94.0
+offset_bottom = 123.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+
+[node name="RestartButton" type="Button" parent="GameOver/ColorRect/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.6, 0.6, 0.6, 1)
+theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 1)
+theme_override_fonts/font = ExtResource("2_ygrgo")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/hover = SubResource("StyleBoxFlat_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_pressed")
+theme_override_styles/normal = SubResource("StyleBoxFlat_normal")
+text = "Restart"
+
+[node name="MainMenuButton" type="Button" parent="GameOver/ColorRect/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.6, 0.6, 0.6, 1)
+theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 1)
+theme_override_fonts/font = ExtResource("2_ygrgo")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/hover = SubResource("StyleBoxFlat_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_pressed")
+theme_override_styles/normal = SubResource("StyleBoxFlat_normal")
+text = "Back to Menu"
+
+[node name="PauseMenu" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
+process_mode = 3
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="PauseMenu"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -33.0
+offset_right = 14.0
+offset_bottom = 21.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.607843)
+
+[node name="Label" type="Label" parent="PauseMenu"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -200.0
+offset_top = 47.0
+offset_right = 200.0
+offset_bottom = 107.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = ExtResource("2_ygrgo")
+theme_override_font_sizes/font_size = 48
+text = "Paused"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -127.0
+offset_top = -159.0
+offset_right = 373.0
+offset_bottom = 141.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(0.5, 0.5)
+theme_override_constants/separation = 20
+
+[node name="ResumeButton" type="Button" parent="PauseMenu/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.6, 0.6, 0.6, 1)
+theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 1)
+theme_override_fonts/font = ExtResource("2_ygrgo")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/hover = SubResource("StyleBoxFlat_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_pressed")
+theme_override_styles/normal = SubResource("StyleBoxFlat_normal")
+text = "Resume"
+
+[node name="SettingsButton" type="Button" parent="PauseMenu/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.6, 0.6, 0.6, 1)
+theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 1)
+theme_override_fonts/font = ExtResource("2_ygrgo")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/hover = SubResource("StyleBoxFlat_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_pressed")
+theme_override_styles/normal = SubResource("StyleBoxFlat_normal")
+text = "Settings"
+
+[node name="RestartButton" type="Button" parent="PauseMenu/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.6, 0.6, 0.6, 1)
+theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 1)
+theme_override_fonts/font = ExtResource("2_ygrgo")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/hover = SubResource("StyleBoxFlat_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_pressed")
+theme_override_styles/normal = SubResource("StyleBoxFlat_normal")
+text = "Restart"
+
+[node name="MainMenuButton" type="Button" parent="PauseMenu/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.6, 0.6, 0.6, 1)
+theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 1)
+theme_override_fonts/font = ExtResource("2_ygrgo")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/hover = SubResource("StyleBoxFlat_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_pressed")
+theme_override_styles/normal = SubResource("StyleBoxFlat_normal")
+text = "Back to Menu"
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(314, 183)
+
+[connection signal="pressed" from="MapComplete/ColorRect/HBoxContainer/Map1" to="." method="_on_map1_pressed"]
+[connection signal="pressed" from="MapComplete/ColorRect/HBoxContainer/Map2" to="." method="_on_map2_pressed"]
+[connection signal="health_depleted" from="Player" to="." method="_on_player_health_depleted"]
+[connection signal="timeout" from="MobSpawner" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Timer4Countdown" to="." method="_on_timer_4_countdown_timeout"]
+[connection signal="pressed" from="GameOver/ColorRect/VBoxContainer/RestartButton" to="GameOver/ColorRect" method="_on_restart_button_pressed"]
+[connection signal="pressed" from="GameOver/ColorRect/VBoxContainer/MainMenuButton" to="GameOver/ColorRect" method="_on_main_menu_button_pressed"]
+[connection signal="pressed" from="PauseMenu/VBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="PauseMenu/VBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="PauseMenu/VBoxContainer/RestartButton" to="." method="_on_pause_restart_pressed"]
+[connection signal="pressed" from="PauseMenu/VBoxContainer/MainMenuButton" to="." method="_on_pause_menu_pressed"]

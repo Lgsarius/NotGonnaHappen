@@ -1,0 +1,160 @@
+[gd_scene load_steps=4 format=3 uid="uid://c8j2x4q3qv60a"]
+
+[ext_resource type="Script" path="res://game.gd" id="1_r3k1j"]
+[ext_resource type="PackedScene" uid="uid://dle7ccr76jp26" path="res://player.tscn" id="2_8k3yt"]
+
+[sub_resource type="Curve2D" id="Curve2D_ogjx2"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 488, -80, 0, 0, 0, 0, 1064, 284, 0, 0, 0, 0, 488, 648, 0, 0, 0, 0, -88, 284, 0, 0, 0, 0, 488, -80)
+}
+point_count = 5
+
+[node name="Map2" type="Node2D"]
+process_mode = 3
+script = ExtResource("1_r3k1j")
+
+[node name="Player" parent="." instance=ExtResource("2_8k3yt")]
+position = Vector2(576, 324)
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_ogjx2")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+unique_name_in_owner = true
+position = Vector2(488, -80)
+rotation = 0.563577
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[node name="Timer4Countdown" type="Timer" parent="."]
+wait_time = 120.0
+autostart = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="Score" type="Label" parent="CanvasLayer"]
+unique_name_in_owner = true
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 287.0
+offset_top = -6.0
+offset_right = 360.0
+offset_bottom = 166.0
+grow_horizontal = 2
+scale = Vector2(0.565445, 0.357019)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 126
+text = "0"
+
+[node name="Countdown" type="Label" parent="CanvasLayer"]
+unique_name_in_owner = true
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -185.0
+offset_top = 98.0
+offset_right = 12.0
+offset_bottom = 233.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 126
+text = "2:00"
+
+[node name="GameOver" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
+process_mode = 3
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="GameOver"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -56.0
+offset_top = -21.0
+offset_right = 14.0
+offset_bottom = 47.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.607843)
+
+[node name="Label" type="Label" parent="GameOver/ColorRect"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -209.0
+offset_top = 57.0
+offset_right = 666.0
+offset_bottom = 257.0
+grow_horizontal = 2
+scale = Vector2(0.5, 0.5)
+theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 1)
+theme_override_font_sizes/font_size = 185
+text = "GAME OVER"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MapComplete" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
+process_mode = 3
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="MapComplete"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -56.0
+offset_top = -21.0
+offset_right = 14.0
+offset_bottom = 47.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.607843)
+
+[node name="Label" type="Label" parent="MapComplete/ColorRect"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -209.0
+offset_top = 57.0
+offset_right = 666.0
+offset_bottom = 257.0
+grow_horizontal = 2
+scale = Vector2(0.5, 0.5)
+theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 1)
+theme_override_font_sizes/font_size = 185
+text = "MAP COMPLETE!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MapComplete/ColorRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -50.0
+offset_right = 100.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+
+[node name="Map1" type="Button" parent="MapComplete/ColorRect/VBoxContainer"]
+layout_mode = 2
+text = "Map 1"
+
+[node name="Map2" type="Button" parent="MapComplete/ColorRect/VBoxContainer"]
+layout_mode = 2
+text = "Map 2"
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Timer4Countdown" to="." method="_on_timer_4_countdown_timeout"]
+[connection signal="pressed" from="MapComplete/ColorRect/VBoxContainer/Map1" to="." method="_on_map1_pressed"]
+[connection signal="pressed" from="MapComplete/ColorRect/VBoxContainer/Map2" to="." method="_on_map2_pressed"]
