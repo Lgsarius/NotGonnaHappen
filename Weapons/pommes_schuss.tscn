@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://dru7m5taldmb8"]
+
+[ext_resource type="Texture2D" uid="uid://bxddi3i1qh1rk" path="res://assets/tilesets/FOOD/Fries_projectile.png" id="1_c7ltp"]
+[ext_resource type="Script" path="res://Weapons/pommes_schuss.gd" id="1_pkvvm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dpgup"]
+size = Vector2(4, 16)
+
+[node name="PommesSchuss" type="Area2D" groups=["attack"]]
+top_level = true
+scale = Vector2(0.1, 0.1)
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_pkvvm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, -1)
+shape = SubResource("RectangleShape2D_dpgup")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_c7ltp")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

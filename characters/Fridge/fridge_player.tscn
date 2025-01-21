@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://ck5ys2k78b6h8"]
+
+[ext_resource type="Texture2D" uid="uid://cpw0q1uf7gqo8" path="res://assets/Characters/Fridge/fridge.png" id="1_rqfgh"]
+[ext_resource type="Script" path="res://characters/Fridge/fridge_player.gd" id="1_vey6s"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eangf"]
+atlas = ExtResource("1_rqfgh")
+region = Rect2(0, 0, 47, 70)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_slhfj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eangf")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_vey6s")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_slhfj")
+animation = &"new_animation"

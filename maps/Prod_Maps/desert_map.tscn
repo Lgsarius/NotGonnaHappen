@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=3 uid="uid://ck3hy5yoq1g10"]
+
+[sub_resource type="Curve2D" id="Curve2D_k0e6r"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 452.213, 408, 0, 0, 0, 0, 196.107, 966, 0, 0, 0, 0, 1107.28, 979, 0, 0, 0, 0, 823.79, 916, 0, 0, 0, 0, 669.83, 286, 0, 0, 0, 0, 170.94, 290, 0, 0, 0, 0, 885.226, 293, 0, 0, 0, 0, 926.677, 519)
+}
+point_count = 8
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_ivsbw"]
+vertices = PackedVector2Array(1398.03, 839.969, 9.96094, 834.023, 6.03125, 10.9688, 1401.96, 6.02344)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-1, 4, 3, 841, 1405, 847, 1409, -1)])
+source_geometry_mode = 1
+source_geometry_group_name = &"navigation"
+cell_size = 4.0
+agent_radius = 7.0
+
+[node name="Desert_Map" type="Node" groups=["map", "navigation"]]
+
+[node name="Path2D" type="Path2D" parent="."]
+position = Vector2(-191.94, -202)
+scale = Vector2(1.351, 1)
+curve = SubResource("Curve2D_k0e6r")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2(452.213, 408)
+rotation = 2.00109
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_ivsbw")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]

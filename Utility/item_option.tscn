@@ -1,0 +1,92 @@
+[gd_scene load_steps=5 format=3 uid="uid://v61d36v6xllc"]
+
+[ext_resource type="Texture2D" uid="uid://clqtk4i4xmnli" path="res://DesignWork/Gameprojekt/Export/Button_Item_Option.png" id="1_0t5h8"]
+[ext_resource type="Script" path="res://Utility/item_option.gd" id="1_o2foa"]
+[ext_resource type="Texture2D" uid="uid://cpvh3u6kt8fy5" path="res://assets/UI_Sprites/Border/Item_Border.png" id="2_ssd78"]
+[ext_resource type="FontFile" uid="uid://clvfhgb14oc1w" path="res://assets/Fonts/Gamepixies-XGDzg.ttf" id="6_bshjg"]
+
+[node name="ItemOption" type="TextureRect"]
+z_index = 2
+custom_minimum_size = Vector2(192, 64)
+anchors_preset = -1
+anchor_right = 0.281
+anchor_bottom = 0.139
+offset_right = 12.16
+offset_bottom = 13.96
+texture = ExtResource("1_0t5h8")
+script = ExtResource("1_o2foa")
+
+[node name="ColorRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 37.0
+offset_bottom = 37.0
+texture = ExtResource("2_ssd78")
+
+[node name="ColorRect2" type="ColorRect" parent="ColorRect"]
+z_as_relative = false
+layout_mode = 0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 42.0
+offset_bottom = 42.0
+scale = Vector2(0.689876, 0.701603)
+color = Color(0.0266328, 0.191122, 0.123913, 1)
+
+[node name="ItemIcon" type="TextureRect" parent="ColorRect"]
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+scale = Vector2(1.00358, 1)
+
+[node name="lbl_level" type="Label" parent="."]
+layout_mode = 0
+offset_left = 130.0
+offset_top = 3.0
+offset_right = 170.0
+offset_bottom = 26.0
+scale = Vector2(0.05, 0.05)
+mouse_filter = 1
+theme_override_fonts/font = ExtResource("6_bshjg")
+theme_override_font_sizes/font_size = 300
+text = "level:1"
+
+[node name="lbl_description" type="Label" parent="."]
+layout_mode = 0
+offset_left = 39.0
+offset_top = 24.0
+offset_right = 2959.0
+offset_bottom = 671.0
+scale = Vector2(0.05, 0.051)
+mouse_filter = 1
+theme_override_fonts/font = ExtResource("6_bshjg")
+theme_override_font_sizes/font_size = 200
+text = "Description of Item"
+autowrap_mode = 3
+
+[node name="lbl_name" type="Label" parent="."]
+layout_mode = 0
+offset_left = 39.0
+offset_top = 1.0
+offset_right = 86.0
+offset_bottom = 24.0
+scale = Vector2(0.05, 0.05)
+mouse_filter = 1
+theme_override_fonts/font = ExtResource("6_bshjg")
+theme_override_font_sizes/font_size = 400
+text = "Name"
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.993522, 1.00809)
+theme_override_colors/icon_normal_color = Color(0, 0, 0, 0)
+flat = true
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

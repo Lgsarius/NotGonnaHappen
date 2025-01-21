@@ -1,0 +1,215 @@
+[gd_scene load_steps=11 format=3 uid="uid://brvexuddln6bj"]
+
+[ext_resource type="Script" path="res://scenes/MainMenu/menu.gd" id="1_6xrdc"]
+[ext_resource type="FontFile" uid="uid://clvfhgb14oc1w" path="res://assets/Fonts/Gamepixies-XGDzg.ttf" id="2_2dqv6"]
+[ext_resource type="SpriteFrames" uid="uid://bemxxcyhw8t3h" path="res://characters/old_man/old_man.tres" id="2_ta8nd"]
+[ext_resource type="FontFile" uid="uid://bkbhtbio65dg5" path="res://PUBLIC/GrapeSoda.ttf" id="2_ygrgo"]
+[ext_resource type="Texture2D" uid="uid://umglauc5rebc" path="res://assets/UI_Sprites/Button/Menu_Button.png" id="3_huo3d"]
+[ext_resource type="SpriteFrames" uid="uid://sme1i5icbsim" path="res://Enemies/Evil_Pizza/Evil_Pizza.tres" id="3_ow70y"]
+[ext_resource type="Texture2D" uid="uid://c8xx70c77p1nx" path="res://assets/UI_Sprites/Button/Button_pressed.png" id="4_3hqtg"]
+[ext_resource type="Texture2D" uid="uid://54166xehivmj" path="res://assets/UI_Sprites/Button/Button_Focus.png" id="5_fl7b3"]
+[ext_resource type="PackedScene" uid="uid://c6s72svsllb5m" path="res://scenes/AudioScenes/MusicMenuScene.tscn" id="8_6ftaq"]
+
+[sub_resource type="Curve2D" id="Curve2D_2v4j0"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -376.55, 20.7, 0, 0, 0, 0, 123.673, 20.9556)
+}
+point_count = 2
+
+[node name="Main Menu Node" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6xrdc")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_right = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0784314, 0.0784314, 0.0784314, 1)
+
+[node name="Path2D" type="Path2D" parent="ColorRect"]
+position = Vector2(573, 141)
+scale = Vector2(1.98911, 3.91304)
+curve = SubResource("Curve2D_2v4j0")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="ColorRect/Path2D"]
+position = Vector2(115.138, 20.9512)
+rotation = 0.000510972
+progress = 491.677
+
+[node name="Player" type="AnimatedSprite2D" parent="ColorRect/Path2D/PathFollow2D"]
+position = Vector2(29.5942, 1.72261e-09)
+scale = Vector2(1.61655, 1)
+sprite_frames = ExtResource("2_ta8nd")
+animation = &"run"
+autoplay = "run"
+frame_progress = 0.372774
+
+[node name="EnemieRun" type="AnimatedSprite2D" parent="ColorRect/Path2D/PathFollow2D"]
+position = Vector2(-69.2859, 17.3457)
+rotation = 0.0159709
+scale = Vector2(1, 0.576)
+sprite_frames = ExtResource("3_ow70y")
+animation = &"walk"
+autoplay = "walk"
+frame_progress = 0.267322
+flip_h = true
+
+[node name="EnemieRun2" type="AnimatedSprite2D" parent="ColorRect/Path2D/PathFollow2D"]
+position = Vector2(-38.8265, 20.1325)
+rotation = 0.0251706
+scale = Vector2(0.999915, 0.540125)
+skew = 0.0185226
+sprite_frames = ExtResource("3_ow70y")
+animation = &"walk"
+autoplay = "walk"
+frame_progress = 0.324911
+flip_h = true
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -311.0
+offset_top = 22.0
+offset_right = 289.0
+offset_bottom = 122.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_2dqv6")
+theme_override_font_sizes/font_size = 72
+text = "NotGonnaHappen"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -319.0
+offset_top = -4.99998
+offset_right = 97.0
+offset_bottom = 263.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.681)
+theme_override_constants/separation = -20
+
+[node name="StartButton2" type="TextureButton" parent="VBoxContainer"]
+custom_minimum_size = Vector2(300, 50)
+layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 7
+focus_neighbor_top = NodePath("../ExitButton2")
+texture_normal = ExtResource("3_huo3d")
+texture_pressed = ExtResource("4_3hqtg")
+texture_focused = ExtResource("5_fl7b3")
+stretch_mode = 0
+
+[node name="StartButton" type="Label" parent="VBoxContainer/StartButton2"]
+custom_minimum_size = Vector2(300, 50)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -25.0
+offset_right = 150.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_ygrgo")
+theme_override_font_sizes/font_size = 32
+text = "New Game"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SettingsButton2" type="TextureButton" parent="VBoxContainer"]
+custom_minimum_size = Vector2(300, 50)
+layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 7
+focus_neighbor_bottom = NodePath("../ExitButton2")
+texture_normal = ExtResource("3_huo3d")
+texture_pressed = ExtResource("4_3hqtg")
+texture_focused = ExtResource("5_fl7b3")
+stretch_mode = 0
+
+[node name="SettingsButton" type="Label" parent="VBoxContainer/SettingsButton2"]
+custom_minimum_size = Vector2(300, 50)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -25.0
+offset_right = 150.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_ygrgo")
+theme_override_font_sizes/font_size = 32
+text = "Settings"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ExitButton2" type="TextureButton" parent="VBoxContainer"]
+custom_minimum_size = Vector2(300, 50)
+layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 7
+focus_neighbor_top = NodePath("../SettingsButton2")
+focus_neighbor_bottom = NodePath("../StartButton2")
+texture_normal = ExtResource("3_huo3d")
+texture_pressed = ExtResource("4_3hqtg")
+texture_focused = ExtResource("5_fl7b3")
+stretch_mode = 0
+
+[node name="ExitButton" type="Label" parent="VBoxContainer/ExitButton2"]
+custom_minimum_size = Vector2(300, 50)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -25.0
+offset_right = 150.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_ygrgo")
+theme_override_font_sizes/font_size = 32
+text = "Exit"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AudioStreamPlayer" parent="." instance=ExtResource("8_6ftaq")]
+
+[connection signal="pressed" from="VBoxContainer/StartButton2" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/SettingsButton2" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/ExitButton2" to="." method="_on_exit_button_pressed"]

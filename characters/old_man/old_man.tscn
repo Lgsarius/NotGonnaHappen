@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://cfqo80c6r6a8r"]
+
+[ext_resource type="Script" path="res://characters/old_man/old_man.gd" id="1_awlm3"]
+[ext_resource type="SpriteFrames" uid="uid://bemxxcyhw8t3h" path="res://characters/old_man/old_man.tres" id="2_x6vq4"]
+
+[node name="Old_man" type="Node2D"]
+script = ExtResource("1_awlm3")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+sprite_frames = ExtResource("2_x6vq4")
+animation = &"idle"
